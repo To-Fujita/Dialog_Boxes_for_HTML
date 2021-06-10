@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Dialog Box #006 2021/06/01 by T. Fujita</title>
+        <meta charset = "utf-8" />
+        <script src = "./js/encoding.min.js" ></script>
+ 
+        <style>
+            body {
+                padding: 0;
+                margin: 0;
+                font-size: 24px;
+                background-color: #ddffdd;
+            }
+            textarea {
+                font-family:Verdana, Helvetica, Arial, sans-serif;
+                font-size: 0.8em;
+                margin: 0;
+                padding: 0;
+                vertical-align:middle;
+            }
+/* Buttons at the center */
+            .wrap {
+                position: relative;
+                top: 20px;
+                text-align: center;
+            }
+
+/* BUTTON 5 */
+            .btn5, .btn5:link, .btn5:visited {
+                padding: 20px 20px;
+                text-decoration: none;
+                font-size: 18px;
+                display: block;
+                margin: 20px auto;
+
+                border: none;
+                outline: none;
+                color: #fefefe;
+                background-color: #005005;
+                border-radius: 3px;
+            }
+            .btn5:hover, .btn5:focus, .btn5:link:hover, .btn5:link:focus, .btn5:visited:hover, .btn5:visited:focus {
+                transition-timing-function: cubic-bezier(0.6, 4, 0.3, 0.8);
+                -webkit-animation: gelatine 0.5s 1;
+                animation: gelatine 0.5s 1;
+            }
+
+            @-webkit-keyframes gelatine {
+                from, to {
+                    -webkit-transform: scale(1, 1);
+                }
+                25% {
+                    -webkit-transform: scale(0.9, 1.1);
+                }
+                50% {
+                    -webkit-transform: scale(1.1, 0.9);
+                }
+                75% {
+                    -webkit-transform: scale(0.95, 1.05);
+                }
+                from, to {
+                    -webkit-transform: scale(1, 1);
+                }
+                25% {
+                    -webkit-transform: scale(0.9, 1.1);
+                }
+                50% {
+                    -webkit-transform: scale(1.1, 0.9);
+                }
+                75% {
+                    -webkit-transform: scale(0.95, 1.05);
+                }
+            }
+            @keyframes gelatine {
+                from, to {
+                    transform: scale(1, 1);
+                }
+                25% {
+                    transform: scale(0.9, 1.1);
+                }
+                50% {
+                    transform: scale(1.1, 0.9);
+                }
+                75% {
+                    transform: scale(0.95, 1.05);
+                }
+                from, to {
+                    transform: scale(1, 1);
+                }
+                25% {
+                    transform: scale(0.9, 1.1);
+                }
+                50% {
+                    transform: scale(1.1, 0.9);
+                }
+                75% {
+                    transform: scale(0.95, 1.05);
+                }
+            }
+            @keyframes fade {
+                0% {
+                    opacity: 0;
+                    transform: translateY(15px);
+                }
+                100% {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+/* for Dialog Box */
+            dialog {
+                padding: 0;
+                border: 1px solid #eee;
+                box-shadow: 1px 1px 2px #333;
+                position: relative;
+                width: 500px;
+                height: 400px;
+                overflow: hidden;
+                background-color: #d0ffd0;
+            }
+            dialog[open]{
+                animation: fade 1s ease 0s 1 normal;
+            }
+
+            .rightButton{
+                background-color: #0004ff;
+                text-align: center;
+                margin: 10px auto 20px auto;
+                padding: 10px;
+                border-radius: 4px;
+                font-weight: bold;
+                color: #fff;
+                box-shadow: 0px 1px 3px #8bb8fa;
+                cursor: pointer;
+                position:absolute;
+                right: 20px;
+                bottom: 2px;
+                opacity: 1;
+            }
+            .leftButton{
+                background-color: #b80000;
+                text-align: center;
+                margin: 10px auto 20px auto;
+                padding: 10px;
+                border-radius: 4px;
+                font-weight: bold;
+                color: #fff;
+                box-shadow: 0px 1px 3px rgb(83, 0, 0);
+                cursor: pointer;
+                position:absolute;
+                left: 20px;
+                bottom: 2px;
+                opacity: 1;
+            }
+            .normalButton{
+                background-color: #005005;
+                text-align: center;
+                margin: 10px auto 20px auto;
+                padding: 10px;
+                border-radius: 4px;
+                font-weight: bold;
+                color: #fff;
+                box-shadow: 0px 1px 3px rgb(4, 109, 0);
+                cursor: pointer;
+                opacity: 1;
+            }
+
+        </style>
+    </head>
+    <body translate="no" >
+        <center>
+            <h2> Dialog Box #006: Text File Loading </h2>
+            <div class="wrap">
+                <input type="button" id="button_06" class="btn5" value="Open a Dialog" onclick="Dialog_open_06()">
+                <br>
+                The result that is selected at the dialog box<br>
+                <textarea id="text_06" rows="9" cols="60" readonly>This area is to display for the results at the dialog box.</textarea>
+             </div>
+        </center>
+
+        <dialog dialog id="dialog_06">
+            <center>
+                Dialog Box #006（Text File Loading）
+            </center>
+            <hr>
+            <span style="font-size: 16px;">Select the text file:</span>
+            <center>
+                <input type="file" accept="text/plain" name="dialog_TXT" id="dialog_TXT" value=""><HR>
+                <textarea id="dialog_DSP" rows="6" cols="40" readonly> </textarea>
+            </center>
+            <hr>
+            <input type="button" class="leftButton" id="cancel_06" value="Cancel" onclick="Dialog_cancel_06()">           
+            <input type="button" class="rightButton" id="close_06" value=" OK " onclick="Dialog_close_06()">
+        </dialog>
+
+        <script>
+            var Text_06 = document.getElementById('text_06');
+            var tmp_data = "";
+
+            function Dialog_open_06() {
+                dialog_06.showModal();
+                Dialog_TXT_Data_Load();
+            }
+            function Dialog_close_06() {
+                Text_06.value = tmp_data;
+                dialog_06.close();
+            }
+            function Dialog_cancel_06() {
+                Text_06.value = "Nothing is selected!";
+                dialog_06.close();
+            }
+
+// Load Text Data
+            function Dialog_TXT_Data_Load() {
+	            var select = document.getElementById('dialog_TXT');
+	            var output_txt = document.getElementById('dialog_DSP');
+	            select.value = "";
+	            output_txt.value = "";
+	            output_txt.innerHTML = "";
+                if(window.File) {
+		            select.addEventListener('change', function(e) {
+                        tmp_data = "";
+			            var fileData = e.target.files[0];
+			            var reader = new FileReader();
+			            reader.onerror = function() {
+				            alert('Failed at loading')
+			            }
+			            reader.onload = function(event) {
+				            var tmp = new Uint8Array(event.target.result);
+				            var tmp_text = Encoding.convert(tmp, 'UNICODE', 'AUTO');
+		  		            var txtArray = Encoding.codeToString(tmp_text);
+				            var lineArr = txtArray.split('\n');
+				            for (var i = 0; i < lineArr.length; i++) {
+					            tmp_data = tmp_data + lineArr[i];
+		  		            }
+				            output_txt.value = tmp_data;
+			            }
+			            reader.readAsArrayBuffer(fileData);
+		            }, false);
+	            }
+            }
+
+        </script>
+    </body>
+</html>

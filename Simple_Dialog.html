@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset = "utf-8" />
+        <title> Simple Dialog Box 2021/06/10 by T. Fujita</title>
+    </head>
+    <body>
+        <center>
+            <p>Simple Dialog Box</p>
+            <input type="button" value="Open dialog" onclick="dialog_Open()">    
+        </center>
+        <dialog id="dialog">
+            <center>
+                <p>This is a simple dialog box.</p>
+                <br>
+                <input type="button" value="Close dialog" onclick="dialog_Close()">
+            </center>
+        </dialog>
+        <script>
+            function dialog_Open(){
+                dialog.showModal();
+            }
+            function dialog_Close() {
+                dialog.close();
+            }
+        </script>
+    </body>
+</html>

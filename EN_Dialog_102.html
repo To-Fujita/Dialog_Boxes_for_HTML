@@ -1,0 +1,1647 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Dialog Box #102 2021/06/10 by T. Fujita</title>
+        <meta charset = "utf-8" />
+        <link rel = "stylesheet" href = "./css/reset.css" type="text/css" media="screen">
+        <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+        <link rel = "stylesheet" href = "./css/dialog.css" />
+
+        <script src = "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src = "https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+        <script src = "./js/encoding.min.js" ></script>
+
+        <style>
+            body {
+                padding: 0, 0, 0, 0;
+                margin: -20, 0, 0, 0;
+                font-size: 24px;
+                background-color: #ddffdd;
+            }
+            textarea {
+                font-family:Verdana, Helvetica, Arial, sans-serif;
+                font-size: 0.6em;
+                margin: 0;
+                padding: 0;
+                vertical-align:middle;
+            }
+
+            .btn5, .btn5:link, .btn5:visited {
+                text-align: center;
+                margin: 10px auto 20px auto;
+                padding: 10px;
+                text-decoration: none;
+                font-size: 18px;
+                display: block;
+                border: none;
+                outline: none;
+                color: #fefefe;
+                background-color: #b37c05;
+                border-radius: 3px;
+            }
+            .btn5:hover, .btn5:focus, .btn5:link:hover, .btn5:link:focus, .btn5:visited:hover, .btn5:visited:focus {
+                transition-timing-function: cubic-bezier(0.6, 4, 0.3, 0.8);
+                -webkit-animation: gelatine 0.5s 1;
+                animation: gelatine 0.5s 1;
+            }
+
+            @-webkit-keyframes gelatine {
+                from, to {
+                    -webkit-transform: scale(1, 1);
+                }
+                25% {
+                    -webkit-transform: scale(0.9, 1.1);
+                }
+                50% {
+                    -webkit-transform: scale(1.1, 0.9);
+                }
+                75% {
+                    -webkit-transform: scale(0.95, 1.05);
+                }
+                from, to {
+                    -webkit-transform: scale(1, 1);
+                }
+                25% {
+                    -webkit-transform: scale(0.9, 1.1);
+                }
+                50% {
+                    -webkit-transform: scale(1.1, 0.9);
+                }
+                75% {
+                    -webkit-transform: scale(0.95, 1.05);
+                }
+            }
+            @keyframes gelatine {
+                from, to {
+                    transform: scale(1, 1);
+                }
+                25% {
+                    transform: scale(0.9, 1.1);
+                }
+                50% {
+                    transform: scale(1.1, 0.9);
+                }
+                75% {
+                    transform: scale(0.95, 1.05);
+                }
+                from, to {
+                    transform: scale(1, 1);
+                }
+                25% {
+                    transform: scale(0.9, 1.1);
+                }
+                50% {
+                    transform: scale(1.1, 0.9);
+                }
+                75% {
+                    transform: scale(0.95, 1.05);
+                }
+            }
+
+/* for Dialog Box */            
+            dialog {
+                padding: 0;
+                border: 1px solid #eee;
+                box-shadow: 2px 2px 4px #333;
+                position: relative;
+                width: 500px;
+                height: 400px;
+                overflow: hidden;
+                background-color: #d0ffd0;
+            }
+
+/* Inside for Dialog Box */
+.shift img {
+                margin: 10px;
+                width: 64px;
+                height: 64px;
+            }
+            .shift img:hover{
+	            transform: translate(-5px,-5px);
+	            box-shadow:5px 5px;
+	            -webkit-transition: 0.1s;-moz-transition: 0.1s;-ms-transition: 0.1s;-o-transition: 0.1s;transition: 0.1s;
+            }
+
+/* Digital Clock */
+                /* svg specific css */
+                .lcd-element {
+                    fill: #fabfbf;
+                    fill: #95ff95;
+                    transition: all 0.2s ease-out
+                }
+                .lcd-element-active {
+                    fill: #ff0000;
+                    fill: #015005;
+                }
+
+                /* 1 */
+                .number-is-1 .top-right,
+                .number-is-1 .bottom-right,
+                /* 2 */
+                .number-is-2 .top-center,
+                .number-is-2 .top-right,
+                .number-is-2 .mid-center,
+                .number-is-2 .bottom-left,
+                .number-is-2 .bottom-center,
+                /* 3 */
+                .number-is-3 .top-center,
+                .number-is-3 .top-right,
+                .number-is-3 .mid-center,
+                .number-is-3 .bottom-right,
+                .number-is-3 .bottom-center,
+                /* 4 */
+                .number-is-4 .top-left,
+                .number-is-4 .top-right,
+                .number-is-4 .mid-center,
+                .number-is-4 .bottom-right,
+                /* 5 */
+                .number-is-5 .top-center,
+                .number-is-5 .top-left,
+                .number-is-5 .mid-center,
+                .number-is-5 .bottom-right,
+                .number-is-5 .bottom-center,
+                /* 6 */
+                .number-is-6 .top-center,
+                .number-is-6 .top-left,
+                .number-is-6 .mid-center,
+                .number-is-6 .bottom-right,
+                .number-is-6 .bottom-left,
+                .number-is-6 .bottom-center,
+                /* 7 */
+                .number-is-7 .top-center,
+                .number-is-7 .top-right,
+                .number-is-7 .bottom-right,
+                /* 8 */
+                .number-is-8 .top-center,
+                .number-is-8 .top-left,
+                .number-is-8 .top-right,
+                .number-is-8 .mid-center,
+                .number-is-8 .bottom-right,
+                .number-is-8 .bottom-left,
+                .number-is-8 .bottom-center,
+                /* 9 */
+                .number-is-9 .top-center,
+                .number-is-9 .top-left,
+                .number-is-9 .top-right,
+                .number-is-9 .mid-center,
+                .number-is-9 .bottom-right,
+                .number-is-9 .bottom-center,
+                /* 0 */
+                .number-is-0 .top-center,
+                .number-is-0 .top-left,
+                .number-is-0 .top-right,
+                .number-is-0 .bottom-right,
+                .number-is-0 .bottom-left,
+                .number-is-0 .bottom-center
+                {
+                    fill: #ff0000;
+                    fill: #015005;
+                }
+
+        </style>
+
+    </head>
+    <body translate="no" >
+        <center>
+            <br>
+            <h2> Dialog Box #102: Icons Type of Menu </h2>
+            <br>
+            <input type="button" id="button_00" class="btn5" style="position: absolute; top:70px; left:30%;" value="Show Dialog Menu" onclick="Dialog_open_000();">
+            <input type="button" class="normalButton" id="button_102" style="position: absolute; top:70px; left:60%;" value="Clear the Data Below" onclick="Text_Clear_102();">
+            <br>The results at the dialog box:
+            <br>
+            <textarea id="text_102" rows="12" cols="80" readonly>This area is displayed the results at the dialog box.</textarea>
+            <img id="img_102" width="80%"></img>
+        </center>
+
+        <script>
+            var Text_Box_102 = document.getElementById('text_102');
+            function Text_Clear_102() {
+                Text_Box_102.value = "";
+                img_102.src = "";
+            }
+        </script>
+
+
+<!-- Dialog Box #000 -->
+<dialog dialog id="dialog_000">
+    <center>
+        Dialog #000（Menu）
+    </center>
+    <hr>
+    <span class="shift" style="position:absolute; top:50px; left: 10px;">
+        <a href="javascript: Dialog_open_01()"><img src="./images/info.png" /></a>
+    </span>
+    <span class="shift" style="position:absolute; top:50px; left: 90px;">
+        <a href="javascript: Dialog_open_02()"><img src="./images/keyboard_2.png" /></a>
+    </span>
+    <span class="shift" style="position:absolute; top:50px; left: 170px;">
+        <a href="javascript: Dialog_open_03()"><img src="./images/radio_button_2.png" /></a>
+    </span>
+    <span class="shift" style="position:absolute; top:50px; left: 250px;">
+        <a href="javascript: Dialog_open_04()"><img src="./images/check_box_2.png" /></a>
+    </span>
+    <span class="shift" style="position:absolute; top:50px; left: 330px;">
+        <a href="javascript: Dialog_open_05()"><img src="./images/select_2.png" /></a>
+    </span>
+    <span class="shift" style="position:absolute; top:50px; left: 410px;">
+        <a href="javascript: Dialog_open_11()"><img src="./images/calendar_2.png" /></a>
+    </span>
+
+    <span class="shift" style="position:absolute; top:130px; left: 10px;">
+        <a href="javascript: Dialog_open_09()"><img src="./images/clock_2.png" /></a>
+    </span>
+    <span class="shift" style="position:absolute; top:130px; left: 90px;">
+        <a href="javascript: Dialog_open_12()"><img src="./images/communication_2.png" /></a>
+    </span>
+    <span class="shift" style="position:absolute; top:130px; left: 170px;">
+        <a href="javascript: Dialog_open_08()"><img src="./images/gallery_col.png" /></a>
+    </span>
+    <span class="shift" style="position:absolute; top:130px; left: 250px;">
+        <a href="javascript: Dialog_open_07()"><img src="./images/csv-1.png" /></a>
+    </span>
+    <span class="shift" style="position:absolute; top:130px; left: 330px;">
+        <a href="javascript: Dialog_open_14()"><img src="./images/csv-2.png" /></a>
+    </span>
+    <span class="shift" style="position:absolute; top:130px; left: 410px;">
+        <a href="javascript: Dialog_open_15()"><img src="./images/csv-3.png" /></a>
+    </span>
+
+    <span class="shift" style="position:absolute; top:210px; left: 10px;">
+        <a href="javascript: Dialog_open_10()"><img src="./images/profile_2.png" /></a>
+    </span>
+    <span class="shift" style="position:absolute; top:210px; left: 250px;">
+        <a href="javascript: Dialog_open_06()"><img src="./images/text-1.png" /></a>
+    </span>
+    <span class="shift" style="position:absolute; top:210px; left: 330px;">
+        <a href="javascript: Dialog_open_13()"><img src="./images/text-2.png" /></a>
+    </span>
+    <span class="shift" style="position:absolute; top:210px; left: 410px;">
+        <a href="./JP_Dialog_102.html"><img src="./images/Japan.gif" /></a>
+    </span>
+
+    <br><br><br><br><br><br><hr>
+    <input type="button" class="rightButton" id="close_000" value="閉じる" onclick="Dialog_close_000()">
+</dialog>
+<script>
+    function Dialog_open_000(){
+        dialog_000.showModal();
+    }
+    function Dialog_close_000() {
+        dialog_000.close();
+    }
+</script>
+
+
+<!-- Dialog Box #001 -->
+<dialog dialog id="dialog_001">
+    <center>
+        Dialog #001（Information）
+    </center>
+    <hr>
+
+    <sand_section>
+- This is a basic type of information box.<br>
+- If you hover the mouse to the letters, the letters will be collapsed.<br><br>
+- If you click the "Close" button below, this dialog box is closed.
+    </sand_section>
+    
+    <br>
+    <hr>
+    <input type="button" class="rightButton" id="close_001" value="Close" onclick="Dialog_close_01()">
+</dialog>
+
+<script>
+    function Dialog_open_01() {
+        dialog_000.close();
+        dialog_001.showModal();
+        sand_text();
+    }
+    function Dialog_close_01() {
+        dialog_001.close();
+    }
+
+// Sand Text
+    function sand_text() {
+      var Part = function (x, y) {
+        this.x = x;
+        this.y = y;
+        this.bx = x;
+        this.by = y;
+        this.ax = 0;
+        this.ay = 0;
+        this.r;
+        this.g;
+        this.b;
+        this.a;
+      };
+      Part.prototype = {
+        r: function (v) {this.r = v;return this;},
+        g: function (v) {this.g = v;return this;},
+        b: function (v) {this.b = v;return this;},
+        a: function (v) {this.a = v;return this;} };
+    
+      var String = function (str) {
+        this.fontSize = 24;
+        this.font = 'Elsie Swash Caps';
+        this.str = str;
+        this.strWidth;
+        this.d = document;
+        this.c;
+        this.$;
+        this.parr = [];
+        this.set();
+      };
+      String.prototype = {
+        set: function () {
+          var c = this.d.createElement('canvas');
+          var $ = c.getContext('2d');
+          $.strokeStyle = '#fabfbf';
+          $.textBaseline = 'top';
+          $.font = '24px Elsie Swash Caps';
+          c.width = $.measureText(this.str).width;
+          this.strWidth = c.width;
+          c.height = ~~(24 * 1.2);
+          $.strokeStyle = '#fabfbf';
+          $.textBaseline = 'top';
+          $.font = '24px Elsie Swash Caps';
+          $.fillText(this.str, 0, 0);
+          this.c = c;
+          this.$ = $;
+        },
+        app: function (e) {
+          e.appendChild(this.c);
+          this.build();
+          this.ev();
+          return this;
+        },
+        el: function () {
+          return this.c;
+        },
+        build: function () {
+          var w = this.c.width,
+          h = this.c.height,
+          id = this.$.getImageData(0, 0, w, h).data,
+          l = id.length;
+    
+          for (var i = 0; i < l; i += 4) {
+            var y = ~~(i / (w * 4));
+            var x = i / 4 % w;
+            var r = id[i];
+            var g = id[i + 1];
+            var b = id[i + 2];
+            var a = id[i + 3];
+            if (r + g + b < 100 && a > 50) {
+              this.parr.push(new Part(x, y).r(r).g(g).b(b).a(a));
+            }
+          }
+        },
+        ev: function () {
+          var _this = this;
+          this.c.onmouseover = function () {
+            var __t = setInterval(_this.func(_this, _this.anim), 50);
+            setTimeout(function () {
+              clearInterval(__t);
+              var cnt = 10;
+              var time = setInterval(function () {
+                cnt--;
+                for (var i = 0, l = _this.parr.length; i < l; i++) {
+                  var p = _this.parr[i];
+                  p.x = p.bx;
+                  p.y = p.by + (_this.fontSize - p.by) * cnt / 10;
+                }
+                _this._draw(_this.parr);
+                if (cnt <= 0) {
+                  _this.$.clearRect(0, 0, _this.c.width, _this.c.height);
+                  _this.def(_this.parr);
+                  _this._draw(_this.parr);
+                  clearInterval(time);
+                }
+              }, 30);
+            }, 3000);
+          };
+        },
+        func: function (thisFunc, func) {
+          return function () {
+            func.call(thisFunc);
+          };
+        },
+        anim: function () {
+          this._move(this.parr);
+          this._draw(this.parr);
+        },
+        _draw: function (parr) {
+          this.$.fillStyle = '#d0ffd0';
+          this.$.fillRect(0, 0, this.c.width, this.c.height);
+          for (var i = 0, l = parr.length; i < l; i++) {
+            var p = parr[i],x = ~~p.x,y = ~~p.y;
+            this.$.fillStyle = '#E84D5B';
+            this.$.fillRect(x, y, 1, 1);
+          }
+        },
+        _move: function (parr) {
+          for (var i = 0, l = parr.length; i < l; i++) {
+            var p = parr[i];
+            p.ax == 0 ? p.ax = 0.2 * (Math.random() - 0.5) : p.ax *= 1.1;
+            p.ay == 0 ? p.ay = Math.random() : p.ay *= 1.1;
+            p.x += p.ax;
+            p.y += p.ay;
+          }
+        },
+        def: function (parr) {
+          for (var i = 0, l = parr.length; i < l; i++) {
+            var p = parr[i];
+            p.x = p.bx;
+            p.y = p.by;
+            p.ax = p.ay = 0;
+          }
+        } };
+    
+      setTimeout(function () {
+        var loc = document.querySelectorAll('p,sand_section');
+        var start = new Date().getTime() / 1000;
+        Array.prototype.map.call(loc, function (e) {
+          if (new Date().getTime() / 1000 > start + 5) return;
+          var nodes = Array.prototype.slice.call(e.childNodes);
+          nodes.map(function (n) {
+            if (new Date().getTime() / 1000 > start + 5) return;
+            if (n instanceof Text) {
+              var id = n.textContent || n.id;
+              var frag = document.createDocumentFragment();
+              id.split('').map(function (str) {
+                if (str === '' || str === '\n' || str === '\r' || str === '\t') return;
+                new String(str).app(frag).el().style.verticalAlign = 'top';
+              });
+              e.replaceChild(frag, n);
+            }
+          });
+        });
+      }, 0);
+    
+    };
+</script>
+
+
+<!-- Dialog Box #002 -->
+<dialog dialog id="dialog_02">
+    <center>
+        Dialog #002（Input the Text）
+        <hr>
+        <textarea id="Dialog_text_02" rows="10" cols="56">Please input the text. </textarea>
+    </center>
+    <hr>
+    <input type="button" class="leftButton" id="clear_02" value="Clear" onclick="Dialog_clear_02()">
+    <input type="button" class="rightButton" id="close_02" value=" OK " onclick="Dialog_close_02()">
+</dialog>
+
+<script>
+    var Text_Data = "";
+    var Dialog_Text_02 = document.getElementById('Dialog_text_02');
+    function Dialog_open_02() {
+        dialog_000.close();
+        dialog_02.showModal();
+    }
+    function Dialog_close_02() {
+        Text_Data = Dialog_Text_02.value;
+        Text_Box_102.value = Text_Box_102.value + "\n" + Dialog_Text_02.value;
+        dialog_02.close();
+    }
+    function Dialog_clear_02() {
+        Text_Data = "";
+        Dialog_Text_02.value = "";
+    }
+</script>
+
+
+<!-- Dialog Box #003 -->
+<dialog dialog id="dialog_03">
+    <center>
+        Dialog #003（Radio Button）
+    </center>
+    <hr>
+    <div class="radiobutton">
+        <input type="radio" id="radio1" name="Dialog_radio_03" value="Radio Button 1" checked>
+        <label for="radio1">_Radio Button 1</label><br>
+        <input type="radio" id="radio2" name="Dialog_radio_03" value="Radio Button 2">
+        <label for="radio2">_Radio Button 2</label><br>
+        <input type="radio" id="radio3" name="Dialog_radio_03" value="Radio Button 3">
+        <label for="radio3">_Radio Button 3</label><br>
+        <input type="radio" id="radio4" name="Dialog_radio_03" value="Radio Button 4">
+        <label for="radio4">_Radio Button 4</label><br>
+        <input type="radio" id="radio5" name="Dialog_radio_03" value="Radio Button 5">
+        <label for="radio5">_Radio Button 5</label>
+    </div>
+    <br>
+    <hr>
+    <input type="button" class="leftButton" id="cancel_03" value="Cancel" onclick="Dialog_cancel_03()">           
+    <input type="button" class="rightButton" id="close_03" value=" OK " onclick="Dialog_close_03()">
+</dialog>
+
+<script>
+    function Dialog_open_03() {
+        dialog_000.close();
+        dialog_03.showModal();
+    }
+    function Dialog_close_03() {
+        var elements = document.getElementsByName('Dialog_radio_03');
+        var len = elements.length;
+        var checkValue = '';
+
+        for (let i = 0; i < len; i++){
+            if (elements.item(i).checked){
+                checkValue = elements.item(i).value;
+            }
+        }
+        Text_Box_102.value = Text_Box_102.value + "\n" + checkValue + " is selected.";
+        dialog_03.close();
+    }
+    function Dialog_cancel_03() {
+        Text_Box_102.value = Text_Box_102.value + "\n The radio button is not selected!";
+        dialog_03.close();
+    }
+</script>
+
+
+<!-- Dialog Box #004 -->
+<dialog dialog id="dialog_04">
+    <center>
+        ダイアログ #004（CheckBox）
+    </center>
+    <hr>
+    <div class="chkbox">
+        <input type="checkbox" id="Dialog_check1">
+        <label for="Dialog_check1">Check Box 1</label><br>
+        <input type="checkbox" id="Dialog_check2">
+        <label for="Dialog_check2">Check Box 2</label><br>
+        <input type="checkbox" id="Dialog_check3">
+        <label for="Dialog_check3">Check Box 3</label><br>
+        <input type="checkbox" id="Dialog_check4">
+        <label for="Dialog_check4">Check Box 4</label><br>
+        <input type="checkbox" id="Dialog_check5">
+        <label for="Dialog_check5">Check Box 5</label><br>
+    </div>
+    <br>
+    <hr>
+    <input type="button" class="leftButton" id="cancel_04" value="Cancel" onclick="Dialog_cancel_04()">           
+    <input type="button" class="rightButton" id="close_04" value=" OK " onclick="Dialog_close_04()">
+</dialog>
+
+<script>
+    function Dialog_open_04() {
+        dialog_000.close();
+        dialog_04.showModal();
+    }
+    function Dialog_close_04() {
+        var checkbox1 = document.getElementById('Dialog_check1');
+        var checkbox2 = document.getElementById('Dialog_check2');
+        var checkbox3 = document.getElementById('Dialog_check3');
+        var checkbox4 = document.getElementById('Dialog_check4');
+        var checkbox5 = document.getElementById('Dialog_check5');
+        var checkedValue = "";
+        if (checkbox1.checked){
+            checkedValue = "Check Box 1: Checked\n";
+        } else {
+            checkedValue = "Check Box 1: Not Checked\n";
+        }
+        if (checkbox2.checked){
+            checkedValue = checkedValue + "Check Box 2: Checked\n";
+        } else {
+            checkedValue = checkedValue + "Check Box 2: Not Checked\n";
+        }
+        if (checkbox3.checked){
+            checkedValue = checkedValue + "Check Box 3: Checked\n";
+        } else {
+            checkedValue = checkedValue + "Check Box 3: Not Checked\n";
+        }
+        if (checkbox4.checked){
+            checkedValue = checkedValue + "Check Box 4: Checked\n";
+        } else {
+            checkedValue = checkedValue + "Check Box 4: Not Checked\n";
+        }
+        if (checkbox5.checked){
+            checkedValue = checkedValue + "Check Box 5: Checked\n";
+        } else {
+            checkedValue = checkedValue + "Check Box 5: Not Checked\n";
+        }
+
+        Text_Box_102.value = Text_Box_102.value + "\n" + checkedValue;
+        dialog_04.close();
+    }
+    function Dialog_cancel_04() {
+        Text_Box_102.value = Text_Box_102.value + "\n Check Box is not selected!";
+        dialog_04.close();
+    }
+</script>
+
+
+<!-- Dialog Box #005 -->
+<dialog dialog id="dialog_05">
+    <center>
+        Dialog #005（Selecter）
+    </center>
+    <hr>
+    <span style="position: relative; left: 20px;">Select the Month:
+        <select class="select" name="month" id="selectMonth">
+          <option value="">-</option>
+          <option value="1">January</option>
+          <option value="2">February</option>
+          <option value="3">March</option>
+          <option value="4">April</option>
+          <option value="5">May</option>
+          <option value="6">June</option>
+          <option value="7">July</option>
+          <option value="8">August</option>
+          <option value="9">September</option>
+          <option value="10">October</option>
+          <option value="11">November</option>
+          <option value="12">December</option>
+        </select>
+    </span>
+    <br><br><br><br><br><br>
+    <hr>
+    <input type="button" class="leftButton" id="cancel_05" value="Cancel" onclick="Dialog_cancel_05()">           
+    <input type="button" class="rightButton" id="close_05" value=" OK " onclick="Dialog_close_05()">
+</dialog>
+
+<script>
+    var select = document.getElementById('selectMonth');
+    var temp = "";
+
+    select.onchange = function(){
+        temp = this.value;
+    }
+    function Dialog_open_05() {
+        dialog_000.close();
+        dialog_05.showModal();
+    }
+    function Dialog_close_05() {
+        temp_text="";
+        if(temp == 1) {
+            temp_text = "January is selected.";
+        } else if (temp == 2) {
+            temp_text = "February is selected.";
+        } else if (temp == 3) {
+            temp_text = "March is selected.";
+        } else if (temp == 4) {
+            temp_text = "April is selected.";
+        } else if (temp == 5) {
+            temp_text = "May is selected.";
+        } else if (temp == 6) {
+            temp_text = "June is selected.";
+        } else if (temp == 7) {
+            temp_text = "July is selected.";
+        } else if (temp == 8) {
+            temp_text = "August is selected.";
+        } else if (temp == 9) {
+            temp_text = "September is selected.";
+        } else if (temp == 10) {
+            temp_text = "October is selected.";
+        } else if (temp == 11) {
+            temp_text = "November is selected.";
+        } else if (temp == 12) {
+            temp_text = "December is selected.";
+        } else {
+            temp_text = "Nothing is selected."; 
+        }
+        Text_Box_102.value = Text_Box_102.value + "\n" + temp_text;
+        dialog_05.close();
+    }
+    function Dialog_cancel_05() {
+        Text_Box_102.value = Text_Box_102.value + "\n Nothing is selected.";
+        dialog_05.close();
+    }
+</script>
+
+
+<!-- Dialog Box #006 -->
+<dialog dialog id="dialog_06">
+    <center>
+        Dialog #006（Text File Loading）
+        <hr>
+        <span style="position: absolute; top:60px; font-size: 16px;"> Select the Text File: </span>
+        <input type="file" accept="text/plain" name="dialog_TXT" id="dialog_TXT" value="">
+        <textarea id="dialog_TXT_DSP" rows="11" cols="56" readonly> Text Data </textarea>
+    </center>
+    <hr>
+    <input type="button" class="leftButton" id="cancel_06" value="Cancel" onclick="Dialog_cancel_06()">           
+    <input type="button" class="rightButton" id="close_06" value=" OK " onclick="Dialog_close_06()">
+</dialog>
+
+<script>
+    var tmp_data = "";
+
+    function Dialog_open_06() {
+        dialog_000.close();
+        dialog_06.showModal();
+        Dialog_TXT_Data_Load();
+    }
+    function Dialog_close_06() {
+        Text_Data = tmp_data;
+        Text_Box_102.value = Text_Box_102.value + "\n" + tmp_data;
+        dialog_06.close();
+    }
+    function Dialog_cancel_06() {
+        Text_Box_102.value = Text_Box_102.value + "\n No text file is selected.";
+        dialog_06.close();
+    }
+
+// Load Text Data
+    function Dialog_TXT_Data_Load() {
+        var select = document.getElementById('dialog_TXT');
+        var output_txt = document.getElementById('dialog_TXT_DSP');
+        select.value = "";
+        output_txt.value = "";
+        output_txt.innerHTML = "";
+        if(window.File) {
+            select.addEventListener('change', function(e) {
+                tmp_data = "";
+                var fileData = e.target.files[0];
+                var reader = new FileReader();
+                reader.onerror = function() {
+                    alert('Failed at the file loading.')
+                }
+                reader.onload = function(event) {
+                    var tmp = new Uint8Array(event.target.result);
+                    var tmp_text = Encoding.convert(tmp, 'UNICODE', 'AUTO');
+                      var txtArray = Encoding.codeToString(tmp_text);
+                    var lineArr = txtArray.split('\n');
+                    for (var i = 0; i < lineArr.length; i++) {
+                        tmp_data = tmp_data + lineArr[i];
+                      }
+                    output_txt.value = tmp_data;
+                }
+                reader.readAsArrayBuffer(fileData);
+            }, false);
+        }
+    }
+</script>
+
+
+<!-- Dialog Box #007 -->
+<dialog dialog id="dialog_07">
+    <center>
+        Dialog #007（CSV File Loading）
+        <hr>
+        <span style="position: absolute; top:60px; font-size: 16px;"> Select the CSV File: </span>
+        <input type="file" accept=".csv" name="dialog_CSV" id="dialog_CSV" value="">
+        <div style="width:480px; height:190px; overflow-y:scroll;">
+            <table border="1" id="dialog_CSV_DSP" style="font-size: 14px;"></table>
+        </div>
+    </center>
+    <hr>
+    <input type="button" class="leftButton" id="cancel_07" value="Cancel" onclick="Dialog_cancel_07()">           
+    <input type="button" class="rightButton" id="close_07" value=" OK " onclick="Dialog_close_07()">
+</dialog>
+
+<script>
+    var CSV_Temp_Data = new Array();
+    var CSV_Data = new Array();
+
+    function Dialog_open_07() {
+        dialog_000.close();
+        dialog_07.showModal();
+        Dialog_CSV_Data_Load();
+    }
+    function Dialog_close_07() {
+        var insertElement = '';
+        CSV_Data = CSV_Temp_Data;
+        for (var i=0; i<CSV_Data.length; i++) {
+            for (var j=0; j<CSV_Data[0].length; j++) {
+                insertElement += CSV_Data[i][j] + ',';
+            }
+            insertElement += '\n';
+        }
+        Text_Box_102.value = Text_Box_102.value + "\n" + insertElement;
+        dialog_07.close();
+    }
+    function Dialog_cancel_07() {
+        Text_Box_102.value = Text_Box_102.value + '\n No CSV file is selected.';
+        dialog_07.close();
+    }
+
+// Load CSV Data
+    function Dialog_CSV_Data_Load() {
+        var select = document.getElementById('dialog_CSV');
+        var output_csv = document.getElementById('dialog_CSV_DSP');
+        select.value = "";
+        output_csv.value = "";
+        output_csv.innerHTML = "";
+        if(window.File) {
+            select.addEventListener('change', function(e) {
+                var fileData = e.target.files[0];
+                var reader = new FileReader();
+                reader.onerror = function() {
+                    alert('Failed at the file loading.')
+                }
+                reader.onload = function(event) {
+                    var tmp = new Uint8Array(event.target.result);
+                    var tmp_text = Encoding.convert(tmp, 'UNICODE', 'AUTO');
+                      var txtArray = Encoding.codeToString(tmp_text);
+                    var lineArr = txtArray.split('\n');
+                    for (var i = 0; i < lineArr.length; i++) {
+                        CSV_Temp_Data[i] = lineArr[i].split(',');
+                      }
+
+                    var insertElement = '';
+                    for (var i=0; i<CSV_Temp_Data.length; i++) {
+                        insertElement += '<tr>';
+                        for (var j=0; j<CSV_Temp_Data[0].length; j++) {
+                            insertElement += '<td>' + CSV_Temp_Data[i][j] + '</td>';
+                        }
+                        insertElement += '</tr>';
+                    }
+                    output_csv.innerHTML = insertElement;
+                }
+                reader.readAsArrayBuffer(fileData);
+            }, false);
+        }
+    }
+</script>
+
+
+<!-- Dialog Box #008 -->
+<dialog dialog id="dialog_08">
+    <center>
+        Dialog #008（File Input Image）
+    </center>
+    <hr>
+    <span style="position: absolute; top:60px; font-size: 16px;"> Select the Image File: </span>
+    <form name="photoinput">
+        <center>　
+            <input type="file" accept="image/*" name="select_AD" id="select_AD_008" value="" onchange="updateImageDisplay()">
+            <div class="preview">
+                <p>Photo File is not selected.</p>
+            </div>
+        </center>
+    </form>
+    
+    <input type="button" class="leftButton" id="cancel_08" value="Cancel" onclick="Dialog_cancel_08()">           
+    <input type="button" class="rightButton" id="close_08" value=" OK " onclick="Dialog_close_08()">
+</dialog>
+
+<script>
+    var Img_08 = document.getElementById('img_102');
+    var image;
+
+// Display the Dialog Box
+    function Dialog_open_08() {
+        dialog_000.close();
+        dialog_08.showModal();
+    }
+    function Dialog_close_08() {
+        Img_08.src = image.src;
+        dialog_08.close();
+    }
+    function Dialog_cancel_08() {
+        Img_08.src = "";
+        dialog_08.close();
+    }
+// Load the image file
+    function updateImageDisplay() {
+        var preview = document.querySelector('.preview');
+        var file_input = $('#select_AD_008');
+        var file = file_input[0].files[0];
+        var para = document.createElement('p');
+        if(file === undefined) {
+            para.textContent = 'Photo File is not selected!';
+            preview.removeChild(preview.childNodes.item(0));
+            preview.appendChild(para);
+        } else {
+            while(preview.firstChild){
+                preview.removeChild(preview.firstChild);
+            }
+            preview.appendChild(para);
+            image = document.createElement('img');
+            image.src = window.URL.createObjectURL(file);
+            preview.appendChild(image);
+        }
+    }
+</script>
+
+
+<!-- Dialog Box #009 -->
+<dialog dialog id="dialog_09">
+    <center>
+       <a  style="color: #000;"> Dialog_check1 #009（Digital Clock） </a>
+    </center>
+    <hr>
+    <div class="clock_container">
+        <svg version="1.1" id="lcd-clock" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+         width="1362.45px" height="184px" viewBox="0 0 1362.45 324" enable-background="new 0 0 1362.45 324" xml:space="preserve">
+            <g class="hour digit digit-1">
+                <g class="lcd-element top-center">
+                    <polygon points="149.486,40 49.486,40 50.883,0 150.883,0"/>
+                    <polygon points="149.486,40 150.883,0 170.184,20"/>
+                    <polygon points="50.883,0 49.486,40 30.184,20"/>
+                </g>
+                <g class="lcd-element top-right">
+                    <polygon points="146.959,141 186.959,141 190.451,41 150.451,41"/>
+                    <polygon points="190.451,41 150.451,41 171.149,21"/>
+                    <polygon points="146.959,141 186.959,141 166.26,161"/>
+                </g>
+                <g class="lcd-element top-left">
+                    <polygon points="4.959,141 44.959,141 48.451,41 8.451,41"/>
+                    <polygon points="48.451,41 8.451,41 29.149,21"/>
+                    <polygon points="4.959,141 44.959,141 24.26,161"/>
+                </g>
+                <g class="lcd-element mid-center">
+                    <polygon points="144.527,182 44.527,182 45.924,142 145.924,142"/>
+                    <polygon points="144.527,182 145.924,142 165.226,162"/>
+                    <polygon points="45.924,142 44.527,182 25.226,162"/>
+                </g>
+                <g class="lcd-element bottom-right">
+                    <polygon points="142,283 182,283 185.492,183 145.492,183"/>
+                    <polygon points="185.492,183 145.492,183 166.191,163"/>
+                    <polygon points="142,283 182,283 161.302,303"/>
+                </g>
+                <g class="lcd-element bottom-left">
+                    <polygon points="0,283 40,283 43.492,183 3.492,183"/>
+                    <polygon points="43.492,183 3.492,183 24.191,163"/>
+                    <polygon points="0,283 40,283 19.302,303"/>
+                </g>
+                <g class="lcd-element bottom-center">
+                    <polygon points="139.568,324 140.965,284 160.267,304"/>
+                    <polygon points="40.965,284 39.568,324 20.267,304"/>
+                    <polygon points="139.568,324 39.568,324 40.965,284 140.965,284"/>
+                </g>
+            </g>
+            <g class="hour digit digit-2">
+                <g class="lcd-element top-center">
+                    <polygon points="361.486,40 261.486,40 262.883,0 362.883,0"/>
+                    <polygon points="361.486,40 362.883,0 382.184,20"/>
+                    <polygon points="262.883,0 261.486,40 242.184,20"/>
+                </g>
+                <g class="lcd-element top-right">
+                    <polygon points="358.959,141 398.959,141 402.451,41 362.451,41"/>
+                    <polygon points="402.451,41 362.451,41 383.149,21"/>
+                    <polygon points="358.959,141 398.959,141 378.26,161"/>
+                </g>
+                <g class="lcd-element top-left">
+                    <polygon points="216.959,141 256.959,141 260.451,41 220.451,41"/>
+                    <polygon points="260.451,41 220.451,41 241.149,21"/>
+                    <polygon points="216.959,141 256.959,141 236.26,161"/>
+                </g>
+                <g class="lcd-element mid-center">
+                    <polygon points="356.527,182 256.527,182 257.924,142 357.924,142"/>
+                    <polygon points="356.527,182 357.924,142 377.226,162"/>
+                    <polygon points="257.924,142 256.527,182 237.226,162"/>
+                </g>
+                <g class="lcd-element bottom-right">
+                    <polygon points="354,283 394,283 397.492,183 357.492,183"/>
+                    <polygon points="397.492,183 357.492,183 378.191,163"/>
+                    <polygon points="354,283 394,283 373.302,303"/>
+                </g>
+                <g class="lcd-element bottom-left">
+                    <polygon points="212,283 252,283 255.492,183 215.492,183"/>
+                    <polygon points="255.492,183 215.492,183 236.191,163"/>
+                    <polygon points="212,283 252,283 231.302,303"/>
+                </g>
+                <g class="lcd-element bottom-center">
+                    <polygon points="351.568,324 352.965,284 372.267,304"/>
+                    <polygon points="252.965,284 251.568,324 232.267,304"/>
+                    <polygon points="351.568,324 251.568,324 252.965,284 352.965,284"/>
+                </g>
+            </g>
+                <g class="lcd-element dots">
+                    <path d="M458.657,121c-0.289,8.284-7.24,15-15.524,15s-14.765-6.716-14.476-15c0.29-8.284,7.24-15,15.524-15
+                        S458.947,112.716,458.657,121z"/>
+                    <path d="M455.515,211c-0.29,8.284-7.24,15-15.524,15s-14.766-6.716-14.476-15c0.289-8.284,7.239-15,15.523-15
+                        S455.804,202.716,455.515,211z"/>
+                </g>
+            <g class="minute digit digit-1">
+                <g class="lcd-element top-center">
+                    <polygon points="636.485,40 536.485,40 537.883,0 637.883,0"/>
+                    <polygon points="636.485,40 637.883,0 657.185,20"/>
+                    <polygon points="537.883,0 536.485,40 517.185,20"/>
+                </g>
+                <g class="lcd-element top-right">
+                    <polygon points="633.959,141 673.959,141 677.451,41 637.451,41"/>
+                    <polygon points="677.451,41 637.451,41 658.149,21"/>
+                    <polygon points="633.959,141 673.959,141 653.261,161"/>
+                </g>
+                <g class="lcd-element top-left">
+                    <polygon points="491.959,141 531.959,141 535.451,41 495.451,41"/>
+                    <polygon points="535.451,41 495.451,41 516.149,21"/>
+                    <polygon points="491.959,141 531.959,141 511.261,161"/>
+                </g>
+                <g class="lcd-element mid-center">
+                    <polygon points="631.527,182 531.527,182 532.924,142 632.924,142"/>
+                    <polygon points="631.527,182 632.924,142 652.226,162"/>
+                    <polygon points="532.924,142 531.527,182 512.226,162"/>
+                </g>
+                <g class="lcd-element bottom-right">
+                    <polygon points="629,283 669,283 672.492,183 632.492,183"/>
+                    <polygon points="672.492,183 632.492,183 653.19,163"/>
+                    <polygon points="629,283 669,283 648.302,303"/>
+                </g>
+                <g class="lcd-element bottom-left">
+                    <polygon points="487,283 527,283 530.492,183 490.492,183"/>
+                    <polygon points="530.492,183 490.492,183 511.19,163"/>
+                    <polygon points="487,283 527,283 506.302,303"/>
+                </g>
+                <g class="lcd-element bottom-center">
+                    <polygon points="626.568,324 627.966,284 647.267,304"/>
+                    <polygon points="527.966,284 526.568,324 507.267,304"/>
+                    <polygon points="626.568,324 526.568,324 527.966,284 627.966,284"/>
+                </g>
+            </g>
+            <g class="minute digit digit-2">
+                <g class="lcd-element top-center">
+                    <polygon points="848.485,40 748.485,40 749.883,0 849.882,0"/>
+                    <polygon points="848.485,40 849.882,0 869.185,20"/>
+                    <polygon points="749.883,0 748.485,40 729.185,20"/>
+                </g>
+                <g class="lcd-element top-right">
+                    <polygon points="845.958,141 885.958,141 889.45,41 849.45,41"/>
+                    <polygon points="889.45,41 849.45,41 870.149,21"/>
+                    <polygon points="845.958,141 885.958,141 865.261,161"/>
+                </g>
+                <g class="lcd-element top-left">
+                    <polygon points="703.959,141 743.959,141 747.451,41 707.451,41"/>
+                    <polygon points="747.451,41 707.451,41 728.149,21"/>
+                    <polygon points="703.959,141 743.959,141 723.261,161"/>
+                </g>
+                <g class="lcd-element mid-center">
+                    <polygon points="843.526,182 743.527,182 744.924,142 844.925,142"/>
+                    <polygon points="843.526,182 844.925,142 864.226,162"/>
+                    <polygon points="744.924,142 743.527,182 724.226,162"/>
+                </g>
+                <g class="lcd-element bottom-right">
+                    <polygon points="841.001,283 881.001,283 884.493,183 844.493,183"/>
+                    <polygon points="884.493,183 844.493,183 865.19,163"/>
+                    <polygon points="841.001,283 881.001,283 860.302,303"/>
+                </g>
+                <g class="lcd-element bottom-left">
+                    <polygon points="699,283 739,283 742.492,183 702.492,183"/>
+                    <polygon points="742.492,183 702.492,183 723.19,163"/>
+                    <polygon points="699,283 739,283 718.302,303"/>
+                </g>
+                <g class="lcd-element bottom-center">
+                    <polygon points="838.569,324 839.966,284 859.267,304"/>
+                    <polygon points="739.966,284 738.568,324 719.267,304"/>
+                    <polygon points="838.569,324 738.568,324 739.966,284 839.966,284"/>
+                </g>
+            </g>
+                <g class="lcd-element dots">
+                    <path d="M945.657,121c-0.289,8.284-7.24,15-15.523,15c-8.285,0-14.766-6.716-14.477-15s7.24-15,15.523-15
+                        C939.466,106,945.946,112.716,945.657,121z"/>
+                    <path d="M942.515,211c-0.289,8.284-7.24,15-15.523,15c-8.285,0-14.766-6.716-14.477-15s7.24-15,15.523-15
+                        C936.323,196,942.804,202.716,942.515,211z"/>
+                </g>
+            <g class="second digit digit-1">
+                <g class="lcd-element top-center">
+                    <polygon points="1109.485,40 1009.485,40 1010.882,0 1110.882,0"/>
+                    <polygon points="1109.485,40 1110.882,0 1130.185,20"/>
+                    <polygon points="1010.882,0 1009.485,40 990.185,20"/>
+                </g>
+                <g class="lcd-element top-right">
+                    <polygon points="1106.958,141 1146.958,141 1150.45,41 1110.45,41"/>
+                    <polygon points="1150.45,41 1110.45,41 1131.149,21"/>
+                    <polygon points="1106.958,141 1146.958,141 1126.261,161"/>
+                </g>
+                <g class="lcd-element top-left">
+                    <polygon points="964.958,141 1004.958,141 1008.45,41 968.45,41"/>
+                    <polygon points="1008.45,41 968.45,41 989.149,21"/>
+                    <polygon points="964.958,141 1004.958,141 984.261,161"/>
+                </g>
+                <g class="lcd-element mid-center">
+                    <polygon points="1104.526,182 1004.526,182 1005.925,142 1105.925,142"/>
+                    <polygon points="1104.526,182 1105.925,142 1125.226,162"/>
+                    <polygon points="1005.925,142 1004.526,182 985.226,162"/>
+                </g>
+                <g class="lcd-element bottom-right">
+                    <polygon points="1102.001,283 1142.001,283 1145.493,183 1105.493,183"/>
+                    <polygon points="1145.493,183 1105.493,183 1126.19,163"/>
+                    <polygon points="1102.001,283 1142.001,283 1121.302,303"/>
+                </g>
+                <g class="lcd-element bottom-left">
+                    <polygon points="960.001,283 1000.001,283 1003.493,183 963.493,183"/>
+                    <polygon points="1003.493,183 963.493,183 984.19,163"/>
+                    <polygon points="960.001,283 1000.001,283 979.302,303"/>
+                </g>
+                <g class="lcd-element bottom-center">
+                    <polygon points="1099.569,324 1100.966,284 1120.267,304"/>
+                    <polygon points="1000.966,284 999.569,324 980.267,304"/>
+                    <polygon points="1099.569,324 999.569,324 1000.966,284 1100.966,284"/>
+                </g>
+            </g>
+            <g class="second digit digit-2">
+                <g class="lcd-element top-center">
+                    <polygon points="1321.485,40 1221.485,40 1222.882,0 1322.882,0"/>
+                    <polygon points="1321.485,40 1322.882,0 1342.185,20"/>
+                    <polygon points="1222.882,0 1221.485,40 1202.185,20"/>
+                </g>
+                <g class="lcd-element top-right">
+                    <polygon points="1318.958,141 1358.958,141 1362.45,41 1322.45,41"/>
+                    <polygon points="1362.45,41 1322.45,41 1343.149,21"/>
+                    <polygon points="1318.958,141 1358.958,141 1338.261,161"/>
+                </g>
+                <g class="lcd-element top-left">
+                    <polygon points="1176.958,141 1216.958,141 1220.45,41 1180.45,41"/>
+                    <polygon points="1220.45,41 1180.45,41 1201.149,21"/>
+                    <polygon points="1176.958,141 1216.958,141 1196.261,161"/>
+                </g>
+                <g class="lcd-element mid-center">
+                    <polygon points="1316.526,182 1216.526,182 1217.925,142 1317.925,142"/>
+                    <polygon points="1316.526,182 1317.925,142 1337.226,162"/>
+                    <polygon points="1217.925,142 1216.526,182 1197.226,162"/>
+                </g>
+                <g class="lcd-element bottom-right">
+                    <polygon points="1314.001,283 1354.001,283 1357.493,183 1317.493,183"/>
+                    <polygon points="1357.493,183 1317.493,183 1338.19,163"/>
+                    <polygon points="1314.001,283 1354.001,283 1333.302,303"/>
+                </g>
+                <g class="lcd-element bottom-left">
+                    <polygon points="1172.001,283 1212.001,283 1215.493,183 1175.493,183"/>
+                    <polygon points="1215.493,183 1175.493,183 1196.19,163"/>
+                    <polygon points="1172.001,283 1212.001,283 1191.302,303"/>
+                </g>
+                <g class="lcd-element bottom-center">
+                    <polygon points="1311.569,324 1312.966,284 1332.267,304"/>
+                    <polygon points="1212.966,284 1211.569,324 1192.267,304"/>
+                    <polygon points="1311.569,324 1211.569,324 1212.966,284 1312.966,284"/>
+                </g>
+            </g>
+        </svg>
+    </div>
+    <hr>
+    <input type="button" class="rightButton" id="close_09" value="Close" onclick="Dialog_close_09()">
+</dialog>
+
+
+<script>
+    function Dialog_open_09() {
+        dialog_000.close();
+        dialog_09.showModal();
+    }
+    function Dialog_close_09() {
+        dialog_09.close();
+    }
+
+// Digital Clock
+  var clock = {
+    clocktime: {},
+    dots: document.querySelectorAll('#lcd-clock .dots'),
+    dotsState: false,
+  
+    updateClock: function () {
+      var time = new Date();
+      clock.clocktime.hour = time.getHours();
+      clock.clocktime.minute = time.getMinutes();
+      clock.clocktime.second = time.getSeconds();
+      for (var timeUnit in clock.clocktime) {
+        // convert all to values to string,
+        // pad single values, ie 8 to 08
+        // split the values into an array of single characters
+        clock.clocktime[timeUnit] = clock.clocktime[timeUnit].toString();
+        if (clock.clocktime[timeUnit].length == 1) {
+          clock.clocktime[timeUnit] = '0' + clock.clocktime[timeUnit];
+        }
+        clock.clocktime[timeUnit] = clock.clocktime[timeUnit].split('');
+        // update each digit for this time unit
+        for (var i = 0; i < 2; i++) {
+          var selector = '#lcd-clock .' + timeUnit + '.digit-' + (i + 1);
+          var className = 'number-is-' + clock.clocktime[timeUnit][i];
+          // remove any pre-existing classname
+          for (var j = 0; j < 10; j++) {
+            var oldClass = 'number-is-' + j;
+            document.querySelector(selector).classList.remove(oldClass);
+          }
+          // add the relevant classname to the appropriate clock digit
+          document.querySelector(selector).classList.add(className);
+        }
+      }
+      clock.toggleDots();
+    },
+  
+    toggleDots: function () {
+      var num_dots = clock.dots.length;
+      for (var i = 0; i < num_dots; i++) {
+        if (clock.dotsState === false) {
+          clock.dots[i].classList.add('lcd-element-active');
+          continue;
+        } else {
+          clock.dots[i].classList.remove('lcd-element-active');
+        }
+      }
+      clock.dotsState = !clock.dotsState;
+    },
+  
+    init: function () {
+      clock.toggleDots();
+      clock.updateClock();
+      // update every half second to make dots flash at that rate :)
+      setInterval(clock.updateClock, 500);
+    }
+  };
+  clock.init();
+</script>
+
+
+<!-- Dialog Box #010 -->
+<dialog dialog id="dialog_10">
+    <center>
+        Dialog #010（Profile）
+    </center>
+    <hr>
+    <div class="profile_wrapper">
+        <div class="card">
+          <div class="me">
+            <div class="eye"></div>
+          </div>
+          <div class="text">
+            HAL bou
+          </div>
+        </div>
+    </div>
+
+    <input type="button" class="rightButton" id="close_10" value="Close" onclick="Dialog_close_10()">
+</dialog>
+
+<script>
+    function Dialog_open_10() {
+        dialog_000.close();
+        dialog_10.showModal();
+    }
+    function Dialog_close_10() {
+        dialog_10.close();
+    }
+
+// for Profile Wrapper
+    var $wrap = $('.profile_wrapper'),
+        $lEye = $('.eye'),
+        lFollowX = 5,
+        lFollowY = 10,
+        x = 0,
+        y = 0,
+        friction = 1 / 12;
+    
+    function animate() {
+        x += (lFollowX - x) * friction;
+        y += (lFollowY - y) * friction;
+        $lEye.css({
+            '-webit-transform': 'translate(' + -x + 'px, ' + -y + 'px)',
+            '-moz-transform': 'translate(' + -x + 'px, ' + -y + 'px)',
+            'transform': 'translate(' + -x + 'px, ' + -y + 'px)' 
+        });
+        $wrap.css({
+            'transform': 'translate(-50%, -50%) perspective(600px) rotateY(' + -x + 'deg) rotateX(' + y + 'deg)' 
+        });
+        window.requestAnimationFrame(animate);
+    }
+    
+    $(window).on('mousemove click', function (e) {
+        var lMouseX = Math.max(-100, Math.min(100, $(window).width() / 2 - e.clientX));
+        var lMouseY = Math.max(-100, Math.min(100, $(window).height() / 2 - e.clientY));
+        lFollowX = 12 * lMouseX / 100;          // 100 : 12 = lMouxeX : lFollow
+        lFollowY = 10 * lMouseY / 100;
+    });
+    animate();
+</script>
+
+
+<!-- Dialog Box #011 -->
+<dialog dialog id="dialog_11" style="position: absolute; top:120px; z-index: 1000;">
+    <center>
+        Dialog #011（Date Picker）
+        <hr>
+        Month/Date/Year: <input type="text" id="calendar" />
+    </center>
+    <input type="button" class="leftButton" id="cancel_11" value="Cancel" onclick="Dialog_cancel_11()">
+    <input type="button" class="rightButton" id="close_11" value=" OK " onclick="Dialog_close_11()">
+</dialog>
+
+<script>
+    var Dialog_Text_11 = document.getElementById('calendar');
+
+    function Dialog_open_11() {
+        dialog_000.close();
+        dialog_11.show();
+    }
+    function Dialog_cancel_11() {
+        Text_Box_102.value = Text_Box_102.value + "\n Nothing is selected.";
+        dialog_11.close();
+    }
+    function Dialog_close_11() {
+        Text_Box_102.value = Text_Box_102.value + "\n" + Dialog_Text_11.value + " is selected.";
+        dialog_11.close();
+    }
+
+// Date Picker
+    $(function() {
+        $( "#calendar" ).datepicker({
+            showOn: "both",
+            buttonImage: "./images/calendar_32.png",
+            buttonImageOnly: true,
+            beforeShowDay: function(date) {
+                if(date.getDay() == 0) {
+                    return [true,"ui-datepicker-sunday"];
+                } else if(date.getDay() == 6){
+                    return [true,"ui-datepicker-saturday"];
+                } else {
+                    return [true];
+                }
+            },
+            beforeShow: function(input, inst){
+                inst.dpDiv.css({marginTop: 10 + 'px', marginLeft: -180 + 'px'});
+            }
+        });
+    });
+</script>
+
+
+<!-- Dialog Box #012 -->
+<dialog dialog id="dialog_12">
+    <center>
+        Dialog #012（Vioce Recog.）
+        <hr>
+        <textarea id="Dialog_text_12" rows="11" cols="56">
+Here is a text area for input.
+If you say "Carriage return", the line feed will be inserted. 
+Also, you say the "End of voice input" or "End of the input" to terminate the voice recognition.
+</textarea>
+    </center>
+    <hr>
+    <input type="button" class="leftButton" id="clear_12" value="Clear" onclick="Dialog_clear_12()">
+    <input type="button" class="rightButton" id="close_12" value=" OK " onclick="Dialog_close_12()">
+    <input type="button" class="normalButton" id="ON_OFF_12" style="position:absolute; top:325px; left:160px;" value="Voice ON/OFF" onclick="OnButtonClick_01()">
+    <font size="6" color="red" style="position:absolute; top:335px; left:300px;"><span id="Speech_Flag">OFF</span></font>
+</dialog>
+
+<script>
+    var Dialog_Text_12 = document.getElementById('Dialog_text_12');
+    var Speak = document.getElementById('Speech_Flag');
+    var Flag_Speech = 0;
+
+    function Dialog_open_12() {
+        dialog_000.close();
+        Flag_Speech = 0;
+        Speak.innerHTML = '<i style="color:#ff0000;">OFF</i>';
+        recognition.stop();
+        dialog_12.showModal();
+    }
+    function Dialog_close_12() {
+        Flag_Speech = 0;
+        Speak.innerHTML = '<i style="color:#ff0000;">OFF</i>';
+        recognition.stop();
+        Text_Data = Dialog_Text_12.value;
+        Text_Box_102.value = Text_Box_102.value + '\n' + Dialog_Text_12.value;
+        dialog_12.close();
+    }
+    function Dialog_clear_12() {
+        Text_Data = "";
+        Dialog_Text_12.value = "";
+    }
+    
+// Speech Recognition
+    SpeechRecognition = webkitSpeechRecognition || SpeechRecognition;
+    let recognition = new SpeechRecognition();
+    recognition.lang = 'en-US';
+    recognition.interimResults = true;
+    recognition.continuous = true;
+
+// 音声入力、音声認識のON/OFF設定
+    function OnButtonClick_01() {
+        if (Flag_Speech == 0) {
+            Flag_Speech = 1;
+            Speak.innerHTML = '<i style="color:#0000ff;">_ON</i>';
+            recognition.start();
+        }
+        else {
+            Flag_Speech = 0;
+            Speak.innerHTML = '<i style="color:#ff0000;">OFF</i>';
+            recognition.stop();
+        }
+    }
+
+// Voice Recognition
+    recognition.onresult = (event) => {
+        let interimTranscript = '';
+        let finalTranscript = '';
+        sentence = '';
+        for (let i = event.resultIndex; i < event.results.length; i++) {
+            if (event.results[i].isFinal) {
+                finalTranscript = event.results[i][0].transcript;
+            } else {
+                interimTranscript = '';
+            }
+        }
+        sentence = finalTranscript;
+        if (sentence.length > 0) {
+            if (sentence != undefined) {
+                Dialog_Text_12.value = Dialog_Text_12.value + sentence;
+                if ((sentence.indexOf('end') >= 0 && sentence.indexOf('input') >= 0) || (sentence.indexOf('input') >= 0 && sentence.indexOf('End') >= 0)) {
+                    recognition.stop();
+                    Flag_Speech = 0;
+                    Speak.innerHTML = '<i style="color:#ff0000;">OFF</i>';
+                }
+                if (sentence.indexOf('Carriage return') >= 0 || sentence.indexOf('carriage return') >= 0) {
+                    Dialog_Text_12.value = Dialog_Text_12.value + '\n';
+                }
+            }
+        }        
+    }
+
+    recognition.onend = (event) => {
+        if (Flag_Speech != 0) {
+            setTimeout(confirm(), 5000)
+        } 
+    }
+
+    function confirm() {
+        if ( !recognition.onspeechstart) { 
+            Flag_Speech = 0;
+            Speak.innerHTML = '<i style="color:#ff0000;">OFF</i>';
+            recognition.stop();
+        }
+    }
+</script>
+
+
+<!-- Dialog Box #013 -->
+<dialog dialog id="dialog_13">
+    <center>
+        Dialog #013（Text File Save/UTF-8）
+    </center>
+    <hr>
+    <span style="position: absolute; top:60px; font-size: 16px;"> Save the Text File: </span>
+    <center>
+        <textarea id="dialog_TXT_Save" rows="10" cols="56"> </textarea>
+    </center>
+    <hr>
+    <input type="button" class="leftButton" id="cancel_13" value="Cancel" onclick="Dialog_cancel_13()"> 
+    <a class="rightButton" id="txt_download" style="font-size: 16px;" href="#" download="text_data.txt" onclick="Dialog_close_13()">Save the File</a>
+</dialog>
+
+        <script>
+            var Save_Text = document.getElementById('dialog_TXT_Save');
+            function Dialog_open_13() {
+                dialog_000.close();
+                dialog_13.showModal();
+                Save_Text.value = Text_Data;
+            }
+            function Dialog_cancel_13() {
+                dialog_13.close();
+            }
+            function Dialog_close_13() {
+                Text_Data_Save();
+                dialog_13.close();
+            }
+            function Text_Data_Save() {
+                var bom = new Uint8Array([0xEF, 0xBB, 0xBF]);
+                var content = Save_Text.value;
+                var blob = new Blob([ bom, content ], { "type" : "text/plain" });
+                if (window.navigator.msSaveBlob) { 
+                    window.navigator.msSaveBlob(blob, "text_data.txt"); 
+                    // In case of msSaveOrOpenBlob, open the file.
+                    window.navigator.msSaveOrOpenBlob(blob, "text_data.txt"); 
+                } else {
+                    document.getElementById("txt_download").href = window.URL.createObjectURL(blob);
+                }
+            }
+        </script>
+
+
+<!-- Dialog Box #014 -->
+<dialog dialog id="dialog_14">
+    <center>
+        Dialog #014（CSV File Save/UTF-8）
+    </center>
+    <hr>
+    <span style="position: absolute; top:60px; font-size: 16px;"> Save the CSV File:</span>
+    <center>
+        <div style="width:480px; height:220px; overflow-y:scroll;">
+            <table border="1" id="dialog_CSV_Save" style="font-size: 14px;"></table>
+        </div>
+    </center>
+    <hr>
+    <input type="button" class="leftButton" id="cancel_14" value="Cancel" onclick="Dialog_cancel_14()"> 
+    <a class="rightButton" id="csv_download" style="font-size: 16px;" href="#" download="csv_data.csv" onclick="Dialog_close_14()">Save the File</a>
+</dialog>
+
+        <script>
+            var Save_CSV = new Array();
+            var dialog_CSV_Save = document.getElementById('dialog_CSV_Save');
+
+            function Dialog_open_14() {
+                dialog_000.close();
+                Save_CSV = CSV_Data;
+                dialog_14.showModal();
+
+                var insertElement = '';
+				    for (var i=0; i<Save_CSV.length; i++) {
+					    insertElement += '<tr>';
+					    for (var j=0; j<Save_CSV[0].length; j++) {
+					        insertElement += '<td>' + Save_CSV[i][j] + '</td>';
+					    }
+					    insertElement += '</tr>';
+				    }
+                dialog_CSV_Save.innerHTML = insertElement;                
+
+            }
+            function Dialog_cancel_14() {
+                dialog_14.close();
+            }
+            function Dialog_close_14() {
+                CSV_Data_Save()
+                dialog_14.close();
+            }
+            function CSV_Data_Save() {
+                var bom = new Uint8Array([0xEF, 0xBB, 0xBF]);
+                var content = "";
+                for (i=0; i<Save_CSV.length; i++) {
+                    for (j=0; j<Save_CSV[0].length; j++) {
+                        if (j==0) {
+                            content = content + Save_CSV[i][j];
+                        } else {
+                            content = content  + ',' + Save_CSV[i][j];
+                        }
+                    }
+                    content = content + '\n';
+                }
+                var blob = new Blob([ bom, content ], { "type" : "text/csv" });
+
+                if (window.navigator.msSaveBlob) { 
+                    window.navigator.msSaveBlob(blob, "csv_data.csv"); 
+                    // In case of msSaveOrOpenBlob, open the file.
+                    window.navigator.msSaveOrOpenBlob(blob, "csv_data.csv"); 
+                } else {
+                    document.getElementById("csv_download").href = window.URL.createObjectURL(blob);
+                }
+            }
+        </script>
+
+
+<!-- Dialog Box #015 -->
+<dialog dialog id="dialog_15">
+    <center>
+        Dialog #015（CSV Save/ANSI）
+    </center>
+    <hr>
+    <span style="position: absolute; top:60px; font-size: 16px;">Save the CSV File:</span>
+    <center>
+        <div style="width:480px; height:220px; overflow-y:scroll;">
+            <table border="1" id="dialog_CSV_Save_ANSI" style="font-size: 14px;"></table>
+        </div>
+    </center>
+    <hr>
+    <input type="button" class="leftButton" id="cancel_15" value="Cancel" onclick="Dialog_cancel_15()"> 
+    <a class="rightButton" id="csv_download_ANSI" style="font-size: 16px;" href="#" download="csv_data_ANSI.csv" onclick="Dialog_close_15()">Save the File</a>
+</dialog>
+
+        <script>
+            var Save_CSV_ANSI = new Array();
+            var dialog_CSV_Save_ANSI = document.getElementById('dialog_CSV_Save_ANSI');
+
+            function Dialog_open_15() {
+                dialog_000.close();
+                Save_CSV_ANSI = CSV_Data;
+                dialog_15.showModal();
+
+                var insertElement = '';
+				    for (var i=0; i<Save_CSV_ANSI.length; i++) {
+					    insertElement += '<tr>';
+					    for (var j=0; j<Save_CSV_ANSI[0].length; j++) {
+					        insertElement += '<td>' + Save_CSV_ANSI[i][j] + '</td>';
+					    }
+					    insertElement += '</tr>';
+				    }
+                dialog_CSV_Save_ANSI.innerHTML = insertElement;                
+
+            }
+            function Dialog_cancel_15() {
+                dialog_15.close();
+            }
+            function Dialog_close_15() {
+                CSV_Data_Save_ANSI()
+                dialog_15.close();
+            }
+            function CSV_Data_Save_ANSI() {
+                var content = "";
+                for (i=0; i<Save_CSV_ANSI.length; i++) {
+                    for (j=0; j<Save_CSV_ANSI[0].length; j++) {
+                        if (j==0) {
+                            content = content + Save_CSV_ANSI[i][j];
+                        } else {
+                            content = content  + ',' + Save_CSV_ANSI[i][j];
+                        }
+                    }
+                    content = content + '\n';
+                }
+                var strArray = Encoding.stringToCode(content);
+                var convertedArray = Encoding.convert(strArray, 'SJIS', 'UNICODE');
+                var UintArray = new Uint8Array(convertedArray);
+                var blob = new Blob([UintArray], { type: 'text/csv' });
+                if (window.navigator.msSaveBlob) { 
+                    window.navigator.msSaveBlob(blob, "csv_data_ANSI.csv"); 
+                    // In case of msSaveOrOpenBlob, open the file.
+                    window.navigator.msSaveOrOpenBlob(blob, "csv_data_ANSI.csv"); 
+                } else {
+                    document.getElementById("csv_download_ANSI").href = window.URL.createObjectURL(blob);
+                }
+            }
+        </script>
+
+
+    </body>
+</html>

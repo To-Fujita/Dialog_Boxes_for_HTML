@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Dialog Box #004 2021/06/01 by T. Fujita</title>
+        <meta charset = "utf-8" />
+ 
+        <style>
+            body {
+                padding: 0;
+                margin: 0;
+                font-size: 24px;
+                background-color: #ddffdd;
+            }
+            textarea {
+                font-family:Verdana, Helvetica, Arial, sans-serif;
+                font-size: 0.8em;
+                margin: 0;
+                padding: 0;
+                vertical-align:middle;
+            }
+
+/* Buttons at the center */
+            .wrap {
+                position: relative;
+                top: 20px;
+                text-align: center;
+            }
+
+/* BUTTON 5 */
+            .btn5, .btn5:link, .btn5:visited {
+                padding: 20px 20px;
+                text-decoration: none;
+                font-size: 18px;
+                display: block;
+                margin: 20px auto;
+
+                border: none;
+                outline: none;
+                color: #fefefe;
+                background-color: #005005;
+                border-radius: 3px;
+            }
+            .btn5:hover, .btn5:focus, .btn5:link:hover, .btn5:link:focus, .btn5:visited:hover, .btn5:visited:focus {
+                transition-timing-function: cubic-bezier(0.6, 4, 0.3, 0.8);
+                -webkit-animation: gelatine 0.5s 1;
+                animation: gelatine 0.5s 1;
+            }
+
+            @-webkit-keyframes gelatine {
+                from, to {
+                    -webkit-transform: scale(1, 1);
+                }
+                25% {
+                    -webkit-transform: scale(0.9, 1.1);
+                }
+                50% {
+                    -webkit-transform: scale(1.1, 0.9);
+                }
+                75% {
+                    -webkit-transform: scale(0.95, 1.05);
+                }
+                from, to {
+                    -webkit-transform: scale(1, 1);
+                }
+                25% {
+                    -webkit-transform: scale(0.9, 1.1);
+                }
+                50% {
+                    -webkit-transform: scale(1.1, 0.9);
+                }
+                75% {
+                    -webkit-transform: scale(0.95, 1.05);
+                }
+            }
+            @keyframes gelatine {
+                from, to {
+                    transform: scale(1, 1);
+                }
+                25% {
+                    transform: scale(0.9, 1.1);
+                }
+                50% {
+                    transform: scale(1.1, 0.9);
+                }
+                75% {
+                    transform: scale(0.95, 1.05);
+                }
+                from, to {
+                    transform: scale(1, 1);
+                }
+                25% {
+                    transform: scale(0.9, 1.1);
+                }
+                50% {
+                    transform: scale(1.1, 0.9);
+                }
+                75% {
+                    transform: scale(0.95, 1.05);
+                }
+            }
+            @keyframes fade {
+                0% {
+                    opacity: 0;
+                    transform: translateY(15px);
+                }
+                100% {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+/* for Dialog Box */
+            dialog {
+                padding: 0;
+                border: 1px solid #eee;
+                box-shadow: 2px 2px 4px #333;
+                position: relative;
+                width: 500px;
+                height: 400px;
+                overflow: hidden;
+                background-color: #d0ffd0;
+            }
+        
+            dialog[open]{
+                animation: fade 1s ease 0s 1 normal;
+            }
+
+            .rightButton{
+                background-color: #0004ff;
+                text-align: center;
+                margin: 10px auto 20px auto;
+                padding: 10px;
+                border-radius: 4px;
+                font-weight: bold;
+                color: #fff;
+                box-shadow: 0px 1px 3px #8bb8fa;
+                cursor: pointer;
+                position:absolute;
+                right: 20px;
+                bottom: 2px;
+                opacity: 1;
+            }
+            .leftButton{
+                background-color: #b80000;
+                text-align: center;
+                margin: 10px auto 20px auto;
+                padding: 10px;
+                border-radius: 4px;
+                font-weight: bold;
+                color: #fff;
+                box-shadow: 0px 1px 3px rgb(83, 0, 0);
+                cursor: pointer;
+                position:absolute;
+                left: 20px;
+                bottom: 2px;
+                opacity: 1;
+            }
+            .normalButton{
+                background-color: #005005;
+                text-align: center;
+                margin: 10px auto 20px auto;
+                padding: 10px;
+                border-radius: 4px;
+                font-weight: bold;
+                color: #fff;
+                box-shadow: 0px 1px 3px rgb(4, 109, 0);
+                cursor: pointer;
+                opacity: 1;
+            }
+
+/* Style for CheckBox */            
+            .chkbox {
+	            margin:	0 0 10px 20px;
+	            position: relative;
+                left: 50px;      
+            }
+/* for Label */
+            .chkbox label {
+	            padding-left: 38px;			/* Label Position */
+	            font-size: 24px;
+	            line-height: 32px;
+	            display: inline-block;
+	            cursor:	pointer;
+	            position: relative;
+            }           
+
+/* for Box */
+            .chkbox label:before {
+	            content: '';
+	            width: 30px;			/* Box size */
+	            height: 30px;			/* Box size */
+	            display: inline-block;
+	            position: absolute;
+	            left: 0;
+	            background-color: #fff;
+	            box-shadow: inset 1px 2px 3px 0px #000;
+	            border-radius: 6px 6px 6px 6px;
+            }
+/* Not display original one */
+            .chkbox input[type=checkbox] {
+	            display: none;
+            }
+/* at the check */
+            .chkbox input[type=checkbox]:checked + label:before {
+	            content: '\2713';		    /* letter for check */ 
+	            font-size: 24px;			/* size */
+	            color: #fff;			  /* color */
+	            background-color: #06f;   /* color at chekked */
+            }
+
+        </style>
+    </head>
+    <body translate="no" >
+        <center>
+            <h2> Dialog Box #004: CheckBox </h2>
+            <div class="wrap">
+                <input type="button" id="button_04" class="btn5" value="Open a dialog" onclick="Dialog_open_04()">
+                <br><br>
+                The results that are checked at dialog box.<br>
+                <textarea id="text_04" rows="7" cols="60" readonly>This area is displayed the results that are checked at the dialog box.</textarea>
+             </div>
+        </center>
+
+        <dialog dialog id="dialog_04">
+            <center>
+                Dialog Box #004（CheckBox）
+            </center>
+            <hr>
+            <div class="chkbox">
+                <input type="checkbox" id="Dialog_check1">
+                <label for="Dialog_check1">Check Box 1</label><br>
+                <input type="checkbox" id="Dialog_check2">
+                <label for="Dialog_check2">Check Box 2</label><br>
+                <input type="checkbox" id="Dialog_check3">
+                <label for="Dialog_check3">Check Box 3</label><br>
+                <input type="checkbox" id="Dialog_check4">
+                <label for="Dialog_check4">Check Box 4</label><br>
+                <input type="checkbox" id="Dialog_check5">
+                <label for="Dialog_check5">Check Box 5</label><br>
+            </div>
+            <br>
+            <hr>
+            <input type="button" class="leftButton" id="cancel_04" value="Cancel" onclick="Dialog_cancel_04()">           
+            <input type="button" class="rightButton" id="close_04" value=" OK " onclick="Dialog_close_04()">
+        </dialog>
+
+        <script>
+            var Text_04 = document.getElementById('text_04');
+
+            function Dialog_open_04() {
+                dialog_04.showModal();
+            }
+            function Dialog_close_04() {
+                var checkbox1 = document.getElementById('Dialog_check1');
+                var checkbox2 = document.getElementById('Dialog_check2');
+                var checkbox3 = document.getElementById('Dialog_check3');
+                var checkbox4 = document.getElementById('Dialog_check4');
+                var checkbox5 = document.getElementById('Dialog_check5');
+                var checkedValue = "";
+                if (checkbox1.checked){
+                    checkedValue = "Check Box 1: Checked\n";
+                } else {
+                    checkedValue = "Check Box 1: Not Checked\n";
+                }
+                if (checkbox2.checked){
+                    checkedValue = checkedValue + "Check Box 2: Checked\n";
+                } else {
+                    checkedValue = checkedValue + "Check Box 2: Not Checked\n";
+                }
+                if (checkbox3.checked){
+                    checkedValue = checkedValue + "Check Box 3: Checked\n";
+                } else {
+                    checkedValue = checkedValue + "Check Box 3: Not Checked\n";
+                }
+                if (checkbox4.checked){
+                    checkedValue = checkedValue + "Check Box 4: Checked\n";
+                } else {
+                    checkedValue = checkedValue + "Check Box 4: Not Checked\n";
+                }
+                if (checkbox5.checked){
+                    checkedValue = checkedValue + "Check Box 5: Checked\n";
+                } else {
+                    checkedValue = checkedValue + "Check Box 5: Not Checked\n";
+                }
+
+                Text_04.value = checkedValue;
+                dialog_04.close();
+            }
+            function Dialog_cancel_04() {
+                Text_04.value = "Nothing is checked!";
+                dialog_04.close();
+            }
+
+        </script>
+    </body>
+</html>

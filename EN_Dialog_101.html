@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Dialog Box #101 2021/06/09 by T. Fujita</title>
+        <meta charset = "utf-8" />
+
+        <style>
+            body {
+                padding: 0;
+                margin: 0;
+                font-size: 18px;
+                background-color: #ddffdd;
+            }
+            textarea {
+                font-family:Verdana, Helvetica, Arial, sans-serif;
+                font-size: 0.8em;
+                margin: 0;
+                padding: 0;
+                vertical-align:middle;
+            }
+/* Buttons at the center */
+            .wrap {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                margin-top: -200px;
+                margin-left: -80px;
+                text-align: center;
+            }
+
+/* BUTTON 5 */
+            .btn5, .btn5:link, .btn5:visited {
+                padding: 15px 30px;
+                text-decoration: none;
+                font-size: 18px;
+                display: block;
+                margin: 20px auto;
+                border: none;
+                outline: none;
+                color: #fefefe;
+                background-color: #b37c05;
+                border-radius: 3px;
+            }
+            .btn5:hover, .btn5:focus, .btn5:link:hover, .btn5:link:focus, .btn5:visited:hover, .btn5:visited:focus {
+                transition-timing-function: cubic-bezier(0.6, 4, 0.3, 0.8);
+                -webkit-animation: gelatine 0.5s 1;
+                animation: gelatine 0.5s 1;
+            }
+
+            @-webkit-keyframes gelatine {
+                from, to {
+                    -webkit-transform: scale(1, 1);
+                }
+                25% {
+                    -webkit-transform: scale(0.9, 1.1);
+                }
+                50% {
+                    -webkit-transform: scale(1.1, 0.9);
+                }
+                75% {
+                    -webkit-transform: scale(0.95, 1.05);
+                }
+                from, to {
+                    -webkit-transform: scale(1, 1);
+                }
+                25% {
+                    -webkit-transform: scale(0.9, 1.1);
+                }
+                50% {
+                    -webkit-transform: scale(1.1, 0.9);
+                }
+                75% {
+                    -webkit-transform: scale(0.95, 1.05);
+                }
+            }
+            @keyframes gelatine {
+                from, to {
+                    transform: scale(1, 1);
+                }
+                25% {
+                    transform: scale(0.9, 1.1);
+                }
+                50% {
+                    transform: scale(1.1, 0.9);
+                }
+                75% {
+                    transform: scale(0.95, 1.05);
+                }
+                from, to {
+                    transform: scale(1, 1);
+                }
+                25% {
+                    transform: scale(0.9, 1.1);
+                }
+                50% {
+                    transform: scale(1.1, 0.9);
+                }
+                75% {
+                    transform: scale(0.95, 1.05);
+                }
+            }
+            @keyframes fade {
+                0% {
+                    opacity: 0;
+                    transform: translateY(15px);
+                }
+                100% {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+/* for Dialog Box */
+            dialog {
+                padding: 0;
+                border: 1px solid #eee;
+                box-shadow: 1px 1px 2px #333;
+                position: relative;
+                width: 500px;
+                height: 400px;
+                overflow: hidden;
+                background-color: #d0ffd0;
+            }
+        
+            dialog[open]{
+                animation: fade 1s ease 0s 1 normal;
+            }
+
+            .rightButton{
+                background-color: #0004ff;
+                text-align: center;
+                margin: 10px auto 20px auto;
+                padding: 10px;
+                border-radius: 4px;
+                font-weight: bold;
+                color: #fff;
+                box-shadow: 0px 1px 3px #8bb8fa;
+                cursor: pointer;
+                position:absolute;
+/*                right: 20px;          */
+                bottom: 2px;
+                opacity: 1;
+            }
+            .leftButton{
+                background-color: #b80000;
+                text-align: center;
+                margin: 10px auto 20px auto;
+                padding: 10px;
+                border-radius: 4px;
+                font-weight: bold;
+                color: #fff;
+                box-shadow: 0px 1px 3px rgb(83, 0, 0);
+                cursor: pointer;
+                position:absolute;
+/*                left: 20px;           */
+                bottom: 2px;
+                opacity: 1;
+            }
+            .normalButton{
+                background-color: #005005;
+                text-align: center;
+                margin: 10px auto 20px auto;
+                padding: 10px;
+                border-radius: 4px;
+                font-weight: bold;
+                color: #fff;
+                box-shadow: 0px 1px 3px rgb(4, 109, 0);
+                cursor: pointer;
+                opacity: 1;
+            }
+
+/* Inside for Dialog Box */
+            *, *:before, *:after {
+              box-sizing: border-box;
+            }
+
+            .slider {
+              height: 95%;
+              position: relative;
+              overflow: hidden;
+              display: flex;
+              flex-flow: row nowrap;
+              align-items: flex-end;
+              justify-content: center;
+              background-color: #d0ffd0;
+            }
+            .slider__nav {
+              width: 12px;
+              height: 12px;
+              margin: 2rem 12px;
+              border-radius: 50%;
+              z-index: 10;
+              outline: 6px solid #000;
+              outline-offset: -6px;
+              box-shadow: 0 0 0 0 #333, 0 0 0 0 rgba(51, 51, 51, 0);
+              cursor: pointer;
+              -webkit-appearance: none;
+                 -moz-appearance: none;
+                      appearance: none;
+              -webkit-backface-visibility: hidden;
+                      backface-visibility: hidden;
+            }
+            .slider__nav:checked {
+              -webkit-animation: check 0.5s linear forwards;
+                      animation: check 0.5s linear forwards;
+            }
+            .slider__nav:checked:nth-of-type(1) ~ .slider__inner {
+              transform: translateX(0%);
+            }
+            .slider__nav:checked:nth-of-type(2) ~ .slider__inner {
+              transform: translateX(-20%);
+            }
+            .slider__nav:checked:nth-of-type(3) ~ .slider__inner {
+              transform: translateX(-40%);
+            }
+            .slider__nav:checked:nth-of-type(4) ~ .slider__inner {
+              transform: translateX(-60%);
+            }
+            .slider__nav:checked:nth-of-type(5) ~ .slider__inner {
+              transform: translateX(-80%);
+            }
+            .slider__inner {
+              position: absolute;
+              top: -20%;
+              left: 0;
+              width: 500%;
+              height: 100%;
+              transition: all 1s ease-out;
+              display: flex;
+              flex-flow: row nowrap;
+            }
+            .slider__contents {
+              height: 100%;
+              padding: 2rem;
+              text-align: center;
+              display: flex;
+              flex: 1;
+              flex-flow: column nowrap;
+              align-items: center;
+              justify-content: center;
+            }
+            .slider__image {
+              font-size: 2.7rem;
+            }
+            .slider__caption {
+              font-weight: 700;
+              margin: 2rem 0 1rem;
+              text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+              text-transform: uppercase;
+            }
+            .slider__txt {
+              color: rgb(73, 73, 73);
+              margin-bottom: 2rem;
+              max-width: 300px;
+            }
+            
+            @-webkit-keyframes check {
+              50% {
+                outline-color: #333;
+                box-shadow: 0 0 0 12px #333, 0 0 0 36px rgba(51, 51, 51, 0.2);
+              }
+              100% {
+                outline-color: #333;
+                box-shadow: 0 0 0 0 #333, 0 0 0 0 rgba(51, 51, 51, 0);
+              }
+            }
+            
+            @keyframes check {
+              50% {
+                outline-color: #333;
+                box-shadow: 0 0 0 12px #333, 0 0 0 36px rgba(51, 51, 51, 0.2);
+              }
+              100% {
+                outline-color: #333;
+                box-shadow: 0 0 0 0 #333, 0 0 0 0 rgba(51, 51, 51, 0);
+              }
+            }
+
+        </style>
+    </head>
+    <body translate="no" >
+        <center>
+            <h2> Dialog Box #101: Slider Type of Menu </h2>
+            <div class="wrap">
+                <input type="button" id="button_102" class="btn5" value="Open the Dialog" onclick="Dialog_open_101()">
+                <span style="position:absolute; top:100px; left: -140%;"> The text data that is inputted at the dialog box.
+                    <br>
+                    <textarea id="text_02" rows="6" cols="90" readonly> This area is displayed the results that is inputted at the dialog box. </textarea>
+                    <br><br>
+                    The result that is selected by radio button at the dialog box.
+                    <br>
+                    <textarea id="text_03" rows="2" cols="90" readonly> This area is displayed the result that is selected by radio button at the dialog box. </textarea>
+                    <br><br>
+                    The results that is selected by check box at the dialog box.
+                    <br>
+                    <textarea id="text_04" rows="6" cols="90" readonly> This area is displayed the results that is selected by check box at the dialog box. </textarea>
+                </span>
+                <br>
+            </div>
+        </center>
+
+        <dialog id="dialog_101">
+            <center>
+                Dialog Box #101: Slider Type of Menu
+            </center>
+
+            <div class="slider">
+                <input class="slider__nav" type="radio" name="slider" title="slide1" checked="checked"/>
+                <input class="slider__nav" type="radio" name="slider" title="slide2"/>
+                <input class="slider__nav" type="radio" name="slider" title="slide3"/>
+                <input class="slider__nav" type="radio" name="slider" title="slide4"/>
+                <input class="slider__nav" type="radio" name="slider" title="slide5"/>
+                <div class="slider__inner">
+                    <div class="slider__contents">
+                        <h2 class="slider__caption">information</h2>
+                        <center>
+                            Next is the contents for this dialog box.
+                            <hr>
+                        </center>
+                        <p class="slider__txt">
+                            - Input the text data<br>
+                            - Selection by Radio Button<br>
+                            - Selection by Check Box<br>
+                            - Picture for Profile
+                        </p>
+                    </div>
+
+                    <div class="slider__contents">
+                        <h2 class="slider__caption">input-text</h2>
+                        <center>
+                            Dialog #002（Input the Text）
+                            <hr>
+                            <textarea id="Dialog_text_02" rows="7" cols="50">Please input the text.</textarea>
+                        </center>
+                        <input type="button" id="clear_02" class="normalButton" style="position:absolute; top:350px; left:600px;" value="Clear" onclick="Dialog_clear_02()">
+                        <input type="button" id="close_02" class="normalButton" style="position:absolute; top:350px; left:850px;" value=" OK " onclick="Dialog_close_02()">
+                    </div>
+
+                    <div class="slider__contents">
+                        <h2 class="slider__caption">radio-button</h2>
+                        <center>
+                            Dialog #003（Radio Button）
+                            <hr>
+                        </center>
+                        <div class="radiobutton">
+                            <input type="radio" id="radio1" name="Dialog_radio_03" value="Radio Button 1" checked>
+                            <label for="radio1">Radio Button 1</label><br>
+                            <input type="radio" id="radio2" name="Dialog_radio_03" value="Radio Button 2">
+                            <label for="radio2">Radio Button 2</label><br>
+                            <input type="radio" id="radio3" name="Dialog_radio_03" value="Radio Button 3">
+                            <label for="radio3">Radio Button 3</label><br>
+                            <input type="radio" id="radio4" name="Dialog_radio_03" value="Radio Button 4">
+                            <label for="radio4">Radio Button 4</label><br>
+                            <input type="radio" id="radio5" name="Dialog_radio_03" value="Radio Button 5">
+                            <label for="radio5">Radio Button 5</label>
+                        </div>
+                        <input type="button" id="close_03" class="normalButton" style="position:absolute; top:350px; left:1350px;" value=" OK " onclick="Dialog_close_03()">
+                    </div>
+
+                    <div class="slider__contents">
+                        <h2 class="slider__caption">check-box</h2>
+                        <center>
+                            Dialog #004（CheckBox）
+                            <hr>
+                        </center>
+                        <div class="chkbox">
+                            <input type="checkbox" id="Dialog_check1">
+                            <label for="Dialog_check1">Check Box 1</label><br>
+                            <input type="checkbox" id="Dialog_check2">
+                            <label for="Dialog_check2">Check Box 2</label><br>
+                            <input type="checkbox" id="Dialog_check3">
+                            <label for="Dialog_check3">Check Box 3</label><br>
+                            <input type="checkbox" id="Dialog_check4">
+                            <label for="Dialog_check4">Check Box 4</label><br>
+                            <input type="checkbox" id="Dialog_check5">
+                            <label for="Dialog_check5">Check Box 5</label><br>
+                        </div>
+                        <input type="button" id="close_04" class="normalButton" style="position:absolute; top:350px; left:1850px;" value=" OK " onclick="Dialog_close_04()">
+                    </div>
+
+                    <div class="slider__contents" id="profile">
+                        <h2 class="slider__caption">profile</h2>
+                        <span><img src="./images/HAL.png" height="200" border="1"></span>
+                    </div>
+                </div>
+            </div>
+            <input type="button" class="rightButton" id="close_101" value="Close" onclick="Dialog_close_101()">
+        </dialog>
+
+        <script>
+            var Text_02 = document.getElementById('text_02');
+            var Dialog_Text_02 = document.getElementById('Dialog_text_02');
+            var Text_03 = document.getElementById('text_03');
+            var Text_04 = document.getElementById('text_04');
+
+            function Dialog_open_101() {
+                dialog_101.showModal();
+            }
+            function Dialog_close_101() {
+                dialog_101.close();
+            }
+
+            function Dialog_close_02() {
+                Text_02.value = Dialog_Text_02.value;
+                dialog_02.close();
+            }
+            function Dialog_clear_02() {
+                Dialog_Text_02.value = "";
+            }
+
+            function Dialog_close_03() {
+                var elements = document.getElementsByName('Dialog_radio_03');
+                var len = elements.length;
+                var checkValue = '';
+                for (let i = 0; i < len; i++){
+                    if (elements.item(i).checked){
+                        checkValue = elements.item(i).value;
+                    }
+                }
+                Text_03.value = checkValue + " is selected.";
+            }
+
+            function Dialog_close_04() {
+                var checkbox1 = document.getElementById('Dialog_check1');
+                var checkbox2 = document.getElementById('Dialog_check2');
+                var checkbox3 = document.getElementById('Dialog_check3');
+                var checkbox4 = document.getElementById('Dialog_check4');
+                var checkbox5 = document.getElementById('Dialog_check5');
+                var checkedValue = "";
+                if (checkbox1.checked){
+                    checkedValue = "Check Box 1: Checked\n";
+                } else {
+                    checkedValue = "Check Box 1: Not Checked\n";
+                }
+                if (checkbox2.checked){
+                    checkedValue = checkedValue + "Check Box 2: Checked\n";
+                } else {
+                    checkedValue = checkedValue + "Check Box 2: Not Checked\n";
+                }
+                if (checkbox3.checked){
+                    checkedValue = checkedValue + "Check Box 3: Checked\n";
+                } else {
+                    checkedValue = checkedValue + "Check Box 3: Not Checked\n";
+                }
+                if (checkbox4.checked){
+                    checkedValue = checkedValue + "Check Box 4: Checked\n";
+                } else {
+                    checkedValue = checkedValue + "Check Box 4: Not Checked\n";
+                }
+                if (checkbox5.checked){
+                    checkedValue = checkedValue + "Check Box 5: Checked\n";
+                } else {
+                    checkedValue = checkedValue + "Check Box 5: Not Checked\n";
+                }
+                Text_04.value = checkedValue;
+            }            
+
+        </script>
+    </body>
+</html>

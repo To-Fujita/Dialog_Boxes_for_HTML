@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <title>Dialog Box #008 2021/06/01 by T. Fujita</title>
+        <meta charset = "utf-8" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+ 
+        <style>
+            body {
+                padding: 0;
+                margin: 0;
+                font-size: 24px;
+                background-color: #fcd7d7;
+            }
+            textarea {
+                font-family:'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','メイリオ',Meiryo,'ＭＳ Ｐゴシック',sans-serif;
+                font-size: 0.6em;
+                margin: 0;
+                padding: 0;
+                vertical-align:middle;
+            }
+/* Buttons at the center */
+            .wrap {
+                position: relative;
+                top: 20px;
+                text-align: center;
+            }
+
+/* BUTTON 5 */
+            .btn5, .btn5:link, .btn5:visited {
+                padding: 20px 20px;
+                text-decoration: none;
+                font-size: 18px;
+                display: block;
+                margin: 20px auto;
+                border: none;
+                outline: none;
+                color: #fefefe;
+                background-color: #005005;
+                border-radius: 3px;
+            }
+            .btn5:hover, .btn5:focus, .btn5:link:hover, .btn5:link:focus, .btn5:visited:hover, .btn5:visited:focus {
+                transition-timing-function: cubic-bezier(0.6, 4, 0.3, 0.8);
+                -webkit-animation: gelatine 0.5s 1;
+                animation: gelatine 0.5s 1;
+            }
+
+            @-webkit-keyframes gelatine {
+                from, to {
+                    -webkit-transform: scale(1, 1);
+                }
+                25% {
+                    -webkit-transform: scale(0.9, 1.1);
+                }
+                50% {
+                    -webkit-transform: scale(1.1, 0.9);
+                }
+                75% {
+                    -webkit-transform: scale(0.95, 1.05);
+                }
+                from, to {
+                    -webkit-transform: scale(1, 1);
+                }
+                25% {
+                    -webkit-transform: scale(0.9, 1.1);
+                }
+                50% {
+                    -webkit-transform: scale(1.1, 0.9);
+                }
+                75% {
+                    -webkit-transform: scale(0.95, 1.05);
+                }
+            }
+            @keyframes gelatine {
+                from, to {
+                    transform: scale(1, 1);
+                }
+                25% {
+                    transform: scale(0.9, 1.1);
+                }
+                50% {
+                    transform: scale(1.1, 0.9);
+                }
+                75% {
+                    transform: scale(0.95, 1.05);
+                }
+                from, to {
+                    transform: scale(1, 1);
+                }
+                25% {
+                    transform: scale(0.9, 1.1);
+                }
+                50% {
+                    transform: scale(1.1, 0.9);
+                }
+                75% {
+                    transform: scale(0.95, 1.05);
+                }
+            }
+            @keyframes fade {
+                0% {
+                    opacity: 0;
+                    transform: translateY(15px);
+                }
+                100% {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+/* for Dialog Box */
+            dialog {
+                padding: 0;
+                border: 1px solid #eee;
+                box-shadow: 2px 2px 4px #333;
+                position: relative;
+                width: 500px;
+                height: 400px;
+                overflow: hidden;
+                background-color: #fabfbf;
+            }
+        
+            dialog[open]{
+                animation: fade 1s ease 0s 1 normal;
+            }
+
+            .rightButton{
+                background-color: #0004ff;
+                text-align: center;
+                margin: 10px auto 20px auto;
+                padding: 10px;
+                border-radius: 4px;
+                font-weight: bold;
+                color: #fff;
+                box-shadow: 0px 1px 3px #8bb8fa;
+                cursor: pointer;
+                position:absolute;
+                right: 20px;
+                bottom: 2px;
+                opacity: 1;
+            }
+            .leftButton{
+                background-color: #b80000;
+                text-align: center;
+                margin: 10px auto 20px auto;
+                padding: 10px;
+                border-radius: 4px;
+                font-weight: bold;
+                color: #fff;
+                box-shadow: 0px 1px 3px rgb(83, 0, 0);
+                cursor: pointer;
+                position:absolute;
+                left: 20px;
+                bottom: 2px;
+                opacity: 1;
+            }
+            .normalButton{
+                background-color: #005005;
+                text-align: center;
+                margin: 10px auto 20px auto;
+                padding: 10px;
+                border-radius: 4px;
+                font-weight: bold;
+                color: #fff;
+                box-shadow: 0px 1px 3px rgb(4, 109, 0);
+                cursor: pointer;
+                opacity: 1;
+            }
+
+/* Image size for preview in Dialog Box */
+            dialog img {
+                width: 300px;
+            }
+
+        </style>
+    </head>
+    <body translate="no" >
+        <center>
+            <h2> Dialog Box #008: File Input Image </h2>
+            <div class="wrap">
+                <input type="button" id="button_08" class="btn5" value="ダイアログを開く" onclick="Dialog_open_08()">
+                ダイアログボックスで選択された結果：<br>
+                <img id="img_08" width="80%"></img>
+             </div>
+        </center>
+
+        <dialog dialog id="dialog_08">
+            <center>
+                ダイアログ #008（File Input Image）
+            </center>
+            <hr>
+            <span style="font-size: 16px;">　画像ファイルの選択：　</span>
+            <form name="photoinput">
+                <center>　
+                    <input type="file" accept="image/*" name="select_AD" id="select_AD_008" value="" onchange="updateImageDisplay()">
+                    <div class="preview">
+                        <p>Photo File is not selected.</p>
+                    </div>
+                </center>
+            </form>
+            
+            <input type="button" class="leftButton" id="cancel_08" value="キャンセル" onclick="Dialog_cancel_08()">           
+            <input type="button" class="rightButton" id="close_08" value="決　定" onclick="Dialog_close_08()">
+        </dialog>
+
+        <script>
+            var Text_08 = document.getElementById('text_08');
+            var Img_08 = document.getElementById('img_08');
+            var image;
+
+// ダイアログ表示
+            function Dialog_open_08() {
+                dialog_08.showModal();
+            }
+// 決定ボタンが押された場合
+            function Dialog_close_08() {
+                Img_08.src = image.src;
+                dialog_08.close();
+            }
+// キャンセル・ボタンが押された場合
+            function Dialog_cancel_08() {
+                Img_08.src = "";
+                dialog_08.close();
+            }
+// 画像ファイルの読み込み
+            function updateImageDisplay() {
+                var preview = document.querySelector('.preview');
+                var file_input = $('#select_AD_008');
+                var file = file_input[0].files[0];
+                var para = document.createElement('p');
+                if(file === undefined) {
+	                para.textContent = 'Photo File is not selected!';
+	                preview.removeChild(preview.childNodes.item(0));
+	                preview.appendChild(para);
+                } else {
+	                while(preview.firstChild){
+		                preview.removeChild(preview.firstChild);
+	                }
+	                preview.appendChild(para);
+                    image = document.createElement('img');
+                    image.src = window.URL.createObjectURL(file);
+	                preview.appendChild(image);
+                }
+            }
+
+        </script>
+    </body>
+</html>

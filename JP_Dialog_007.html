@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <title>Dialog Box #007 2021/06/02 by T. Fujita</title>
+        <meta charset = "utf-8" />
+        <script src = "./js/encoding.min.js" ></script>
+ 
+        <style>
+            body {
+                padding: 0;
+                margin: 0;
+                font-size: 24px;
+                background-color: #fcd7d7;
+            }
+            textarea {
+                font-family:'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','メイリオ',Meiryo,'ＭＳ Ｐゴシック',sans-serif;
+                font-size: 0.6em;
+                margin: 0;
+                padding: 0;
+                vertical-align:middle;
+            }
+/* Buttons at the center */
+            .wrap {
+                position: relative;
+                top: 20px;
+                text-align: center;
+            }
+
+/* BUTTON 5 */
+            .btn5, .btn5:link, .btn5:visited {
+                padding: 20px 20px;
+                text-decoration: none;
+                font-size: 18px;
+                display: block;
+                margin: 20px auto;
+                border: none;
+                outline: none;
+                color: #fefefe;
+                background-color: #005005;
+                border-radius: 3px;
+            }
+            .btn5:hover, .btn5:focus, .btn5:link:hover, .btn5:link:focus, .btn5:visited:hover, .btn5:visited:focus {
+                transition-timing-function: cubic-bezier(0.6, 4, 0.3, 0.8);
+                -webkit-animation: gelatine 0.5s 1;
+                animation: gelatine 0.5s 1;
+            }
+
+            @-webkit-keyframes gelatine {
+                from, to {
+                    -webkit-transform: scale(1, 1);
+                }
+                25% {
+                    -webkit-transform: scale(0.9, 1.1);
+                }
+                50% {
+                    -webkit-transform: scale(1.1, 0.9);
+                }
+                75% {
+                    -webkit-transform: scale(0.95, 1.05);
+                }
+                from, to {
+                    -webkit-transform: scale(1, 1);
+                }
+                25% {
+                    -webkit-transform: scale(0.9, 1.1);
+                }
+                50% {
+                    -webkit-transform: scale(1.1, 0.9);
+                }
+                75% {
+                    -webkit-transform: scale(0.95, 1.05);
+                }
+            }
+            @keyframes gelatine {
+                from, to {
+                    transform: scale(1, 1);
+                }
+                25% {
+                    transform: scale(0.9, 1.1);
+                }
+                50% {
+                    transform: scale(1.1, 0.9);
+                }
+                75% {
+                    transform: scale(0.95, 1.05);
+                }
+                from, to {
+                    transform: scale(1, 1);
+                }
+                25% {
+                    transform: scale(0.9, 1.1);
+                }
+                50% {
+                    transform: scale(1.1, 0.9);
+                }
+                75% {
+                    transform: scale(0.95, 1.05);
+                }
+            }
+            @keyframes fade {
+                0% {
+                    opacity: 0;
+                    transform: translateY(15px);
+                }
+                100% {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+/* for Dialog Box */
+            dialog {
+                padding: 0;
+                border: 1px solid #eee;
+                box-shadow: 2px 2px 4px #333;
+                position: relative;
+                width: 500px;
+                height: 400px;
+                overflow: hidden;
+                background-color: #fabfbf;
+            }
+        
+            dialog[open]{
+                animation: fade 1s ease 0s 1 normal;
+            }
+
+            .rightButton{
+                background-color: #0004ff;
+                text-align: center;
+                margin: 10px auto 20px auto;
+                padding: 10px;
+                border-radius: 4px;
+                font-weight: bold;
+                color: #fff;
+                box-shadow: 0px 1px 3px #8bb8fa;
+                cursor: pointer;
+                position:absolute;
+                right: 20px;
+                bottom: 2px;
+                opacity: 1;
+            }
+            .leftButton{
+                background-color: #b80000;
+                text-align: center;
+                margin: 10px auto 20px auto;
+                padding: 10px;
+                border-radius: 4px;
+                font-weight: bold;
+                color: #fff;
+                box-shadow: 0px 1px 3px rgb(83, 0, 0);
+                cursor: pointer;
+                position:absolute;
+                left: 20px;
+                bottom: 2px;
+                opacity: 1;
+            }
+            .normalButton{
+                background-color: #005005;
+                text-align: center;
+                margin: 10px auto 20px auto;
+                padding: 10px;
+                border-radius: 4px;
+                font-weight: bold;
+                color: #fff;
+                box-shadow: 0px 1px 3px rgb(4, 109, 0);
+                cursor: pointer;
+                opacity: 1;
+            }
+
+        </style>
+    </head>
+    <body translate="no" >
+        <center>
+            <h2> Dialog Box #007: CSV File Loading </h2>
+            <div class="wrap">
+                <input type="button" id="button_07" class="btn5" value="ダイアログを開く" onclick="Dialog_open_07()">
+                
+                ダイアログボックスで選択された結果：<br>
+                <center>
+                    <div style="width:700px; height:300px; overflow-y:scroll;">
+                        <table border="1" id="csv_07" style="font-size: 14px;" width:500px; height:300px;></table>
+                    </div>
+                </center>   
+            </div>
+        </center>
+
+        <dialog dialog id="dialog_07">
+            <center>
+                ダイアログ #007（CSV File Loading）
+            </center>
+            <hr>
+            <span style="font-size: 16px;">　CSV ファイルの選択：　</span>
+            <center>
+                <input type="file" accept=".csv" name="dialog_CSV" id="dialog_CSV" value=""><hr>
+                <div style="width:480px; height:150px; overflow-y:scroll;">
+                    <table border="1" id="dialog_DSP" style="font-size: 14px;"></table>
+                </div>
+            </center>
+            <hr>
+            <input type="button" class="leftButton" id="cancel_07" value="キャンセル" onclick="Dialog_cancel_07()">           
+            <input type="button" class="rightButton" id="close_07" value="決　定" onclick="Dialog_close_07()">
+        </dialog>
+
+        <script>
+            var Text_07 = document.getElementById('csv_07');
+            var Temp_Data = new Array();
+            var CSV_Data = new Array();
+
+            function Dialog_open_07() {
+                dialog_07.showModal();
+                Dialog_TXT_Data_Load();
+            }
+            function Dialog_close_07() {
+                var insertElement = '';
+                CSV_Data = Temp_Data;
+				for (var i=0; i<CSV_Data.length; i++) {
+				    insertElement += '<tr>';
+				    for (var j=0; j<CSV_Data[0].length; j++) {
+					    insertElement += '<td>' + CSV_Data[i][j] + '</td>';
+				    }
+				    insertElement += '</tr>';
+			    }
+			    Text_07.innerHTML = insertElement;
+                dialog_07.close();
+            }
+            function Dialog_cancel_07() {
+                Text_07.innerHTML = '<tr><td>' + '選択されていません！' + '</td></tr>';
+                dialog_07.close();
+            }
+
+// Load Text Data
+            function Dialog_TXT_Data_Load() {
+	            var select = document.getElementById('dialog_CSV');
+	            var output_csv = document.getElementById('dialog_DSP');
+	            select.value = "";
+	            output_csv.value = "";
+	            output_csv.innerHTML = "";
+                if(window.File) {
+		            select.addEventListener('change', function(e) {
+			            var fileData = e.target.files[0];
+			            var reader = new FileReader();
+			            reader.onerror = function() {
+				            alert('ファイル読み取りに失敗しました')
+			            }
+                        reader.onload = function(event) {
+				            var tmp = new Uint8Array(event.target.result);
+				            var tmp_text = Encoding.convert(tmp, 'UNICODE', 'AUTO');
+		  		            var txtArray = Encoding.codeToString(tmp_text);
+				            var lineArr = txtArray.split('\n');
+				            for (var i = 0; i < lineArr.length; i++) {
+					            Temp_Data[i] = lineArr[i].split(',');
+		  		            }
+
+				            var insertElement = '';
+				            for (var i=0; i<Temp_Data.length; i++) {
+					            insertElement += '<tr>';
+					            for (var j=0; j<Temp_Data[0].length; j++) {
+						            insertElement += '<td>' + Temp_Data[i][j] + '</td>';
+					            }
+					            insertElement += '</tr>';
+				            }
+				            output_csv.innerHTML = insertElement;
+			            }
+			            reader.readAsArrayBuffer(fileData);
+		            }, false);
+	            }
+            }
+
+        </script>
+    </body>
+</html>

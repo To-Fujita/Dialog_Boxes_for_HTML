@@ -1,0 +1,399 @@
+/* CSS for dialog box */
+            body {
+                padding: 0, 0, 0, 0;
+                margin: -20, 0, 0, 0;
+                font-size: 24px;
+                background-color: #ddffdd;
+            }
+            textarea {
+                font-family:Verdana, Helvetica, Arial, sans-serif;
+                font-size: 0.6em;
+                margin: 0;
+                padding: 0;
+                vertical-align:middle;
+            }
+            .wrap {
+                position: absolute;
+                top: 50px;
+            }
+/* for Dialog Box */            
+            dialog {
+                padding: 0;
+                border: 1px solid #eee;
+                box-shadow: 2px 2px 4px #333;
+                position: relative;
+                width: 500px;
+                height: 400px;
+                overflow: hidden;
+                background-color: #d0ffd0;
+            }
+            dialog[open]{
+                animation: fade 1s ease 0s 1 normal;
+            }
+
+            .rightButton{
+                background-color: #0004ff;
+                text-align: center;
+                margin: 10px auto 20px auto;
+                padding: 10px;
+                border-radius: 4px;
+                font-weight: bold;
+                color: #fff;
+                box-shadow: 0px 1px 3px #8bb8fa;
+                cursor: pointer;
+                position:absolute;
+                right: 20px;
+                bottom: 2px;
+                opacity: 1;
+            }
+            .leftButton{
+                background-color: #b80000;
+                text-align: center;
+                margin: 10px auto 20px auto;
+                padding: 10px;
+                border-radius: 4px;
+                font-weight: bold;
+                color: #fff;
+                box-shadow: 0px 1px 3px rgb(83, 0, 0);
+                cursor: pointer;
+                position:absolute;
+                left: 20px;
+                bottom: 2px;
+                opacity: 1;
+            }
+            .normalButton{
+                background-color: #005005;
+                text-align: center;
+                margin: 10px auto 20px auto;
+                padding: 10px;
+                border-radius: 4px;
+                font-weight: bold;
+                color: #fff;
+                box-shadow: 0px 1px 3px rgb(4, 109, 0);
+                cursor: pointer;
+                opacity: 1;
+            }
+
+/* Inside for Dialog Box */
+            .dialog sand_section {
+                align-self: top;
+                font-family: "Elsie Swash Caps", cursive;
+                font-size: 24px;
+            }
+            hr {
+              height: 25px;
+              border-style: solid;
+              border-color: #E84D5B;
+              border-width: 1px 0 0 0;
+              border-radius: 20px;
+            }
+            hr:before {
+              display: block;
+              content: "";
+              height: 30px;
+              margin-top: -31px;
+              border-style: solid;
+              border-color: #E84D5B;
+              border-width: 0 0 1px 0;
+              border-radius: 20px;
+            }
+
+/* Style for Radio Button */
+            .radiobutton {
+	            position: relative;
+                left: 50px;
+            }
+            .radiobutton label {
+	            padding: 0 0 0 24px;	/* Position of label */
+	            font-size: 24px;
+	            line-height: 28px;		/* Same to button size */
+	            display: inline-block;
+	            cursor:	pointer;
+	            position: relative;
+            }
+            .radiobutton label:before {
+	            content: '';
+	            width: 28px;		/* Size of button */
+	            height: 28px;		/* Size of button */
+	            position: absolute;
+	            top: 0;
+	            left: 0;
+	            background-color: #00f;
+	            border-radius: 50%;
+            }
+            .radiobutton input[type="radio"] {
+	            display: none;
+            }
+            .radiobutton input[type="radio"]:checked + label:after {
+	            content: '';
+	            width: 10px;		/* Size of mark */
+	            height: 10px;		/* Size of mark */
+	            position: absolute;
+	            top: 9px;
+	            left: 9px;
+	            background-color: #fff;
+	            border-radius: 50%;
+            }           
+
+/* Style for CheckBox */            
+            .chkbox {
+	            margin:	0 0 10px 20px;
+	            position: relative;
+                left: 50px;      
+            }
+/* Style for label */
+            .chkbox label {
+	            padding-left: 38px;			/* Position of label */
+	            font-size: 24px;
+	            line-height: 32px;
+	            display: inline-block;
+	            cursor:	pointer;
+	            position: relative;
+            }           
+
+/* Style for box */
+            .chkbox label:before {
+	            content: '';
+	            width: 30px;			/* Size of box */
+	            height: 30px;			/* Size of box */
+	            display: inline-block;
+	            position: absolute;
+	            left: 0;
+	            background-color: #fff;
+	            box-shadow: inset 1px 2px 3px 0px #000;
+	            border-radius: 6px 6px 6px 6px;
+            }
+/* Not to diasplay the original box */
+            .chkbox input[type=checkbox] {
+	            display: none;
+            }
+/* Style at checked */
+            .chkbox input[type=checkbox]:checked + label:before {
+	            content: '\2713';		    /* Chracter of check mark */ 
+	            font-size: 24px;			/* Size of check mark */
+	            color: #fff;			  /* Color for check mark */
+	            background-color: #06f;   /* Color at checked */
+            }
+/* Style for Select */
+            .select{
+              font-size: 20px;
+            }
+
+/* Style for Table */
+            table, td, th{
+                border: 1px solid black;
+            }
+
+/* Image size for preview in Dialog Box */
+            dialog img {
+                width: 300px;
+            }
+
+/* Inside for Dialog Box */
+                .clock_container {
+                    padding-top: 40px;
+                    text-align: center;
+                }
+                #lcd-clock {
+                    width: 66%; /* set the width of the clock display */
+                    margin: 0 auto;
+                }
+            
+                /* svg specific css */
+                .lcd-element {
+                    fill: #fabfbf;
+                    fill: #95ff95;
+                    transition: all 0.2s ease-out
+                }
+                .lcd-element-active {
+                    fill: #ff0000;
+                    fill: #015005;
+                }
+            
+                /*
+                all number-is-* classes are applied alongside .digit
+                eg <g class="hour digit digit-1 number-is-3">
+                */
+            
+                /* 1 */
+                .number-is-1 .top-right,
+                .number-is-1 .bottom-right,
+                /* 2 */
+                .number-is-2 .top-center,
+                .number-is-2 .top-right,
+                .number-is-2 .mid-center,
+                .number-is-2 .bottom-left,
+                .number-is-2 .bottom-center,
+                /* 3 */
+                .number-is-3 .top-center,
+                .number-is-3 .top-right,
+                .number-is-3 .mid-center,
+                .number-is-3 .bottom-right,
+                .number-is-3 .bottom-center,
+                /* 4 */
+                .number-is-4 .top-left,
+                .number-is-4 .top-right,
+                .number-is-4 .mid-center,
+                .number-is-4 .bottom-right,
+                /* 5 */
+                .number-is-5 .top-center,
+                .number-is-5 .top-left,
+                .number-is-5 .mid-center,
+                .number-is-5 .bottom-right,
+                .number-is-5 .bottom-center,
+                /* 6 */
+                .number-is-6 .top-center,
+                .number-is-6 .top-left,
+                .number-is-6 .mid-center,
+                .number-is-6 .bottom-right,
+                .number-is-6 .bottom-left,
+                .number-is-6 .bottom-center,
+                /* 7 */
+                .number-is-7 .top-center,
+                .number-is-7 .top-right,
+                .number-is-7 .bottom-right,
+                /* 8 */
+                .number-is-8 .top-center,
+                .number-is-8 .top-left,
+                .number-is-8 .top-right,
+                .number-is-8 .mid-center,
+                .number-is-8 .bottom-right,
+                .number-is-8 .bottom-left,
+                .number-is-8 .bottom-center,
+                /* 9 */
+                .number-is-9 .top-center,
+                .number-is-9 .top-left,
+                .number-is-9 .top-right,
+                .number-is-9 .mid-center,
+                .number-is-9 .bottom-right,
+                .number-is-9 .bottom-center,
+                /* 0 */
+                .number-is-0 .top-center,
+                .number-is-0 .top-left,
+                .number-is-0 .top-right,
+                .number-is-0 .bottom-right,
+                .number-is-0 .bottom-left,
+                .number-is-0 .bottom-center
+                {
+                    fill: #ff0000;
+                    fill: #015005;
+                }
+
+/*-------------------- profile_wrapper --------------------*/
+.profile_wrapper {
+              position: absolute;
+              top: 64%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              width: 295px;
+              height: 438px;
+              font-family: "Source Sans Pro", sans-serif;
+              transform-style: preserve-3d;
+              transform: translate(-50%, -50%) perspective(600px) rotateY(20deg) rotateX(10deg);
+            }
+            
+/*-------------------- Me --------------------*/
+            .me {
+              position: relative;
+              width: 295px;
+              height: 438px;
+              transform: translateZ(80px) scale(0.8);
+            }
+            .me::before, .me::after {
+              content: "";
+              position: absolute;
+              width: 80%;
+              height: 80%;
+              top: 20;
+              left: 0;
+              border-radius: 10px;
+              background: url("./images/HAL_a.png") no-repeat 0 0;
+              background-size: 100%;
+            }
+            .me::after {
+              height: 30px;
+              top: auto;
+              bottom: -15px;
+              z-index: -1;
+              filter: blur(15px);
+              background-size: 100% 30px;
+              border-radius: 100px;
+            }
+            .me .eye, .me .eye::before {
+              width: 70px;
+              height: 70px;
+              position: absolute;
+              top: 155px;
+              left: 60px;
+              z-index: -1;
+              background: url("./images/eye_a.png") no-repeat center;
+              background-size: 80%;
+            }
+            .me .eye::before {
+              content: "";
+              top: 2px;
+              left: 66px;
+            }
+            
+            .text {
+              position: absolute;
+              top: -7%;
+              left: -7%;
+              z-index: 2;
+              width: 312px;
+              height: 476px;
+              transform: translateZ(150px) translateX(-11px) translateY(-26px) scale(0.55);
+              border: 3px solid white;
+              text-align: center;
+              font-size: 48px;
+              line-height: 800px;
+              color: rgb(255, 255, 255);
+              background: linear-gradient(135deg, white 0%, rgba(255, 255, 255, 0.36) 39%, rgba(255, 255, 255, 0.07) 41%, rgba(255, 255, 255, 0) 51%, black 100%);
+              opacity: 0.4;
+              border-radius: 8px;
+            }
+            .text::after {
+              content: "by T. Fujita";
+              width: 100%;
+              position: absolute;
+              bottom: 22px;
+              left: 0;
+              width: 100%;
+              z-index: 1;
+              line-height: 1;
+              font-size: 18px;
+              text-align: center;
+              text-transform: uppercase;
+              letter-spacing: 8px;
+              text-indent: 20px;
+            }
+
+/* for Calendar */
+            .ui-datepicker {
+                z-index: 2000 !important; 
+            }
+            img.ui-datepicker-trigger{
+                position:absolute;
+                top: 85px;
+                left: 440px;
+                cursor: pointer;
+                margin-left: 7px!important;
+                vertical-align: middle;
+                width:32px;
+            }
+            .ui-datepicker {
+	            font-size: 80%;
+            }
+/* for Sunday */
+            .ui-datepicker-sunday .ui-state-default {
+                background-image:none;
+                background-color: #9d0712;
+                color:#fff;
+            }
+ 
+/* for Saturday */
+            .ui-datepicker-saturday .ui-state-default {
+                background-image:none;
+                background-color: #06529d;
+                color:#fff;
+            }

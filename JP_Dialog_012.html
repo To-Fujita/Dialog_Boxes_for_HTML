@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <title>Dialog Box #012 2021/06/04 by T. Fujita</title>
+        <meta charset = "utf-8" />
+ 
+        <style>
+            body {
+                padding: 0;
+                margin: 0;
+                font-size: 24px;
+                background-color: #fcd7d7;
+            }
+            textarea {
+                font-family:'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','メイリオ',Meiryo,'ＭＳ Ｐゴシック',sans-serif;
+                font-size: 0.6em;
+                margin: 0;
+                padding: 0;
+                vertical-align:middle;
+            }
+/* Buttons at the center */
+            .wrap {
+                position: relative;
+                margin-top: 20px;
+                text-align: center;
+            }
+
+/* Button 5 */
+            .btn5, .btn5:link, .btn5:visited {
+                padding: 20px 20px;
+                text-decoration: none;
+                font-size: 18px;
+                display: block;
+                margin: 20px auto;
+
+                border: none;
+                outline: none;
+                color: #fefefe;
+                background-color: #005005;
+                border-radius: 3px;
+            }
+            .btn5:hover, .btn5:focus, .btn5:link:hover, .btn5:link:focus, .btn5:visited:hover, .btn5:visited:focus {
+                transition-timing-function: cubic-bezier(0.6, 4, 0.3, 0.8);
+                -webkit-animation: gelatine 0.5s 1;
+                animation: gelatine 0.5s 1;
+            }
+
+            @-webkit-keyframes gelatine {
+                from, to {
+                    -webkit-transform: scale(1, 1);
+                }
+                25% {
+                    -webkit-transform: scale(0.9, 1.1);
+                }
+                50% {
+                    -webkit-transform: scale(1.1, 0.9);
+                }
+                75% {
+                    -webkit-transform: scale(0.95, 1.05);
+                }
+                from, to {
+                    -webkit-transform: scale(1, 1);
+                }
+                25% {
+                    -webkit-transform: scale(0.9, 1.1);
+                }
+                50% {
+                    -webkit-transform: scale(1.1, 0.9);
+                }
+                75% {
+                    -webkit-transform: scale(0.95, 1.05);
+                }
+            }
+            @keyframes gelatine {
+                from, to {
+                    transform: scale(1, 1);
+                }
+                25% {
+                    transform: scale(0.9, 1.1);
+                }
+                50% {
+                    transform: scale(1.1, 0.9);
+                }
+                75% {
+                    transform: scale(0.95, 1.05);
+                }
+                from, to {
+                    transform: scale(1, 1);
+                }
+                25% {
+                    transform: scale(0.9, 1.1);
+                }
+                50% {
+                    transform: scale(1.1, 0.9);
+                }
+                75% {
+                    transform: scale(0.95, 1.05);
+                }
+            }
+            @keyframes fade {
+                0% {
+                    opacity: 0;
+                    transform: translateY(15px);
+                }
+                100% {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+/* for Dialog Box */
+            dialog {
+                padding: 0;
+                border: 1px solid #eee;
+                box-shadow: 2px 2px 4px #333;
+                position: relative;
+                width: 500px;
+                height: 400px;
+                overflow: hidden;
+                background-color: #fabfbf;
+            }
+        
+            dialog[open]{
+                animation: fade 1s ease 0s 1 normal;
+            }
+
+            .rightButton{
+                background-color: #0004ff;
+                text-align: center;
+                margin: 10px auto 20px auto;
+                padding: 10px;
+                border-radius: 4px;
+                font-weight: bold;
+                color: #fff;
+                box-shadow: 0px 1px 3px #8bb8fa;
+                cursor: pointer;
+                position:absolute;
+                right: 20px;
+                bottom: 2px;
+                opacity: 1;
+            }
+            .leftButton{
+                background-color: #b80000;
+                text-align: center;
+                margin: 10px auto 20px auto;
+                padding: 10px;
+                border-radius: 4px;
+                font-weight: bold;
+                color: #fff;
+                box-shadow: 0px 1px 3px rgb(83, 0, 0);
+                cursor: pointer;
+                position:absolute;
+                left: 20px;
+                bottom: 2px;
+                opacity: 1;
+            }
+            .normalButton{
+                background-color: #005005;
+                text-align: center;
+                margin: 10px auto 20px auto;
+                padding: 10px;
+                border-radius: 4px;
+                font-weight: bold;
+                color: #fff;
+                box-shadow: 0px 1px 3px rgb(4, 109, 0);
+                cursor: pointer;
+                opacity: 1;
+            }
+
+        </style>
+    </head>
+    <body translate="no" >
+        <center>
+            <h2> Dialog Box #012: 音声入力 </h2>
+            <div class="wrap">
+                <input type="button" id="button_12a" class="btn5" value="ダイアログを開く" onclick="Dialog_open_12()">
+                ダイアログボックスに入力されたテキスト：<br>
+                <textarea id="text_12" rows="10" cols="80">
+ここにダイアログボックス内で入力された文字が表示されます。
+音声で「改行」と言うと改行が挿入される他、「音声入力終了」あるいは「入力終了」で音声入力を終了します。
+</textarea>
+                <br>
+                <input type="button" id="button_12b" class="normalButton" style="position:absolute; top:0px; right:10%;" value="テキスト消去" onclick="Text_clear_12()">
+            </div>
+        </center>
+
+        <dialog dialog id="dialog_12">
+            <center>
+                ダイアログ #012（音声入力）
+                <hr>
+                <textarea id="Dialog_text_12" rows="11" cols="56">ここに入力してください</textarea>
+            </center>
+            <hr>
+            <input type="button" class="leftButton" id="clear_12" value="消　去" onclick="Dialog_clear_12()">
+            <input type="button" class="rightButton" id="close_12" value="決　定" onclick="Dialog_close_12()">
+            <input type="button" class="normalButton" id="ON_OFF_12" style="position:absolute; top:325px; left:160px;" value="音声 ON/OFF" onclick="OnButtonClick_01()">
+            <font size="6" color="red" style="position:absolute; top:335px; left:300px;"><span id="Speech_Flag">OFF</span></font>
+        </dialog>
+
+        <script>
+            var Text_12 = document.getElementById('text_12');
+            var Dialog_Text_12 = document.getElementById('Dialog_text_12');
+            var Speak = document.getElementById('Speech_Flag');
+            var Flag_Speech = 0;
+
+            function Dialog_open_12() {
+                Flag_Speech = 0;
+                Speak.innerHTML = '<i style="color:#ff0000;">OFF</i>';
+                recognition.stop();
+                dialog_12.showModal();
+            }
+            function Dialog_close_12() {
+                Flag_Speech = 0;
+                Speak.innerHTML = '<i style="color:#ff0000;">OFF</i>';
+                recognition.stop();
+                Text_12.value = Text_12.value + Dialog_Text_12.value + '\n';
+                dialog_12.close();
+            }
+            function Dialog_clear_12() {
+                Dialog_Text_12.value = "";
+            }
+            function Text_clear_12() {
+                Text_12.value = "";
+            }
+            
+// Speech Recognition
+            SpeechRecognition = webkitSpeechRecognition || SpeechRecognition;
+            let recognition = new SpeechRecognition();
+            recognition.lang = 'ja-JP';
+            recognition.interimResults = true;
+            recognition.continuous = true;
+
+// 音声入力、音声認識のON/OFF設定
+            function OnButtonClick_01() {
+                if (Flag_Speech == 0) {
+                    Flag_Speech = 1;
+                    Speak.innerHTML = '<i style="color:#0000ff;">_ON</i>';
+                    recognition.start();
+                }
+                else {
+                    Flag_Speech = 0;
+                    Speak.innerHTML = '<i style="color:#ff0000;">OFF</i>';
+                    recognition.stop();
+                }
+            }
+
+// 音声認識処理
+            recognition.onresult = (event) => {
+                let interimTranscript = '';     // 暫定の認識結果（Androidでは、うまく機能しない）
+                let finalTranscript = '';       // 確定した認識結果
+                sentence = '';
+                for (let i = event.resultIndex; i < event.results.length; i++) {
+                    if (event.results[i].isFinal) {
+                        finalTranscript = event.results[i][0].transcript;
+                    } else {
+                        interimTranscript = '';
+                    }
+                }
+                sentence = finalTranscript;
+                if (sentence.length > 0) {
+                    if (sentence != undefined) {
+                        Dialog_Text_12.value = Dialog_Text_12.value + sentence;
+                        if ((sentence.indexOf('入力') >= 0 && sentence.indexOf('終了') >= 0) || (sentence.indexOf('音声入力') >= 0 && sentence.indexOf('終了') >= 0)) {
+                            recognition.stop();
+                            Flag_Speech = 0;
+                            Speak.innerHTML = '<i style="color:#ff0000;">OFF</i>';
+                        }
+                        if (sentence.indexOf('改行') >= 0) {
+                            Dialog_Text_12.value = Dialog_Text_12.value + '\n';
+                        }
+                    }
+                }        
+            }
+
+            recognition.onend = (event) => {
+                if (Flag_Speech != 0) {
+                    setTimeout(confirm(), 5000)
+                } 
+            }
+
+            function confirm() {
+                if ( !recognition.onspeechstart) { 
+                    Flag_Speech = 0;
+                    Speak.innerHTML = '<i style="color:#ff0000;">OFF</i>';
+                    recognition.stop();
+                }
+            }
+
+        </script>
+    </body>
+</html>
