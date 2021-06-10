@@ -1,14 +1,12 @@
 # Dialog_Boxrs_for_HTML
 
-## 1. Description
+## 1. Description:
 
-## 2. Files
+## 2. Details:
 
-## 3. Details
+## 3. Reference:
 
-## 4. Reference
-
-## 5. License
+## 4. License:
 MIT
-## 6. Author
+## 5. Author:
 [T. Fujita](https://github.com/To-Fujita)
