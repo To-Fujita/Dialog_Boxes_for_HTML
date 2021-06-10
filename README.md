@@ -5,7 +5,7 @@
 [index.html](https://to-fujita.github.io/Dialog_Boxes_for_HTML/index.html): This is a menu to execute for all of the programs in this article.
  
 ## 2. Details:
- It is very easy to create a dialog box. The next code is to create a simple dialog box. It is needed to remember to create buttons that open and close for the dialog box.
+ It is very easy to create a dialog box. The next code is to create a simple dialog box. It is needed to remember to create buttons that open and close for the dialog box. [Simple_Dialog.html](https://to-fujita.github.io/Dialog_Boxes_for_HTML/Simple_Dialog.html): To show a dialog box.  
 
  ~~~
 <!DOCTYPE html>
