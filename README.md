@@ -5,7 +5,7 @@
  
  
 ## 2. Details:
- It is very easy to create a dialog box. The next code is to create a simple dialog box. It is needed to remember to create buttons that open and close the dialog box.
+ It is very easy to create a dialog box. The next code is to create a simple dialog box. It is needed to remember to create buttons that open and close for the dialog box.
 
  ~~~
 <!DOCTYPE html>
