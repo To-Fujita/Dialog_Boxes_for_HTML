@@ -4,8 +4,8 @@
  The dialog element is now available in HTML 5.2. Then, I had tyied to create some samples for dialog boxes. The samples are included display the informations, input the data, read and write the files and to create the menu. I hope this article will help to beginners for programming.
  
 ## 2. Details:
- It is very easy to create a dialog box.  
- 
+ It is very easy to create a dialog box. The next code is to create a simple dialog box. It is needed to remember to create buttons that open and close the dialog box.
+
  ~~~
 <!DOCTYPE html>
 <html lang="en">
@@ -36,6 +36,7 @@
     </body>
 </html>
  ~~~
+ 
  
  
 ## 3. Reference:
