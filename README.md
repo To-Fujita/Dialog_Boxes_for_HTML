@@ -9,6 +9,6 @@
 ## 4. Reference
 
 ## 5. License
-
+MIT
 ## 6. Author
 [T. Fujita](https://github.com/To-Fujita)
