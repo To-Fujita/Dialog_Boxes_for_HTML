@@ -39,6 +39,9 @@
  ~~~
  
 ### 2-1. Informations
+(a) Information
+
+(b) Profile
 
 
 ### 2-2. Data Input
