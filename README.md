@@ -5,7 +5,7 @@
  
 ## 2. Demo:
 
-[Dialog_Animation](https://to-fujita.github.io/Images/Dialog_Animation.gif)
+![Dialog_Animation](https://to-fujita.github.io/Images/Dialog_Animation.gif "Dialog_Animation")  
 [index.html](https://to-fujita.github.io/Dialog_Boxes_for_HTML/index.html): This is a menu to execute for all of the programs in this article.
  
 ## 3. Details:
