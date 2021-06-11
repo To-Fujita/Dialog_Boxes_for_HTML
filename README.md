@@ -89,7 +89,7 @@
  [EN_Dialog_009.html](https://to-fujita.github.io/Dialog_Boxes_for_HTML/EN_Dialog_009.html): "EN_Dialog_009.html" is a source file for the digital clock in the dialog box.  
  
 ## 3. Reference:
-
+- [The Dialog Element](https://developer.mozilla.org/en/docs/Web/HTML/Element/dialog)
 
 ## 4. License:
 MIT
