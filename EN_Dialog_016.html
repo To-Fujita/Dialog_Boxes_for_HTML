@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <title>Dialog Box #016 2021/06/11 by T. Fujita</title>
+        <meta charset = "utf-8" />
+ 
+        <style>
+            body {
+                padding: 0;
+                margin: 0;
+                font-size: 24px;
+                background-color: #ddffdd;
+            }
+            textarea {
+                font-family:Verdana, Helvetica, Arial, sans-serif;
+                font-size: 0.6em;
+                margin: 0;
+                padding: 0;
+                vertical-align:middle;
+            }
+
+/* BUTTON 5 */
+            .btn5, .btn5:link, .btn5:visited {
+                padding: 20px 20px;
+                text-decoration: none;
+                font-size: 18px;
+                display: block;
+                margin: 20px auto;
+
+                border: none;
+                outline: none;
+                color: #fefefe;
+                background-color: #005005;
+                border-radius: 3px;
+            }
+            .btn5:hover, .btn5:focus, .btn5:link:hover, .btn5:link:focus, .btn5:visited:hover, .btn5:visited:focus {
+                transition-timing-function: cubic-bezier(0.6, 4, 0.3, 0.8);
+                -webkit-animation: gelatine 0.5s 1;
+                animation: gelatine 0.5s 1;
+            }
+
+            @-webkit-keyframes gelatine {
+                from, to {
+                    -webkit-transform: scale(1, 1);
+                }
+                25% {
+                    -webkit-transform: scale(0.9, 1.1);
+                }
+                50% {
+                    -webkit-transform: scale(1.1, 0.9);
+                }
+                75% {
+                    -webkit-transform: scale(0.95, 1.05);
+                }
+                from, to {
+                    -webkit-transform: scale(1, 1);
+                }
+                25% {
+                    -webkit-transform: scale(0.9, 1.1);
+                }
+                50% {
+                    -webkit-transform: scale(1.1, 0.9);
+                }
+                75% {
+                    -webkit-transform: scale(0.95, 1.05);
+                }
+            }
+            @keyframes gelatine {
+                from, to {
+                    transform: scale(1, 1);
+                }
+                25% {
+                    transform: scale(0.9, 1.1);
+                }
+                50% {
+                    transform: scale(1.1, 0.9);
+                }
+                75% {
+                    transform: scale(0.95, 1.05);
+                }
+                from, to {
+                    transform: scale(1, 1);
+                }
+                25% {
+                    transform: scale(0.9, 1.1);
+                }
+                50% {
+                    transform: scale(1.1, 0.9);
+                }
+                75% {
+                    transform: scale(0.95, 1.05);
+                }
+            }
+
+/* for Dialog Box */
+            @keyframes fade {
+                0% {
+                    opacity: 0;
+                    transform: translateY(15px);
+                }
+
+                100% {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            dialog {
+                padding: 0;
+                border: 1px solid #eee;
+                box-shadow: 1px 1px 2px #333;
+                position: relative;
+                width: 500px;
+                height: 400px;
+                overflow: hidden;
+                background-color: #d0ffd0;
+            }
+        
+            dialog[open]{
+                animation: fade 1s ease 0s 1 normal;
+            }
+
+            .close{
+                background-color: #005005;
+                text-align: center;
+                margin: 10px auto 20px auto;
+                padding: 10px;
+                border-radius: 4px;
+                width: 80px;
+                font-weight: bold;
+                color: #fff;
+                box-shadow: 0px 1px 3px #333;
+                cursor: pointer;
+                position:absolute;
+                right: 50px;
+                bottom: 10px;
+                opacity: 1;
+            }
+
+/* Inside for Dialog Box */
+            #dialog_016 {
+              align-items: center;
+              justify-content: center;
+              background: #d0ffd0;
+            }
+            .clock {
+                width: 300px;
+                height: 300px;
+              border-radius: 100%;
+              background: #ffffff;
+              font-family: "Montserrat";
+              border: 5px solid white;
+              box-shadow: inset 2px 3px 8px 0 rgba(0, 0, 0, 0.1);
+              position: relative;
+              top: 50px;
+              left:100px;;
+            }
+            
+            .wrap {
+              overflow: hidden;
+              position: relative;
+              width: 350px;
+              height: 350px;
+              border-radius: 100%;
+            }
+            
+            .minute,
+            .hour {
+              position: absolute;
+              height: 100px;
+              width: 6px;
+              margin: auto;
+              top: -35%;
+              left: -50px;
+              bottom: 0;
+              right: 0;
+              background: black;
+              transform-origin: bottom center;
+              transform: rotate(0deg);
+              box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);
+              z-index: 1;
+            }
+            
+            .minute {
+              position: absolute;
+              height: 120px;
+              width: 4px;
+              top: -41%;
+              left: -50px;
+              box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);
+              transform: rotate(90deg);
+            }
+            
+            .second {
+              position: absolute;
+              height: 130px;
+              width: 2px;
+              margin: auto;
+              top: -44%;
+              left: -50px;
+              bottom: 0;
+              right: 0;
+              border-radius: 4px;
+              background: #FF4B3E;
+              transform-origin: bottom center;
+              transform: rotate(180deg);
+              z-index: 1;
+            }
+            
+            .dot {
+              position: absolute;
+              top: -24px;
+              left: -50px;
+              right: 0;
+              bottom: 0;
+              width: 12px;
+              height: 12px;
+              border-radius: 100px;
+              background: white;
+              border: 2px solid #1b1b1b;
+              border-radius: 100px;
+              margin: auto;
+              z-index: 1;
+            }
+
+        </style>
+    </head>
+    <body translate="no" >
+        <center>
+            <h2> Dialog Box #016: Analog Clock </h2>
+
+            <input type="button" id="button_01" class="btn5" value="Open Dialog" onclick="Dialog_open_016()">
+
+        </center>
+
+        <script>
+            function Dialog_open_016() {
+                dialog_016.showModal();
+            }
+            function Dialog_close_016() {
+                dialog_016.close();
+            }
+        </script>
+
+<!-- Dialog #016 -->
+        <dialog id="dialog_016">
+            <span style="position: absolute; top: 10px; left: 15%;">
+                Dialog Box #016（Anilog Clock）
+            </span>
+
+            <div class="clock">
+                <div class="wrap">
+                  <span class="hour"></span>
+                  <span class="minute"></span>
+                  <span class="second"></span>
+                  <span class="dot"></span>
+                </div>
+              </div>
+                 
+            <input type="button" class="close" id="close_01" value="Close" onclick="Dialog_close_016()">
+        </dialog>
+       
+        <script id="rendered-js" >
+          var inc = 1000;
+          
+          clock();
+          
+          function clock() {
+            const date = new Date();
+          
+            const hours = (date.getHours() + 11) % 12 + 1;
+            const minutes = date.getMinutes();
+            const seconds = date.getSeconds();
+          
+            const hour = hours * 30;
+            const minute = minutes * 6;
+            const second = seconds * 6;
+          
+            document.querySelector('.hour').style.transform = `rotate(${hour}deg)`;
+            document.querySelector('.minute').style.transform = `rotate(${minute}deg)`;
+            document.querySelector('.second').style.transform = `rotate(${second}deg)`;
+          }
+          
+          setInterval(clock, inc);
+
+        </script>
+
+    </body>
+</html>

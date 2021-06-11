@@ -249,7 +249,7 @@
     </span>
 
     <span class="shift" style="position:absolute; top:130px; left: 10px;">
-        <a href="javascript: Dialog_open_09()"><img src="./images/clock_2.png" /></a>
+        <a href="javascript: Dialog_open_10()"><img src="./images/profile_2.png" /></a>
     </span>
     <span class="shift" style="position:absolute; top:130px; left: 90px;">
         <a href="javascript: Dialog_open_12()"><img src="./images/communication_2.png" /></a>
@@ -268,7 +268,10 @@
     </span>
 
     <span class="shift" style="position:absolute; top:210px; left: 10px;">
-        <a href="javascript: Dialog_open_10()"><img src="./images/profile_2.png" /></a>
+        <a href="javascript: Dialog_open_09()"><img src="./images/DigitalClock_4.png" /></a>
+    </span>
+    <span class="shift" style="position:absolute; top:210px; left: 90px;">
+        <a href="javascript: Dialog_open_16()"><img src="./images/clock_2.png" /></a>
     </span>
     <span class="shift" style="position:absolute; top:210px; left: 250px;">
         <a href="javascript: Dialog_open_06()"><img src="./images/text-1.png" /></a>
@@ -1648,6 +1651,54 @@ Also, you say the "End of voice input" or "End of the input" to terminate the vo
             }
         </script>
 
+<!-- Dialog Box #016 -->
+        <dialog id="dialog_016">
+            <span style="position: absolute; top: 10px; left: 15%;">
+                Dialog Box #016（Anilog Clock）
+            </span>
+
+            <div class="analog_clock">
+                <div class="analog_wrap">
+                    <span class="analog_hour"></span>
+                    <span class="analog_minute"></span>
+                    <span class="analog_second"></span>
+                    <span class="analog_dot"></span>
+                </div>
+            </div>
+         
+            <input type="button" class="rightButton" id="close_16" value="Close" onclick="Dialog_close_16()">
+        </dialog>
+
+        <script>
+            var inc = 1000;
+  
+            analog_clock();
+  
+            function Dialog_open_16() {
+                dialog_016.showModal();
+            }
+            function Dialog_close_16() {
+                dialog_016.close();
+            }
+            function analog_clock() {
+                var date = new Date();
+  
+                var hours = (date.getHours() + 11) % 12 + 1;
+                var minutes = date.getMinutes();
+                var seconds = date.getSeconds();
+  
+                var hour = hours * 30;
+                var minute = minutes * 6;
+                var second = seconds * 6;
+  
+                document.querySelector('.analog_hour').style.transform = `rotate(${hour}deg)`;
+                document.querySelector('.analog_minute').style.transform = `rotate(${minute}deg)`;
+                document.querySelector('.analog_second').style.transform = `rotate(${second}deg)`;
+            }
+  
+            setInterval(analog_clock, inc);
+
+        </script>
 
     </body>
 </html>

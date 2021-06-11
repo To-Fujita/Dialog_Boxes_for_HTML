@@ -397,3 +397,89 @@
                 background-color: #06529d;
                 color:#fff;
             }
+
+/* for Analog Clock */
+  #dialog_016 {
+    align-items: center;
+    justify-content: center;
+    background: #d0ffd0;
+  }
+  .analog_clock {
+      width: 300px;
+      height: 300px;
+    border-radius: 100%;
+    background: #ffffff;
+    font-family: "Montserrat";
+    border: 5px solid white;
+    box-shadow: inset 2px 3px 8px 0 rgba(0, 0, 0, 0.1);
+    position: relative;
+    top: 50px;
+    left:100px;;
+  }
+  
+  .analog_wrap {
+    overflow: hidden;
+    position: relative;
+    width: 350px;
+    height: 350px;
+    border-radius: 100%;
+  }
+  
+  .analog_minute,
+  .analog_hour {
+    position: absolute;
+    height: 100px;
+    width: 6px;
+    margin: auto;
+    top: -35%;
+    left: -50px;
+    bottom: 0;
+    right: 0;
+    background: black;
+    transform-origin: bottom center;
+    transform: rotate(0deg);
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);
+    z-index: 1;
+  }
+  
+  .analog_minute {
+    position: absolute;
+    height: 120px;
+    width: 4px;
+    top: -41%;
+    left: -50px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);
+    transform: rotate(90deg);
+  }
+  
+  .analog_second {
+    position: absolute;
+    height: 130px;
+    width: 2px;
+    margin: auto;
+    top: -44%;
+    left: -50px;
+    bottom: 0;
+    right: 0;
+    border-radius: 4px;
+    background: #FF4B3E;
+    transform-origin: bottom center;
+    transform: rotate(180deg);
+    z-index: 1;
+  }
+  
+  .analog_dot {
+    position: absolute;
+    top: -24px;
+    left: -50px;
+    right: 0;
+    bottom: 0;
+    width: 12px;
+    height: 12px;
+    border-radius: 100px;
+    background: white;
+    border: 2px solid #1b1b1b;
+    border-radius: 100px;
+    margin: auto;
+    z-index: 1;
+  }
