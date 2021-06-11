@@ -92,6 +92,8 @@
 ### 3-5. Others
 (a) Digital Clock  
  [EN_Dialog_009.html](https://to-fujita.github.io/Dialog_Boxes_for_HTML/EN_Dialog_009.html): "EN_Dialog_009.html" is a source file for the digital clock in the dialog box.  
+ (b) Analog Clock  
+ [EN_Dialog_016.html](https://to-fujita.github.io/Dialog_Boxes_for_HTML/EN_Dialog_016.html): "EN_Dialog_016.html" is a source file for the analog clock in the dialog box.  
  
 ## 4. Reference:
 - [The Dialog Element](https://developer.mozilla.org/en/docs/Web/HTML/Element/dialog)
