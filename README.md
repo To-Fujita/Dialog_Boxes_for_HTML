@@ -1,10 +1,14 @@
 # Dialog_Boxes_for_HTML
 
 ## 1. Description:
- The dialog element is now available in HTML 5.2. Then, I had tyied to create some samples for dialog boxes. The samples are included display the informations, input the data, read and write the files and to create the menu. The dialog element is supported by Chrome and Microsoft Edge. I hope this article will help to beginners for programming.
+ The dialog element is now available in HTML 5.2. Then, I had tyied to create some samples for dialog boxes. The samples are included display the informations, input the data, read and write the files and to create the menu. The dialog element is supported by Chrome and Microsoft Edge. I hope this article will help to beginners for programming.  
+ 
+## 2. Demo:
+
+[Dialog_Animation](https://to-fujita.github.io/Images/Dialog_Animation.gif)
 [index.html](https://to-fujita.github.io/Dialog_Boxes_for_HTML/index.html): This is a menu to execute for all of the programs in this article.
  
-## 2. Details:
+## 3. Details:
  It is very easy to create a dialog box. The next code is to create a simple dialog box. It is needed to remember to create buttons that open and close for the dialog box. [Simple_Dialog.html](https://to-fujita.github.io/Dialog_Boxes_for_HTML/Simple_Dialog.html): To show a dialog box.  
 
  ~~~
@@ -38,14 +42,14 @@
 </html>
  ~~~
  
-### 2-1. Informations
+### 3-1. Informations
 (a) Information  
  [EN_Dialog_001.html](https://to-fujita.github.io/Dialog_Boxes_for_HTML/EN_Dialog_001.html): "EN_Dialog_001.html" is a source file for basic information and with the effect of letters collapsing as like sands.
  
 (b) Profile  
  [EN_Dialog_010.html](https://to-fujita.github.io/Dialog_Boxes_for_HTML/EN_Dialog_010.html): "EN_Dialog_010.html" is a source file to display the picture with some effects.
 
-### 2-2. Data Input
+### 3-2. Data Input
 (a) Text Input  
  [EN_Dialog_002.html](https://to-fujita.github.io/Dialog_Boxes_for_HTML/EN_Dialog_002.html): "EN_Dialog_002.html" is a source file to input the text by keyboard.  
 
@@ -64,7 +68,7 @@
 (f) Calendar  
 [EN_Dialog_011.html](https://to-fujita.github.io/Dialog_Boxes_for_HTML/EN_Dialog_011.html): "EN_Dialog_011.html" is a source file by using date picker on calendar.  
 
-### 2-3. File Read and Write
+### 3-3. File Read and Write
 (a) Load the Text File  
  [EN_Dialog_006.html](https://to-fujita.github.io/Dialog_Boxes_for_HTML/EN_Dialog_006.html): "EN_Dialog_006.html" is a source file to load the text file from local device. This program is supported several type of character sets. It is supported by the "EN_Dialog_100.html" and by the "EN_Dialog_102.html" to save the text file with UTF-8 of character set.  
  
@@ -74,7 +78,7 @@
 (c) Load the Image File  
  [EN_Dialog_008.html](https://to-fujita.github.io/Dialog_Boxes_for_HTML/EN_Dialog_008.html): "EN_Dialog_008.html" is a source file to load the image file from local device.  
 
-### 2-4. To Create Menu
+### 3-4. To Create Menu
 (a) Drop Down Type of Menu  
  [EN_Dialog_100.html](https://to-fujita.github.io/Dialog_Boxes_for_HTML/EN_Dialog_100.html): "EN_Dialog_100.html" is a source file to show the drop down menu and link to sevral dialog boxes.  
  
@@ -84,15 +88,15 @@
 (c) Icon Type of Menu  
 [EN_Dialog_102.html](https://to-fujita.github.io/Dialog_Boxes_for_HTML/EN_Dialog_102.html): "EN_Dialog_102.html" is a source file to show the icon type of menu and link to sevral dialog boxes.  
 
-### 2-5. Others
+### 3-5. Others
 (a) Digital Clock  
  [EN_Dialog_009.html](https://to-fujita.github.io/Dialog_Boxes_for_HTML/EN_Dialog_009.html): "EN_Dialog_009.html" is a source file for the digital clock in the dialog box.  
  
-## 3. Reference:
+## 4. Reference:
 - [The Dialog Element](https://developer.mozilla.org/en/docs/Web/HTML/Element/dialog)
 
-## 4. License:
+## 5. License:
 MIT
 
-## 5. Author:
+## 6. Author:
 [T. Fujita](https://github.com/To-Fujita)
