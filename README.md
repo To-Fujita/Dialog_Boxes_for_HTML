@@ -6,6 +6,7 @@
 ## 2. Demo:
 
 <img src="https://to-fujita.github.io/Images/Dialog_Animation.gif" alt="Dialog_Animation" title="Dialog_Animation" width="374" height="300">  
+
 [index.html](https://to-fujita.github.io/Dialog_Boxes_for_HTML/index.html): This is a menu to execute for all of the programs in this article.  
  
 ## 3. Details:
