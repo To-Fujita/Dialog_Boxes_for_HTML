@@ -1,7 +1,7 @@
 # Dialog_Boxes_for_HTML
 
 ## 1. Description:
- The dialog element is now available in HTML 5.2. Then, I had tyied to create some samples for dialog boxes. The samples are included display the informations, input the data, read and write the files and to create the menu. The dialog element is supported by Chrome and Microsoft Edge. I hope this article will help to beginners for programming.  
+ The dialog element is now available in HTML 5.2. Then, I had tyied to create some samples for dialog boxes. The samples are included display the informations, input the data, read and write the files and to create the menu. The dialog element is supported by Chrome and Microsoft Edge, as of June 2021. I hope this article will help to beginners for programming.  
  
 ## 2. Demo:
 
