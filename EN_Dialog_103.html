@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <title>Dialog Box #103 2021/06/26 by T. Fujita</title>
+        <meta charset = "utf-8" />
+        <link rel = "stylesheet" href = "./css/reset.css" type="text/css" media="screen">
+ 
+        <style>
+            body {
+                padding: 0, 0, 0, 0;
+                margin: -20, 0, 0, 0;
+                font-size: 24px;
+                background-color: #ddffdd;
+            }
+ 
+/* Buttons at the center */
+            .wrap {
+                position: relative;
+                top: 80px;
+                text-align: center;
+            }
+
+/* BUTTON 5 */
+            .btn5, .btn5:link, .btn5:visited {
+                padding: 20px 20px;
+                text-decoration: none;
+                font-size: 18px;
+                display: block;
+                margin: 20px auto;
+
+                border: none;
+                outline: none;
+                color: #fefefe;
+                background-color: #005005;
+                border-radius: 3px;
+            }
+            .btn5:hover, .btn5:focus, .btn5:link:hover, .btn5:link:focus, .btn5:visited:hover, .btn5:visited:focus {
+                transition-timing-function: cubic-bezier(0.6, 4, 0.3, 0.8);
+                -webkit-animation: gelatine 0.5s 1;
+                animation: gelatine 0.5s 1;
+            }
+
+            @-webkit-keyframes gelatine {
+                from, to {
+                    -webkit-transform: scale(1, 1);
+                }
+                25% {
+                    -webkit-transform: scale(0.9, 1.1);
+                }
+                50% {
+                    -webkit-transform: scale(1.1, 0.9);
+                }
+                75% {
+                    -webkit-transform: scale(0.95, 1.05);
+                }
+                from, to {
+                    -webkit-transform: scale(1, 1);
+                }
+                25% {
+                    -webkit-transform: scale(0.9, 1.1);
+                }
+                50% {
+                    -webkit-transform: scale(1.1, 0.9);
+                }
+                75% {
+                    -webkit-transform: scale(0.95, 1.05);
+                }
+            }
+            @keyframes gelatine {
+                from, to {
+                    transform: scale(1, 1);
+                }
+                25% {
+                    transform: scale(0.9, 1.1);
+                }
+                50% {
+                    transform: scale(1.1, 0.9);
+                }
+                75% {
+                    transform: scale(0.95, 1.05);
+                }
+                from, to {
+                    transform: scale(1, 1);
+                }
+                25% {
+                    transform: scale(0.9, 1.1);
+                }
+                50% {
+                    transform: scale(1.1, 0.9);
+                }
+                75% {
+                    transform: scale(0.95, 1.05);
+                }
+            }
+
+/* for Dialog Box */
+            @keyframes fade {
+                0% {
+                    opacity: 0;
+                    transform: translateY(15px);
+                }
+
+                100% {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            dialog {
+                padding: 0;
+                border: 1px solid #eee;
+                box-shadow: 1px 1px 2px #333;
+                position: relative;
+                width: 500px;
+                height: 400px;
+                overflow: hidden;
+                background-color: #d0ffd0;
+            }
+        
+            dialog[open]{
+                animation: fade 1s ease 0s 1 normal;
+            }
+
+            .rightButton{
+                background-color: #0004ff;
+                text-align: center;
+                margin: 10px auto 20px auto;
+                padding: 10px;
+                border-radius: 4px;
+                font-weight: bold;
+                color: #fff;
+                box-shadow: 0px 1px 3px #8bb8fa;
+                cursor: pointer;
+                position:absolute;
+                right: 20px;
+                bottom: 2px;
+                opacity: 1;
+            }
+            .leftButton{
+                background-color: #b80000;
+                text-align: center;
+                margin: 10px auto 20px auto;
+                padding: 10px;
+                border-radius: 4px;
+                font-weight: bold;
+                color: #fff;
+                box-shadow: 0px 1px 3px rgb(83, 0, 0);
+                cursor: pointer;
+                position:absolute;
+                left: 20px;
+                bottom: 2px;
+                opacity: 1;
+            }
+            .normalButton{
+                background-color: #005005;
+                text-align: center;
+                margin: 10px auto 20px auto;
+                padding: 10px;
+                border-radius: 4px;
+                font-weight: bold;
+                color: #fff;
+                box-shadow: 0px 1px 3px rgb(4, 109, 0);
+                cursor: pointer;
+                opacity: 1;
+            }
+
+
+/* Inside for Dialog Box */
+    li {
+        perspective: 200px;
+      }
+      
+      .info {
+        transform: rotate3d(1, 0, 0, 90deg);
+        width: 100%;
+        height: 100%;
+        padding: 10px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        border-radius: 4px;
+        pointer-events: none;
+        background-color: #338833;
+      }
+      
+      .in-top .info {
+        transform-origin: 50% 0%;
+        -webkit-animation: in-top 300ms ease 0ms 1 forwards;
+                animation: in-top 300ms ease 0ms 1 forwards;
+      }
+      
+      .in-right .info {
+        transform-origin: 100% 0%;
+        -webkit-animation: in-right 300ms ease 0ms 1 forwards;
+                animation: in-right 300ms ease 0ms 1 forwards;
+      }
+      
+      .in-bottom .info {
+        transform-origin: 50% 100%;
+        -webkit-animation: in-bottom 300ms ease 0ms 1 forwards;
+                animation: in-bottom 300ms ease 0ms 1 forwards;
+      }
+      
+      .in-left .info {
+        transform-origin: 0% 0%;
+        -webkit-animation: in-left 300ms ease 0ms 1 forwards;
+                animation: in-left 300ms ease 0ms 1 forwards;
+      }
+      
+      .out-top .info {
+        transform-origin: 50% 0%;
+        -webkit-animation: out-top 300ms ease 0ms 1 forwards;
+                animation: out-top 300ms ease 0ms 1 forwards;
+      }
+      
+      .out-right .info {
+        transform-origin: 100% 50%;
+        -webkit-animation: out-right 300ms ease 0ms 1 forwards;
+                animation: out-right 300ms ease 0ms 1 forwards;
+      }
+      
+      .out-bottom .info {
+        transform-origin: 50% 100%;
+        -webkit-animation: out-bottom 300ms ease 0ms 1 forwards;
+                animation: out-bottom 300ms ease 0ms 1 forwards;
+      }
+      
+      .out-left .info {
+        transform-origin: 0% 0%;
+        -webkit-animation: out-left 300ms ease 0ms 1 forwards;
+                animation: out-left 300ms ease 0ms 1 forwards;
+      }
+      
+      @-webkit-keyframes in-top {
+        from {
+          transform: rotate3d(-1, 0, 0, 90deg);
+        }
+        to {
+          transform: rotate3d(0, 0, 0, 0deg);
+        }
+      }
+      
+      @keyframes in-top {
+        from {
+          transform: rotate3d(-1, 0, 0, 90deg);
+        }
+        to {
+          transform: rotate3d(0, 0, 0, 0deg);
+        }
+      }
+      @-webkit-keyframes in-right {
+        from {
+          transform: rotate3d(0, -1, 0, 90deg);
+        }
+        to {
+          transform: rotate3d(0, 0, 0, 0deg);
+        }
+      }
+      @keyframes in-right {
+        from {
+          transform: rotate3d(0, -1, 0, 90deg);
+        }
+        to {
+          transform: rotate3d(0, 0, 0, 0deg);
+        }
+      }
+      @-webkit-keyframes in-bottom {
+        from {
+          transform: rotate3d(1, 0, 0, 90deg);
+        }
+        to {
+          transform: rotate3d(0, 0, 0, 0deg);
+        }
+      }
+      @keyframes in-bottom {
+        from {
+          transform: rotate3d(1, 0, 0, 90deg);
+        }
+        to {
+          transform: rotate3d(0, 0, 0, 0deg);
+        }
+      }
+      @-webkit-keyframes in-left {
+        from {
+          transform: rotate3d(0, 1, 0, 90deg);
+        }
+        to {
+          transform: rotate3d(0, 0, 0, 0deg);
+        }
+      }
+      @keyframes in-left {
+        from {
+          transform: rotate3d(0, 1, 0, 90deg);
+        }
+        to {
+          transform: rotate3d(0, 0, 0, 0deg);
+        }
+      }
+      @-webkit-keyframes out-top {
+        from {
+          transform: rotate3d(0, 0, 0, 0deg);
+        }
+        to {
+          transform: rotate3d(-1, 0, 0, 104deg);
+        }
+      }
+      @keyframes out-top {
+        from {
+          transform: rotate3d(0, 0, 0, 0deg);
+        }
+        to {
+          transform: rotate3d(-1, 0, 0, 104deg);
+        }
+      }
+      @-webkit-keyframes out-right {
+        from {
+          transform: rotate3d(0, 0, 0, 0deg);
+        }
+        to {
+          transform: rotate3d(0, -1, 0, 104deg);
+        }
+      }
+      @keyframes out-right {
+        from {
+          transform: rotate3d(0, 0, 0, 0deg);
+        }
+        to {
+          transform: rotate3d(0, -1, 0, 104deg);
+        }
+      }
+      @-webkit-keyframes out-bottom {
+        from {
+          transform: rotate3d(0, 0, 0, 0deg);
+        }
+        to {
+          transform: rotate3d(1, 0, 0, 104deg);
+        }
+      }
+      @keyframes out-bottom {
+        from {
+          transform: rotate3d(0, 0, 0, 0deg);
+        }
+        to {
+          transform: rotate3d(1, 0, 0, 104deg);
+        }
+      }
+      @-webkit-keyframes out-left {
+        from {
+          transform: rotate3d(0, 0, 0, 0deg);
+        }
+        to {
+          transform: rotate3d(0, 1, 0, 104deg);
+        }
+      }
+      @keyframes out-left {
+        from {
+          transform: rotate3d(0, 0, 0, 0deg);
+        }
+        to {
+          transform: rotate3d(0, 1, 0, 104deg);
+        }
+      }
+      /* you can ignore this ones */
+      ul {
+        padding: 0;
+        margin: 0 0 0 30px;
+      }
+      ul:after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+      
+      li {
+        position: relative;
+        float: left;
+        width: 100px;
+        height: 100px;
+        margin: 5px;
+        padding: 0;
+        list-style: none;
+      }
+      li a {
+        display: inline-block;
+        vertical-align: top;
+        text-decoration: none;
+        border-radius: 4px;
+      }
+      li h3 {
+        margin: 0;
+        font-size: 16px;
+        color: rgba(255, 255, 255, 0.9);
+      }
+      li p {
+        font-size: 10px;
+        line-height: 1.2;
+        color: rgba(255, 255, 255, 0.8);
+      }
+      li .normal {
+        width: 100%;
+        height: 100%;
+        background-color: #ECF0F1;
+        color: rgba(52, 73, 94, 0.6);
+        box-shadow: inset 0 2px 20px #e6ebed;
+        text-align: center;
+        font-size: 50px;
+        line-height: 100px;
+      }
+      li .normal svg {
+        pointer-events: none;
+        width: 50px;
+      }
+      li .normal svg path {
+        fill: rgba(52, 73, 94, 0.2);
+      }
+      
+      * {
+        box-sizing: border-box;
+      }
+      
+      h1 {
+        margin: 0 auto 5px;
+        text-align: center;
+      }
+      
+      h3 {
+        font-family: "Bree Serif", serif;
+      }
+      
+      .container {
+        width: 500px;
+        margin: 0 auto;
+      }
+
+      dialog img {
+          position: relative;
+          top: 10px;
+          left: 10px;
+          width: 80px;
+          height: 80px;
+          opacity: 1;
+      }
+
+        </style>
+    </head>
+    <body translate="no" >
+        <center>
+            <h2> Dialog Box #103: Block Menus </h2>
+            <div class="wrap">
+                <input type="button" id="button_103" class="btn5" value="Open the Dialog" onclick="Dialog_open_103()">
+            </div>
+        </center>
+
+        <dialog dialog id="dialog_103_A">
+            <center>
+                Dialog #103_A（Block）
+            </center>
+            <hr>
+
+            <div class='container'>
+                <ul>
+                  <li>
+                    <a class='normal' href='./EN_Dialog_001.html'>
+                        <img src="./images/info.png">
+                    </a>
+                    <div class='info'>
+                      <h3>#01-1 Information</h3>
+                      <p>Link to Information</p>
+                    </div>
+                  </li>
+                  <li>
+                    <a class='normal' href='./EN_Dialog_002.html'>
+                        <img src="./images/keyboard_2.png">
+                    </a>
+                    <div class='info'>
+                      <h3>#01-2 Input the Text</h3>
+                      <p>Link to Input the Text</p>
+                    </div>
+                  </li>
+                  <li>
+                    <a class='normal' href='./EN_Dialog_003.html'>
+                        <img src="./images/radio_button_2.png">
+                    </a>
+                    <div class='info'>
+                      <h3>#01-3 Radio Button</h3>
+                      <p>Link to Radio Button</p>
+                    </div>
+                  </li>
+                  <li>
+                    <a class='normal' href='./EN_Dialog_004.html'>
+                        <img src="./images/check_box_2.png">
+                    </a>
+                    <div class='info'>
+                      <h3>#01-4 Check Box</h3>
+                      <p>Link to Check Box</p>
+                    </div>
+                  </li>
+                  <li>
+                    <a class='normal' href='./EN_Dialog_005.html'>
+                      <img src="./images/select_2.png">
+                    </a>
+                    <div class='info'>
+                      <h3>#01-5 Selecter</h3>
+                      <p>Link to Selecter</p>
+                    </div>
+                  </li>
+                  <li>
+                    <a class='normal' href='./EN_Dialog_006.html'>
+                        <img src="./images/text-2.png">
+                    </a>
+                    <div class='info'>
+                      <h3>#01-6 Text File</h3>
+                      <p>Link to Read Text File</p>
+                    </div>
+                  </li>
+                  <li>
+                    <a class='normal' href='./EN_Dialog_007.html'>
+                        <img src="./images/csv-3.png">
+                    </a>
+                    <div class='info'>
+                      <h3>#01-7 CSV File</h3>
+                      <p>Link to Read CSV File</p>
+                    </div>
+                  </li>
+                  <li>
+                    <a class='normal' href='./EN_Dialog_008.html'>
+                        <img src="./images/gallery_col.png">
+                    </a>
+                    <div class='info'>
+                      <h3>#01-8 Image File</h3>
+                      <p>Link to Read Image File</p>
+                    </div>
+                  </li>
+                </ul>
+              </div>            
+              <hr>
+            <input type="button" class="leftButton" value="Previous" onclick="Dialog_open_103_AC()">
+            <input type="button" class="normalButton" value="Close" style="position: absolute; bottom: 2px; left:45%;" onclick="Dialog_close_103_A()">
+            <input type="button" class="rightButton" value="Next" onclick="Dialog_open_103_AB()">
+        </dialog>
+
+        <dialog dialog id="dialog_103_B">
+            <center>
+                Dialog #103_B（Block）
+            </center>
+            <hr>
+
+            <div class='container'>
+                <ul>
+                  <li>
+                    <a class='normal' href='./EN_Dialog_009.html'>
+                        <img src="./images/DigitalClock_4.png">
+                    </a>
+                    <div class='info'>
+                      <h3>#02-1 Digital Clock</h3>
+                      <p>Link to Digital Clock</p>
+                    </div>
+                  </li>
+                  <li>
+                    <a class='normal' href='./EN_Dialog_010.html'>
+                        <img src="./images/profile_2.png">
+                    </a>
+                    <div class='info'>
+                      <h3>#02-2 Profile</h3>
+                      <p>Link to Profile</p>
+                    </div>
+                  </li>
+                  <li>
+                    <a class='normal' href='./EN_Dialog_011.html'>
+                        <img src="./images/calendar_2.png">
+                    </a>
+                    <div class='info'>
+                      <h3>#02-3 Date Picker</h3>
+                      <p>Link to Date Picker</p>
+                    </div>
+                  </li>
+                  <li>
+                    <a class='normal' href='./EN_Dialog_012.html'>
+                        <img src="./images/communication_2.png">
+                    </a>
+                    <div class='info'>
+                      <h3>#02-4 Voice Input</h3>
+                      <p>Link to Voice Input</p>
+                    </div>
+                  </li>
+                  <li>
+                    <a class='normal' href='./EN_Dialog_016.html'>
+                      <img src="./images/clock_1.png">
+                    </a>
+                    <div class='info'>
+                      <h3>#02-5 Analog Clock</h3>
+                      <p>Link to Analog Clock</p>
+                    </div>
+                  </li>
+                  <li>
+                    <a class='normal' href='./EN_Dialog_017.html'>
+                        <img src="./images/color-picker_01.png">
+                    </a>
+                    <div class='info'>
+                      <h3>#02-6 Color Picker</h3>
+                      <p>Link to Color Picker</p>
+                    </div>
+                  </li>
+                  <li>
+                    <a class='normal' href='./EN_Dialog_018.html'>
+                        <img src="./images/slider_02.png">
+                    </a>
+                    <div class='info'>
+                      <h3>#02-7 Slider</h3>
+                      <p>Link to Slider</p>
+                    </div>
+                  </li>
+                  <li>
+                    <a class='normal' href='./EN_Dialog_019.html'>
+                        <img src="./images/slider_04.png">
+                    </a>
+                    <div class='info'>
+                      <h3>#02-8 Color Maker by Slider</h3>
+                      <p>Link to Color Maker</p>
+                    </div>
+                  </li>
+                </ul>
+              </div>            
+
+            <input type="button" class="leftButton" value="Previous" onclick="Dialog_open_103_BA()">
+            <input type="button" class="normalButton" value="Close" style="position: absolute; bottom: 2px; left:45%;" onclick="Dialog_close_103_B()">
+            <input type="button" class="rightButton" value="Next" onclick="Dialog_open_103_BC()">
+        </dialog>
+
+        <dialog dialog id="dialog_103_C">
+            <center>
+                Dialog #103_C（Block）
+            </center>
+            <hr>
+
+            <div class='container'>
+                <ul>
+                  <li>
+                    <a class='normal' href='#'>
+                        <img src="./images/under_construction_02.png">
+                    </a>
+                    <div class='info'>
+                      <h3>#03-1 Dummy</h3>
+                      <p>Under Construction</p>
+                    </div>
+                  </li>
+                  <li>
+                    <a class='normal' href='#'>
+                        <img src="./images/under_construction_02.png">
+                    </a>
+                    <div class='info'>
+                      <h3>#03-2 Dummy</h3>
+                      <p>Under Construction</p>
+                    </div>
+                  </li>
+                  <li>
+                    <a class='normal' href='#'>
+                        <img src="./images/under_construction_02.png">
+                    </a>
+                    <div class='info'>
+                      <h3>#03-3 Dummy</h3>
+                      <p>Under Construction</p>
+                    </div>
+                  </li>
+                  <li>
+                    <a class='normal' href='#'>
+                        <img src="./images/under_construction_02.png">
+                    </a>
+                    <div class='info'>
+                      <h3>#03-4 Dummy</h3>
+                      <p>Under Construction</p>
+                    </div>
+                  </li>
+                  <li>
+                    <a class='normal' href='#'>
+                      <img src="./images/under_construction_03.png">
+                    </a>
+                    <div class='info'>
+                      <h3>#03-5 Dummy</h3>
+                      <p>Under Construction</p>
+                    </div>
+                  </li>
+                  <li>
+                    <a class='normal' href='#'>
+                        <img src="./images/under_construction_03.png">
+                    </a>
+                    <div class='info'>
+                      <h3>#03-6 Dummy</h3>
+                      <p>Under Construction</p>
+                    </div>
+                  </li>
+                  <li>
+                    <a class='normal' href='#'>
+                        <img src="./images/under_construction_03.png">
+                    </a>
+                    <div class='info'>
+                      <h3>#03-7 Dummy</h3>
+                      <p>Under Construction</p>
+                    </div>
+                  </li>
+                  <li>
+                    <a class='normal' href='#'>
+                        <img src="./images/under_construction_03.png">
+                    </a>
+                    <div class='info'>
+                      <h3>#03-8 Dummy</h3>
+                      <p>Under Construction</p>
+                    </div>
+                  </li>
+                </ul>
+              </div>            
+
+            <input type="button" class="leftButton" value="Previous" onclick="Dialog_open_103_CB()">
+            <input type="button" class="normalButton" value="Close" style="position: absolute; bottom: 2px; left:45%;" onclick="Dialog_close_103_C()">
+            <input type="button" class="rightButton" value="Next" onclick="Dialog_open_103_CA()">
+        </dialog>
+
+        <script>
+            function Dialog_open_103() {
+                dialog_103_A.showModal();
+            }
+            function Dialog_open_103_AB() {
+                dialog_103_A.close()
+                dialog_103_B.showModal();
+            }
+            function Dialog_open_103_AC() {
+                dialog_103_A.close()
+                dialog_103_C.showModal();
+            }
+            function Dialog_open_103_BA() {
+                dialog_103_B.close()
+                dialog_103_A.showModal();
+            }
+            function Dialog_open_103_BC() {
+                dialog_103_B.close()
+                dialog_103_C.showModal();
+            }
+            function Dialog_open_103_CA() {
+                dialog_103_C.close()
+                dialog_103_A.showModal();
+            }
+            function Dialog_open_103_CB() {
+                dialog_103_C.close()
+                dialog_103_B.showModal();
+            }
+            
+            function Dialog_close_103_A() {
+                dialog_103_A.close();
+            }
+            function Dialog_close_103_B() {
+                dialog_103_B.close();
+            }
+            function Dialog_close_103_C() {
+                dialog_103_C.close();
+            }
+
+// Inside of Dialog Box
+            const nodes = [].slice.call(document.querySelectorAll('li'), 0);
+            const directions = { 0: 'top', 1: 'right', 2: 'bottom', 3: 'left' };
+            const classNames = ['in', 'out'].map(p => Object.values(directions).map(d => `${p}-${d}`)).reduce((a, b) => a.concat(b));
+      
+            const getDirectionKey = (ev, node) => {
+                const { width, height, top, left } = node.getBoundingClientRect();
+                const l = ev.pageX - (left + window.pageXOffset);
+                const t = ev.pageY - (top + window.pageYOffset);
+                const x = l - width / 2 * (width > height ? height / width : 1);
+                const y = t - height / 2 * (height > width ? width / height : 1);
+                return Math.round(Math.atan2(y, x) / 1.57079633 + 5) % 4;
+            };
+      
+            class Item {
+                constructor(element) {
+                    this.element = element;
+                    this.element.addEventListener('mouseover', ev => this.update(ev, 'in'));
+                    this.element.addEventListener('mouseout', ev => this.update(ev, 'out'));
+                }
+      
+                update(ev, prefix) {
+                    this.element.classList.remove(...classNames);
+                    this.element.classList.add(`${prefix}-${directions[getDirectionKey(ev, this.element)]}`);
+                }
+            }
+      
+            nodes.forEach(node => new Item(node));
+
+        </script>
+    </body>
+</html>

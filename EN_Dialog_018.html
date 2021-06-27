@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Dialog Box #018 2021/06/27 by T. Fujita</title>
+        <meta charset = "utf-8" />
+
+        <style>
+            body {
+                padding: 0;
+                margin: 0;
+                font-size: 24px;
+                background-color: #ddffdd;
+            }
+            textarea {
+                font-family:Verdana, Helvetica, Arial, sans-serif;
+                font-size: 0.8em;
+                margin: 0;
+                padding: 0;
+                vertical-align:middle;
+            }
+
+/* for Dialog Box */
+            dialog {
+                padding: 0;
+                border: 1px solid #eee;
+                box-shadow: 2px 2px 4px #333;
+                position: relative;
+                width: 500px;
+                height: 400px;
+                overflow: hidden;
+                background-color: #d0ffd0;
+            }
+            dialog[open]{
+                animation: fade 1s ease 0s 1 normal;
+            }
+
+            .rightButton{
+                background-color: #0004ff;
+                text-align: center;
+                margin: 10px auto 20px auto;
+                padding: 10px;
+                border-radius: 4px;
+                font-weight: bold;
+                color: #fff;
+                box-shadow: 0px 1px 3px #8bb8fa;
+                cursor: pointer;
+                position:absolute;
+                right: 20px;
+                bottom: 2px;
+                opacity: 1;
+            }
+            .leftButton{
+                background-color: #b80000;
+                text-align: center;
+                margin: 10px auto 20px auto;
+                padding: 10px;
+                border-radius: 4px;
+                font-weight: bold;
+                color: #fff;
+                box-shadow: 0px 1px 3px rgb(83, 0, 0);
+                cursor: pointer;
+                position:absolute;
+                left: 20px;
+                bottom: 2px;
+                opacity: 1;
+            }
+            .normalButton{
+                background-color: #005005;
+                text-align: center;
+                margin: 10px auto 20px auto;
+                padding: 10px;
+                border-radius: 4px;
+                font-weight: bold;
+                color: #fff;
+                box-shadow: 0px 1px 3px rgb(4, 109, 0);
+                cursor: pointer;
+                opacity: 1;
+            }
+
+/* Inside of the Dialog */
+      dialog form, dialog datalist {
+        display: grid;
+      }
+      dialog form {
+        --k: calc((var(--val) - var(--min))/
+                  (var(--max) - var(--min)));
+        --pos: calc(1.125em + var(--k)*(100% - 2.25em));
+        grid-gap: 0.25em;
+        place-self: center;
+        min-width: 8em;
+        width: calc(100% - 1.5em);
+        max-width: 90%;
+        filter: Saturate(var(--hl, 0));
+        transition: filter 0.3s ease-out;
+      }
+      dialog form:focus-within, dialog form:hover {
+        --hl: 1 ;
+      }
+      
+      dialog input[type=range] {
+        height: 2.25em;
+        width: 36em;
+        border-radius: 2.25em;
+        box-shadow: 0 -1px #eaeaea, 0 1px #fff;
+        background: linear-gradient(#c3c3c3, #f1f1f1);
+        cursor: pointer;
+      }
+      dialog input[type=range], dialog input[type=range]::-webkit-slider-runnable-track, dialog input[type=range]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+      }
+      dialog input[type=range][list]::-webkit-slider-container {
+        min-height: 1.5em;
+      }
+      dialog input[type=range]::-webkit-slider-container {
+        -webkit-user-modify: read-write !important;
+        margin: 0.375em;
+        height: 1.5em;
+        border-radius: 0.75em;
+        box-shadow: inset 0 1px 4px #8c8c8c;
+        background: linear-gradient(#f8dd36, #d68706) 0/var(--pos) no-repeat, linear-gradient(#efefef, #c9c9c9);
+      }
+      dialog input[type=range]::-webkit-slider-runnable-track {
+        margin: -0.375em;
+      }
+      dialog input[type=range]::-moz-range-track {
+        margin: 0.375em;
+        height: 1.5em;
+        border-radius: 0.75em;
+        box-shadow: inset 0 1px 4px #8c8c8c;
+        background: linear-gradient(#f8dd36, #d68706) 0/var(--pos) no-repeat, linear-gradient(#efefef, #c9c9c9);
+      }
+      dialog input[type=range]::-webkit-slider-thumb {
+        box-sizing: border-box;
+        border: solid 0.375em transparent;
+        width: 2.25em;
+        height: 2.25em;
+        border-radius: 50%;
+        box-shadow: 0 2px 5px #7d7d7d;
+        background: linear-gradient(#c5c5c5, whitesmoke) padding-box, linear-gradient(#fbfbfb, #c2c2c2) border-box;
+        cursor: ew-resize;
+      }
+      dialog input[type=range]::-moz-range-thumb {
+        box-sizing: border-box;
+        border: solid 0.375em transparent;
+        width: 2.25em;
+        height: 2.25em;
+        border-radius: 50%;
+        box-shadow: 0 2px 5px #7d7d7d;
+        background: linear-gradient(#c5c5c5, whitesmoke) padding-box, linear-gradient(#fbfbfb, #c2c2c2) border-box;
+        cursor: ew-resize;
+      }
+      dialog input[type=range]:focus {
+        outline: none;
+      }
+      
+      dialog datalist {
+        grid-row: 1;
+        grid-template-columns: 3em 1fr 3em;
+        place-content: end center;
+        margin: 0 -0.375em;
+        color: #bababa;
+        text-align: center;
+        text-transform: uppercase;
+      }
+      dialog datalist::after {
+        place-self: end center;
+        margin-bottom: 3px;
+        width: min(12em, 100%);
+        min-height: 0.5em;
+        grid-area: 1/2;
+        background: linear-gradient(90deg, transparent 2px, #f0ba22 0) -1px/1em round;
+        clip-path: polygon(0 calc(100% - 1px), 0 100%, 100% 100%, 100% 0);
+        content: "";
+      }          
+
+        </style>
+
+    </head>
+    <body translate="no" >
+        <center>
+            <h2> Dialog Box #018: Slider </h2>
+            <div class="wrap">
+                <br>
+                <input type="button" class="normalButton" id="button_01" value="Open a Dialog Box" onclick="Dialog_open_18()">
+            </div>
+        </center>
+
+        <dialog dialog id="dialog_18">
+            <center>
+                Dialog #018（Slider）
+            </center>
+            <hr>
+            <form style="--min: 0; --max: 100; --val: 25; position: absolute; top: 25%;">
+                <input type="range" id="Range" min="0" max="100" value="25" list="l" onchange="showValue()"/>
+                <datalist id="l">
+                  <option label="min" value="0"></option>
+                  <option label="max" value="100"></option>
+                </datalist>
+            </form>
+            <span id="Slider" style="position:absolute; top:50%; left:40%; color:#000000">Value= 25</span>            
+            <br><br><br>
+            <br><br><br>
+            <hr>
+                <input type="button" class="rightButton" id="close_18" value="Close" onclick="Dialog_close_18()">
+        </dialog>
+
+        <script>
+            function Dialog_open_18() {
+                dialog_18.showModal();
+            }
+            function Dialog_close_18() {
+                dialog_18.close();
+            }
+
+            document.documentElement.classList.add('js');
+            addEventListener('input', e => {
+                let _t = e.target;
+                _t.parentNode.style.setProperty('--val', +_t.value);
+            }, false);
+
+            var slider_Val =document.getElementById('Slider');
+            var range_Val = document.getElementById('Range');
+            function showValue(){
+                slider_Val.innerHTML = "Value= " + range_Val.value;
+            }              
+        </script>
+    </body>
+</html>

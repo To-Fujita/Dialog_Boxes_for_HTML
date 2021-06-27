@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <title>Dialog Box #019 2021/06/27 by T. Fujita</title>
+        <meta charset = "utf-8" />
+
+        <style>
+            body {
+                padding: 0;
+                margin: 0;
+                font-size: 24px;
+                background-color: #fcd7d7;
+            }
+            textarea {
+                font-family:Verdana, Helvetica, Arial, sans-serif;
+                font-size: 0.8em;
+                margin: 0;
+                padding: 0;
+                vertical-align:middle;
+            }
+
+/* for Dialog Box */
+            dialog {
+                padding: 0;
+                border: 1px solid #eee;
+                box-shadow: 2px 2px 4px #333;
+                position: relative;
+                width: 500px;
+                height: 400px;
+                overflow: hidden;
+                background-color: #fabfbf;
+            }
+            dialog[open]{
+                animation: fade 1s ease 0s 1 normal;
+            }
+
+            .rightButton{
+                background-color: #0004ff;
+                text-align: center;
+                margin: 10px auto 20px auto;
+                padding: 10px;
+                border-radius: 4px;
+                font-weight: bold;
+                color: #fff;
+                box-shadow: 0px 1px 3px #8bb8fa;
+                cursor: pointer;
+                position:absolute;
+                right: 20px;
+                bottom: 2px;
+                opacity: 1;
+            }
+            .leftButton{
+                background-color: #b80000;
+                text-align: center;
+                margin: 10px auto 20px auto;
+                padding: 10px;
+                border-radius: 4px;
+                font-weight: bold;
+                color: #fff;
+                box-shadow: 0px 1px 3px rgb(83, 0, 0);
+                cursor: pointer;
+                position:absolute;
+                left: 20px;
+                bottom: 2px;
+                opacity: 1;
+            }
+            .normalButton{
+                background-color: #005005;
+                text-align: center;
+                margin: 10px auto 20px auto;
+                padding: 10px;
+                border-radius: 4px;
+                font-weight: bold;
+                color: #fff;
+                box-shadow: 0px 1px 3px rgb(4, 109, 0);
+                cursor: pointer;
+                opacity: 1;
+            }
+
+/* Inside of the Dialog */
+            dialog .range {
+                background: #fff;
+                height: 2rem;
+                width: 90%;
+                border-radius: 5rem;
+                box-shadow: 1px 5px 5px rgba(0, 0, 0, 0.3);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            dialog input[type=range] {
+                -webkit-appearance: none;
+                width: 80%;
+                height: 100%;
+                background: transparent;
+            }
+            dialog input[type=range]:focus {
+                outline: none;
+            }
+            dialog input[type=range]::-webkit-slider-thumb {
+                -webkit-appearance: none;
+                height: 16px;
+                width: 16px;
+                border-radius: 50%;
+                background: #ffffff;
+                margin-top: -5px;
+                box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+                cursor: pointer;
+            }
+            dialog input[type=range]::-webkit-slider-runnable-track {
+                width: 60%;
+                height: 9px;
+                background: #bdbdbd;
+                border-radius: 3rem;
+                -webkit-transition: all 0.5s;
+                transition: all 0.5s;
+                cursor: pointer;
+            }
+            dialog input[type=range]:hover::-webkit-slider-runnable-track {
+                background: #ff6e40;
+            }
+            dialog input[type=range]::-ms-track {
+                width: 60%;
+                cursor: pointer;
+                height: 9px;
+                -ms-transition: all 0.5s;
+                transition: all 0.5s;
+                /* Hides the slider so custom styles can be added */
+                background: transparent;
+                border-color: transparent;
+                color: transparent;
+            }
+            dialog input[type=range]::-ms-thumb {
+                height: 16px;
+                width: 16px;
+                border-radius: 50%;
+                background: #ffffff;
+                margin-top: -5px;
+                box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+                cursor: pointer;
+            }
+            dialog input[type=range]::-ms-fill-lower {
+                background: #bdbdbd;
+                border-radius: 3rem;
+            }
+            dialog input[type=range]:focus::-ms-fill-lower {
+                background: #ff6e40;
+            }
+            dialog input[type=range]::-ms-fill-upper {
+                background: #bdbdbd;
+                border-radius: 3rem;
+            }
+            dialog input[type=range]:focus::-ms-fill-upper {
+                background: #ff6e40;
+            }
+            dialog input[type=range]::-moz-range-thumb {
+                height: 16px;
+                width: 16px;
+                border-radius: 50%;
+                background: #ffffff;
+                margin-top: -5px;
+                box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+                cursor: pointer;
+            }
+            dialog input[type=range]::-moz-range-track {
+                width: 60%;
+                height: 9px;
+                background: #bdbdbd;
+                border-radius: 3rem;
+                -moz-transition: all 0.5s;
+                transition: all 0.5s;
+                cursor: pointer;
+            }
+            dialog input[type=range]:hover::-moz-range-track {
+                background: #ff6e40;
+            }   
+
+        </style>
+
+    </head>
+    <body translate="no" >
+        <center>
+            <h2> Dialog Box #019: Color Maker by Sliders </h2>
+            <div class="wrap">
+                <br>
+                <input type="button" class="normalButton" id="button_01" value="ダイアログを開く" onclick="Dialog_open_19()">
+            </div>
+        </center>
+
+        <dialog dialog id="dialog_19">
+            <center>
+                ダイアログ #019（Color Maker by Slider）
+            </center>
+            <hr>
+            <span id="R_Slider" style="position:absolute; top:13%; left:20%; color:#000000">Red Value= 50</span>  
+            <div class="range" style="position:absolute; top:20%; left:5%; background-color: #ff0000;">
+                <input type="range" min="0" max="255" id="R_Range" value="50" onchange="showValue()">
+            </div>
+            <span id="G_Slider" style="position:absolute; top:30%; left:20%; color:#000000">Green Value= 50</span>  
+            <div class="range" style="position:absolute; top:37%; left:5%; background-color: #00ff00;">
+                <input type="range" min="0" max="255" id="G_Range" value="50" onchange="showValue()">
+            </div>
+            <span id="B_Slider" style="position:absolute; top:47%; left:20%; color:#000000">Blue Value= 50</span>  
+            <div class="range" style="position:absolute; top:54%; left:5%; background-color: #0000ff;">
+                <input type="range" min="0" max="255" id="B_Range" value="50" onchange="showValue()">
+            </div>
+            <span id="A_Slider" style="position:absolute; top:64%; left:20%; color:#000000">Alpha Value= 1</span>  
+            <div class="range" style="position:absolute; top:71%; left:5%; background-color: #666666;">
+                <input type="range" min="0" max="100" id="A_Range" value="100" onchange="showValue()">
+            </div>
+            <span id="col" style="position:absolute; bottom: 4%; left:40%; width: 100px; height: 40px;">
+
+            </span>
+            <br><br><br>
+            <br><br><br><br>
+            <hr>
+            　作成した色:
+            <input type="button" class="rightButton" id="close_19" value="閉じる" onclick="Dialog_close_19()">
+        </dialog>
+
+        <script>
+            function Dialog_open_19() {
+                dialog_19.showModal();
+            }
+            function Dialog_close_19() {
+                dialog_19.close();
+            }
+
+            var R_slider_Val =document.getElementById('R_Slider');
+            var R_range_Val = document.getElementById('R_Range');
+            var G_slider_Val =document.getElementById('G_Slider');
+            var G_range_Val = document.getElementById('G_Range');
+            var B_slider_Val =document.getElementById('B_Slider');
+            var B_range_Val = document.getElementById('B_Range');
+            var A_slider_Val =document.getElementById('A_Slider');
+            var A_range_Val = document.getElementById('A_Range');
+            var Col_Val = document.getElementById('col');
+            function showValue(){
+                R_slider_Val.innerHTML = "Red Value= " + R_range_Val.value;
+                G_slider_Val.innerHTML = "Green Value= " + G_range_Val.value;
+                B_slider_Val.innerHTML = "Blue Value= " + B_range_Val.value;
+                A_slider_Val.innerHTML = "Alpha Value= " + A_range_Val.value / 100;
+                Col_Val.innerHTML = '<div style="position:absolute; Bottom: 10%; left:10%; width: 100px; height: 40px; background-color: rgba(' + R_range_Val.value + ',' + G_range_Val.value + ',' + B_range_Val.value + ',' + A_range_Val.value / 100 + ');"></div>';
+            }
+        </script>
+    </body>
+</html>
