@@ -70,6 +70,9 @@
 (f) Calendar  
 [EN_Dialog_011.html](https://to-fujita.github.io/Dialog_Boxes_for_HTML/EN_Dialog_011.html): "EN_Dialog_011.html" is a source file by using date picker on calendar.  
 
+(g) Slider  
+[EN_Dialog_018.html](https://to-fujita.github.io/Dialog_Boxes_for_HTML/EN_Dialog_018.html): "EN_Dialog_018.html" is a source file to input the numbers by using slider.
+
 ### 3-3. File Read and Write
 (a) Load the Text File  
  [EN_Dialog_006.html](https://to-fujita.github.io/Dialog_Boxes_for_HTML/EN_Dialog_006.html): "EN_Dialog_006.html" is a source file to load the text file from local device. This program is supported several type of character sets. It is supported by the "EN_Dialog_100.html" and by the "EN_Dialog_102.html" to save the text file with UTF-8 of character set.  
@@ -90,11 +93,21 @@
 (c) Icon Type of Menu  
 [EN_Dialog_102.html](https://to-fujita.github.io/Dialog_Boxes_for_HTML/EN_Dialog_102.html): "EN_Dialog_102.html" is a source file to show the icon type of menu and link to sevral dialog boxes.  
 
+(d) Block Type of Menu  
+[EN_Dialog_103.html](https://to-fujita.github.io/Dialog_Boxes_for_HTML/EN_Dialog_103.html): "EN_Dialog_103.html" is a source file to show the block type of menu with icons and link to sevral dialog boxes.  
+
 ### 3-5. Others
 (a) Digital Clock  
  [EN_Dialog_009.html](https://to-fujita.github.io/Dialog_Boxes_for_HTML/EN_Dialog_009.html): "EN_Dialog_009.html" is a source file for the digital clock in the dialog box.  
+ 
  (b) Analog Clock  
  [EN_Dialog_016.html](https://to-fujita.github.io/Dialog_Boxes_for_HTML/EN_Dialog_016.html): "EN_Dialog_016.html" is a source file for the analog clock in the dialog box.  
+ 
+ (c) Color Picker  
+  [EN_Dialog_017.html](https://to-fujita.github.io/Dialog_Boxes_for_HTML/EN_Dialog_017.html): "EN_Dialog_017.html" is a source file for the color picker in the dialog box.  
+ 
+ (d) Color Maker with Sliders
+  [EN_Dialog_019.html](https://to-fujita.github.io/Dialog_Boxes_for_HTML/EN_Dialog_019.html): "EN_Dialog_019.html" is a source file for the color maker with sliders in the dialog box.  
  
 ## 4. Reference:
 - [The Dialog Element](https://developer.mozilla.org/en/docs/Web/HTML/Element/dialog)
