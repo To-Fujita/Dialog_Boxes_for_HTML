@@ -206,7 +206,7 @@
             <br>
             <h2> Dialog Box #102: Icons Type of Menu </h2>
             <br>
-            <input type="button" id="button_00" class="btn5" style="position: absolute; top:70px; left:30%;" value="Show Dialog Menu" onclick="Dialog_open_000();">
+            <input type="button" id="button_00" class="btn5" style="position: absolute; top:70px; left:30%;" value="Show Dialog Menu" onclick="Dialog_open_102();">
             <input type="button" class="normalButton" id="button_102" style="position: absolute; top:70px; left:60%;" value="Clear the Data Below" onclick="Text_Clear_102();">
             <br>The results at the dialog box:
             <br>
@@ -223,10 +223,10 @@
         </script>
 
 
-<!-- Dialog Box #000 -->
-<dialog dialog id="dialog_000">
+<!-- Dialog Box #102 -->
+<dialog dialog id="dialog_102">
     <center>
-        Dialog #000（Menu）
+        Dialog #102（Menu）
     </center>
     <hr>
     <span class="shift" style="position:absolute; top:50px; left: 10px;">
@@ -284,14 +284,14 @@
     </span>
 
     <br><br><br><br><br><br><hr>
-    <input type="button" class="rightButton" id="close_000" value="Close" onclick="Dialog_close_000()">
+    <input type="button" class="rightButton" id="close_102" value="Close" onclick="Dialog_close_102()">
 </dialog>
 <script>
-    function Dialog_open_000(){
-        dialog_000.showModal();
+    function Dialog_open_102(){
+        dialog_102.showModal();
     }
-    function Dialog_close_000() {
-        dialog_000.close();
+    function Dialog_close_102() {
+        dialog_102.close();
     }
 </script>
 
@@ -316,7 +316,7 @@
 
 <script>
     function Dialog_open_01() {
-        dialog_000.close();
+        dialog_102.close();
         dialog_001.showModal();
         sand_text();
     }
@@ -501,7 +501,7 @@
     var Text_Data = "";
     var Dialog_Text_02 = document.getElementById('Dialog_text_02');
     function Dialog_open_02() {
-        dialog_000.close();
+        dialog_102.close();
         dialog_02.showModal();
     }
     function Dialog_close_02() {
@@ -542,7 +542,7 @@
 
 <script>
     function Dialog_open_03() {
-        dialog_000.close();
+        dialog_102.close();
         dialog_03.showModal();
     }
     function Dialog_close_03() {
@@ -591,7 +591,7 @@
 
 <script>
     function Dialog_open_04() {
-        dialog_000.close();
+        dialog_102.close();
         dialog_04.showModal();
     }
     function Dialog_close_04() {
@@ -674,7 +674,7 @@
         temp = this.value;
     }
     function Dialog_open_05() {
-        dialog_000.close();
+        dialog_102.close();
         dialog_05.showModal();
     }
     function Dialog_close_05() {
@@ -735,7 +735,7 @@
     var tmp_data = "";
 
     function Dialog_open_06() {
-        dialog_000.close();
+        dialog_102.close();
         dialog_06.showModal();
         Dialog_TXT_Data_Load();
     }
@@ -803,7 +803,7 @@
     var CSV_Data = new Array();
 
     function Dialog_open_07() {
-        dialog_000.close();
+        dialog_102.close();
         dialog_07.showModal();
         Dialog_CSV_Data_Load();
     }
@@ -891,7 +891,7 @@
 
 // Display the Dialog Box
     function Dialog_open_08() {
-        dialog_000.close();
+        dialog_102.close();
         dialog_08.showModal();
     }
     function Dialog_close_08() {
@@ -1177,7 +1177,7 @@
 
 <script>
     function Dialog_open_09() {
-        dialog_000.close();
+        dialog_102.close();
         dialog_09.showModal();
     }
     function Dialog_close_09() {
@@ -1266,7 +1266,7 @@
 
 <script>
     function Dialog_open_10() {
-        dialog_000.close();
+        dialog_102.close();
         dialog_10.showModal();
     }
     function Dialog_close_10() {
@@ -1321,7 +1321,7 @@
     var Dialog_Text_11 = document.getElementById('calendar');
 
     function Dialog_open_11() {
-        dialog_000.close();
+        dialog_102.close();
         dialog_11.show();
     }
     function Dialog_cancel_11() {
@@ -1380,7 +1380,7 @@ Also, you say the "End of voice input" or "End of the input" to terminate the vo
     var Flag_Speech = 0;
 
     function Dialog_open_12() {
-        dialog_000.close();
+        dialog_102.close();
         Flag_Speech = 0;
         Speak.innerHTML = '<i style="color:#ff0000;">OFF</i>';
         recognition.stop();
@@ -1483,7 +1483,7 @@ Also, you say the "End of voice input" or "End of the input" to terminate the vo
         <script>
             var Save_Text = document.getElementById('dialog_TXT_Save');
             function Dialog_open_13() {
-                dialog_000.close();
+                dialog_102.close();
                 dialog_13.showModal();
                 Save_Text.value = Text_Data;
             }
@@ -1532,7 +1532,7 @@ Also, you say the "End of voice input" or "End of the input" to terminate the vo
             var dialog_CSV_Save = document.getElementById('dialog_CSV_Save');
 
             function Dialog_open_14() {
-                dialog_000.close();
+                dialog_102.close();
                 Save_CSV = CSV_Data;
                 dialog_14.showModal();
 
@@ -1603,7 +1603,7 @@ Also, you say the "End of voice input" or "End of the input" to terminate the vo
             var dialog_CSV_Save_ANSI = document.getElementById('dialog_CSV_Save_ANSI');
 
             function Dialog_open_15() {
-                dialog_000.close();
+                dialog_102.close();
                 Save_CSV_ANSI = CSV_Data;
                 dialog_15.showModal();
 
