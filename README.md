@@ -109,6 +109,9 @@
  (d) Color Maker with Sliders
   [EN_Dialog_019.html](https://to-fujita.github.io/Dialog_Boxes_for_HTML/EN_Dialog_019.html): "EN_Dialog_019.html" is a source file for the color maker with sliders in the dialog box.  
  
+ (e) Show Map  
+ [EN_Dialog_020.html](https://to-fujita.github.io/Dialog_Boxes_for_HTML/EN_Dialog_020.html): "EN_Dialog_020.html" is a source file to show the Map with "Leaflet.js" in the dialog box. 
+ 
 ## 4. Reference:
 - [The Dialog Element](https://developer.mozilla.org/en/docs/Web/HTML/Element/dialog)
 
