@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Dialog Box #020 2021/07/12 by T. Fujita</title>
+        <meta charset = "utf-8" />
+        <link rel = "stylesheet" href = "https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+        <script src = "https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+        
+        <style>
+            body {
+                padding: 0;
+                margin: 0;
+                font-size: 24px;
+                background-color: #ddffdd;
+            }
+            textarea {
+                font-family:Verdana, Helvetica, Arial, sans-serif;
+                font-size: 0.8em;
+                margin: 0;
+                padding: 0;
+                vertical-align:middle;
+            }
+
+/* for Dialog Box */
+            dialog {
+                padding: 0;
+                border: 1px solid #eee;
+                box-shadow: 2px 2px 4px #333;
+                position: relative;
+                width: 500px;
+                height: 400px;
+                overflow: hidden;
+                background-color: #d0ffd0;
+            }
+            dialog[open]{
+                animation: fade 1s ease 0s 1 normal;
+            }
+
+            .rightButton{
+                background-color: #0004ff;
+                text-align: center;
+                margin: 10px auto 20px auto;
+                padding: 10px;
+                border-radius: 4px;
+                font-weight: bold;
+                color: #fff;
+                box-shadow: 0px 1px 3px #8bb8fa;
+                cursor: pointer;
+                position:absolute;
+                right: 20px;
+                bottom: -10px;
+                opacity: 1;
+            }
+            .leftButton{
+                background-color: #b80000;
+                text-align: center;
+                margin: 10px auto 20px auto;
+                padding: 10px;
+                border-radius: 4px;
+                font-weight: bold;
+                color: #fff;
+                box-shadow: 0px 1px 3px rgb(83, 0, 0);
+                cursor: pointer;
+                position:absolute;
+                left: 20px;
+                bottom: -10px;
+                opacity: 1;
+            }
+            .normalButton{
+                background-color: #005005;
+                text-align: center;
+                margin: 10px auto 20px auto;
+                padding: 10px;
+                border-radius: 4px;
+                font-weight: bold;
+                color: #fff;
+                box-shadow: 0px 1px 3px rgb(4, 109, 0);
+                cursor: pointer;
+                opacity: 1;
+            }
+
+        </style>
+
+    </head>
+    <body translate="no" >
+        <center>
+            <h2> Dialog Box #020: Map by Leaflet </h2>
+            <div class="wrap">
+                <br>
+                <input type="button" class="normalButton" id="button_01" value="Open a Dialog Box" onclick="Dialog_open_20()">
+            </div>
+        </center>
+
+        <dialog dialog id="dialog_20">
+            <center>
+                Dialog #020（Map by Leaflet）
+            </center>
+                
+                <div id="map_20" style="width: 498px; height: 300px; border: solid 1px;"></div>
+                
+            <input type="button" class="rightButton" value="Close" onclick="Dialog_close_20()">
+        </dialog>
+
+        <script>
+            function Dialog_open_20() {
+                dialog_20.showModal();
+                show_Map();
+            }
+            function Dialog_close_20() {
+                dialog_20.close();
+            }
+            function show_Map() {
+	var Basic_Map = new Array();
+	Basic_Map[ 0 ] = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+		attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+		continuousWorld: false
+	});
+	Basic_Map[ 1 ] = L.tileLayer('http://{s}.tile.stamen.com/{variant}/{z}/{x}/{y}.png', {
+		attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, ',
+		variant: 'toner-background'
+	});
+	Basic_Map[ 2 ] = L.tileLayer('http://{s}.tile.stamen.com/{variant}/{z}/{x}/{y}.png', {
+		attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, ',
+		variant: 'toner-lite'
+	});
+	Basic_Map[ 3 ] = L.tileLayer('http://{s}.tile.stamen.com/{variant}/{z}/{x}/{y}.png', {
+		minZoom: 1,
+		maxZoom: 16,
+		attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, ',
+		variant: 'watercolor'
+	});
+	Basic_Map[ 4 ] = L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}', {
+		attribution: 'Tiles &copy; <a href="http://www.esrij.com/"> Esri Japan </a>'
+	});
+	Basic_Map[ 5 ] = L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer/tile/{z}/{y}/{x}', {
+		maxZoom: 13,
+		attribution: 'Tiles by <a href="http://www.esrij.com/"> Esri Japan </a>'
+	});
+
+        var map_20 = L.map('map_20').setView([51.5, 0.0], 8);
+        map_20.addLayer( Basic_Map[ 0 ] );
+
+	var baseMap = {
+		"OpenStreetMap": Basic_Map[ 0 ],
+		"Stamen Toner-Background": Basic_Map[ 1 ],
+		"Stamen Toner-Lite": Basic_Map[ 2 ],
+		"Stamen Watercolor": Basic_Map[ 3 ],
+		"Esri World Topo Map": Basic_Map[ 4 ],
+		"Esri Ocean Base Map": Basic_Map[ 5 ],
+	};
+	L.control.layers(baseMap).addTo(map_20);
+    }
+        </script>
+    </body>
+</html>
